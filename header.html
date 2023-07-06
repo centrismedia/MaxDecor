@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+
+    <!-- Header -->
+    <header class="header__container  container">
+
+
+        <!-- Первая линия -->
+        <div class="header__first-line">
+
+
+            <a class="header__logo-container" href="">
+                <img class="header__logo" src="img/header-logo.svg" alt="">
+            </a>
+
+            <div class="header__search-container">
+                <label class="header__search-label" for="header_search">
+                    <img src="img/header-search.svg" alt="">
+                </label>
+                <input class="header__search-input" type="search" name="" id="header_search" placeholder="Поиск...">
+                <button class="header__search-btn" type="submit">искать</button>
+            </div>
+
+            <a class="header__login-auth" href="">
+                <p>Регистрация /Авторизация</p>
+            </a>
+
+
+        </div>
+
+
+        <!-- Вторая линия -->
+        <div class="header__second-line">
+
+
+
+            <nav class="header__nav">
+                <div id="collections" class="header__nav-collections">
+                    <p id="collections_p">Коллекции</p>
+                    <img id="header__nav_arrow" class="header__nav-arrow" src="img/header-arrow.svg" alt="">
+                </div>
+                <a class="header__nav-about" href="">О фабрике</a>
+                <a class="header__nav-Show" href="">Шоурум</a>
+                <a class="header__nav-new" href="">Новости</a>
+                <a class="header__nav-buy" href="">Где купить?</a>
+                <a class="header__nav-cont" href="">Контакты</a>
+            </nav>
+
+            <div id="header_drop_menu" class="header__drop-menu-container">
+                <a class="menu-i" href="">Bricly</a>
+                <a class="menu-i" href="">Karacum</a>
+                <a class="menu-i" href="">Magik</a>
+                <a class="menu-i" href="">Carat</a>
+                <a class="menu-i" href="">Plants</a>
+                <a class="menu-i" href="">Bricly</a>
+                <a class="menu-i" href="">Karacum</a>
+                <a class="menu-i" href="">Magik</a>
+                <a class="menu-i" href="">Carat</a>
+                <a class="menu-i" href="">Plants</a>
+            </div>
+
+
+
+            <div class="header__second-line__right-container">
+                <div class="header__second-line__icon-container">
+                    <a class="header__select" href="">
+                        <img src="img/header-select.svg" alt="">
+                    </a>
+                    <a class="header__basket" href="">
+                        <img src="img/header-bascket.svg" alt="">
+                    </a>
+                </div>
+                <div class="header__lang-container">
+                    <p>RU</p>
+                    <img src="img/header-arrow.svg" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+
+                <img src="img/swiper_photo_1.png" alt="">
+                <div class="container container-a_p">
+                    <div class="slide-card__container">
+                        <div class="slide-card__subtitle">
+                            HIT
+                        </div>
+                        <div class="slide-card__title">
+                            Romb
+                        </div>
+                        <div class="slide-card__price">
+                            999,000 сум
+                        </div>
+                        <a class="slide-card__button" href="">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+
+                <img src="img/swiper_photo_2.png" alt="">
+                <div class="container container-a_p">
+                    <div class="slide-card__container">
+                        <div class="slide-card__subtitle">
+                            HIT
+                        </div>
+                        <div class="slide-card__title">
+                            Madonna
+                        </div>
+                        <div class="slide-card__price">
+                            999,000 сум
+                        </div>
+                        <a class="slide-card__button" href="">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+
+                <img src="img/swiper_photo_1.png" alt="">
+                <div class="container container-a_p">
+                    <div class="slide-card__container">
+                        <div class="slide-card__subtitle">
+                            HIT
+                        </div>
+                        <div class="slide-card__title">
+                            Romb
+                        </div>
+                        <div class="slide-card__price">
+                            999,000 сум
+                        </div>
+                        <a class="slide-card__button" href="">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Контейнер Filter -->
+    <section class="filter__container container">
+
+        <!-- Кнопка фильтра -->
+        <div class="filter__btn">
+
+            <div class="filter__btn__icon">
+
+                <div class="btn_top-line">
+                    <div class="btn_top-circle"></div>
+                </div>
+                <div class="btn_bot-line">
+                    <div class="btn_bot-circle"></div>
+                </div>
+
+            </div>
+
+            <div class="filter__btn__txt">
+                FILTER
+            </div>
+
+        </div>
+
+
+        <!-- Таблица фильтра -->
+        <div class="table-filter__container">
+
+            <div class="table-filter__column">
+
+                <p class="table-filter__title">Назначение</p>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Гостиная</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Спальня</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Прихожая</p>
+                </div>
+
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Кухня</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Детская</p>
+                </div>
+
+            </div>
+
+
+            <div class="table-filter__column">
+
+                <p class="table-filter__title">Стиль</p>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Классика</p>
+                </div>
+
+                
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Флористика</p>
+                </div>
+
+                
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Орнамент</p>
+                </div>
+
+                
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Геометрия</p>
+                </div>
+
+                
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Детский</p>
+                </div>
+
+            </div>
+
+
+
+            <div class="table-filter__column">
+
+                <p class="table-filter__title">Рисунок</p>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Природа</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Фоновый</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>Подкраска</p>
+                </div>
+
+            </div>
+
+
+
+            <div class="table-filter__column">
+
+                <p class="table-filter__title">Размер</p>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>0,53 x 10</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>1,06 x 10</p>
+                </div>
+
+                <div class="table-filter__element">
+                    <div class="table-filter__marker">
+                        <img src="img/check-mark.svg" alt="">
+                    </div>
+                    <p>1.06 x 25</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+
+</html>
