@@ -1,0 +1,379 @@
+.navigation-chain__container {
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    height: 50px;
+
+    margin: 50px auto;
+
+    a {
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Medium";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 180%;
+    }
+
+    .navigation-chain__current {
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 37px;
+    }
+}
+
+
+
+.navigation-chain__delimiter {
+    width: 71px;
+    height: 1px;
+
+    background-color: #1E1E1E;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 
+// Информация о товаре
+// 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.description-product__container {
+    display: flex;
+    column-gap: 55px;
+}
+
+.description-product__left-card {
+    width: 719px;
+    height: 182px;
+
+    border-radius: 6px 6px 6px 0px;
+    background: #F3F3F3;
+}
+
+.description-product__left-card_title {
+    color: #192965;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+    margin: 20px 0 12px 36px;
+}
+
+.description-product__left-card_body {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+
+    margin: 0 46px 35px 33px;
+}
+
+
+
+.description-product__right-card {
+    display: flex;
+    width: 690px;
+    height: 135px;
+
+    p {
+        margin: 20px 0;
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+    }
+
+}
+
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 
+// Карточка продукта
+// 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+.card-product__container {
+    display: flex;
+    column-gap: 60px;
+
+    margin-top: 80px;
+}
+
+
+
+
+.card-product__img-container {
+    width: 712px;
+    height: 713px;
+
+}
+
+.card-product__img {
+    width: 712px;
+    height: 713px;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+
+.card-product__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 79px;
+
+    width: 700px;
+    height: 714px;
+}
+
+
+
+
+.card-product__title-container {
+    display: flex;
+}
+
+.card-product__title {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-product__title_name {
+    padding-right: 35px;
+    border-right: solid 1px #707070;
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}
+
+.card-product__title_vendor {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}
+
+.card-product__title-icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 25px;
+
+    border-radius: 50%;
+    background: #192965;
+
+    cursor: pointer;
+}
+
+
+
+
+.card-product__options-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+}
+
+.card-product__options {
+    display: flex;
+    align-items: flex-end;
+    column-gap: 7px;
+}
+
+.card-product__options_key {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    white-space: nowrap;
+}
+
+.card-product__options_line {
+    width: 100%;
+    height: 1px;
+    border-bottom: dotted 1px #1E1E1E;
+    margin-bottom: 5px;
+}
+
+.card-product__options_value {
+
+    color: #1E1E1E;
+    text-align: right;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19px;
+    white-space: nowrap;
+}
+
+
+
+
+.card-product__price-container {
+    display: flex;
+    align-items: center;
+
+    column-gap: 35px;
+}
+
+.card-product__price {
+    color: #192965;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.card-product__price-descr {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+}
+
+
+
+
+.card-product__quantity {
+    display: flex;
+    align-items: flex-start;
+
+    .card-product__minus {
+        background: #EFEFEF;
+
+        border-radius: 4px 0 0 4px;
+
+        padding: 14.3px;
+
+        cursor: pointer;
+    }
+
+    .card-product__plus {
+        background: #EFEFEF;
+
+        border-radius: 0 4px 4px 0;
+
+        padding: 14.3px;
+
+        cursor: pointer;
+    }
+
+    .card-product__input {
+        max-width: 35px;
+
+        color: #1E1E1E;
+        font-size: 16px;
+        font-family: "AvenirNextCyr-Medium";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        background: #EFEFEF;
+        text-align: center;
+
+        padding: 9px 0;
+
+        border: none;
+        outline: none;
+
+        &[type="number"],
+        &[type="number"]::-webkit-outer-spin-button,
+        &[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+}
+
+
+.card-product__btn-container {
+    display: flex;
+    column-gap: 73px;
+}
+
+.card-product__btn-call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 264px;
+    height: 64px;
+
+    border-radius: 30px;
+    background: #192965;
+
+    color: #FFF;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
+
+    transition: all 0.2s linear 0s;
+
+    cursor: pointer;
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+        background-color: #0d1636;
+    }
+}
+
+.card-product__add-basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 360px;
+    height: 65px;
+
+    border-radius: 30px;
+    border: 1px solid #1E1E1E;
+    background: #FFF;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    transition: all 0.2s linear 0s;
+
+    cursor: pointer;
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+        color: #1E1E1E;
+        background-color: #F3F3F3;
+        border-color: #F3F3F3;
+    }
+}

@@ -1,0 +1,151 @@
+.form__container-bg {
+    width: 100%;
+    background-color: #F5F5F7;
+
+    padding: 80px 0 300px 0;
+}
+
+.form__container-pos {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.form__title {
+    margin-bottom: 80px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 35px;
+
+    z-index: 1;
+}
+
+
+.form__name-cont,
+.form__tel-cont,
+.form__email-cont {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-bottom: 8px;
+
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.38px;
+
+        cursor: pointer;
+    }
+
+    input {
+        width: 510px;
+
+        padding: 6px 0;
+
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Medium";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+        background-color: #F5F5F7;
+
+        border: none;
+        outline: none;
+        border-bottom: solid 1px #1E1E1E;
+
+        &[type="name"],
+        &[type="name"]::-webkit-outer-spin-button,
+        &[type="name"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        &[type="tel"],
+        &[type="tel"]::-webkit-outer-spin-button,
+        &[type="tel"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        &[type="email"],
+        &[type="email"]::-webkit-outer-spin-button,
+        &[type="email"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+    }
+}
+
+.form__btn-subm {
+    width: 505px;
+    height: 75px;
+
+    margin-top: 60px;
+
+    border-radius: 30px;
+    background: #192965;
+
+    border: none;
+
+    color: #FFF;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.47px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: all 0.2s linear 0s;
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+        background: #0d1636
+    }
+}
+
+// .form__btn-subm-activ {}
+
+.form__img-decor {
+    display: flex;
+    position: absolute;
+    bottom: -220px;
+    left: 350px;
+}
+
+.form__descritor {
+    position: absolute;
+    top: 165px;
+    left: 230px;
+
+    color: #1E1E1E;
+    text-align: center;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 1px;
+}
