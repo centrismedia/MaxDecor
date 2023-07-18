@@ -354,6 +354,7 @@
 .nav__second-line__right-container {
     display: flex;
     column-gap: 70px;
+    position: relative;
 }
 
 .nav__second-line__icon-container {
@@ -405,14 +406,27 @@
     display: flex;
     align-items: center;
 
+    position: relative;
     column-gap: 6px;
+    width: 80px;
+
+    border-radius: 14px;
 
     cursor: pointer;
 
+    transition: all 0.2s ease-in-out 0s;
+
+    &:hover {
+        transition: all 0.2s ease-in-out 0s;
+        background-color: #E3EBFD;
+    }
+
     p {
+        margin-left: 17px;
+
         color: #1E1E1E;
         font-size: 24px;
-        font-family: $medium;
+        font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 450;
         line-height: normal;
@@ -422,5 +436,75 @@
     img {
         width: 16px;
         height: 16px;
+
+        transition: all 0.2s ease-in-out 0s;
     }
+}
+
+.nav__lang-container_select {
+    position: absolute;
+    top: 47px;
+    left: 174px;
+
+    display: flex;
+    flex-direction: column;
+
+
+    width: 80px;
+    height: 108px;
+
+    background-color: #E3EBFD;
+
+    border-radius: 0 0 14px 14px;
+
+    transition: all 0.2s linear 0s;
+    visibility: hidden;
+    opacity: 0;
+
+    p {
+        display: inline-block;
+        padding: 5px 10px;
+        margin-top: 10px;
+        margin-left: 6px;
+        margin-right: 6px;
+
+        color: #1E1E1E;
+        font-size: 24px;
+        font-family: "AvenirNextCyr-Medium";
+        font-style: normal;
+        font-weight: 450;
+        line-height: normal;
+        text-transform: uppercase;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        transition: all 0.2s ease-in-out 0s;
+
+        &:hover {
+            transition: all 0.2s ease-in-out 0s;
+            background-color: #c0d1fa;
+        }
+    }
+}
+
+// классы анимации
+.deg180 {
+    transition: all 0.2s ease-in-out 0s;
+    transform: rotate(180deg);
+}
+
+.nav__lang-container_select-active {
+    transition: all 0.2s linear 0s;
+
+    visibility: visible;
+    opacity: 1;
+}
+
+.nav__lang-container-active {
+    transition: all 0.2s ease-in-out 0s;
+
+    border-radius: 14px 14px 0 0;
+    background-color: #E3EBFD;
 }

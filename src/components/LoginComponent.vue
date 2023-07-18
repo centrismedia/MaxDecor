@@ -90,32 +90,22 @@
         action=""
       >
         <div class="regist__email-cont">
-          <input
-            type="email"
-            name="email"
-            id="login_email"
-            placeholder=" "
-            required
-          />
+          <input type="email" placeholder=" " required />
           <label for="login_email"> Email</label>
         </div>
         <div class="regist__password_1-cont">
-          <input
-            type="password"
-            name="password_1"
-            id="login_password"
-            placeholder=" "
-            required
-          />
+          <input type="password" placeholder=" " required />
           <label for="login_password">Пароль</label>
         </div>
 
         <div class="regist__agreement-cont">
-          <input type="checkbox" name="agreement" id="remember" required />
+          <input type="checkbox" required />
           <label for="remember">запомните меня</label>
         </div>
 
-        <button class="regist__btn-sub" type="submit">войти</button>
+        <router-link to="/user" class="regist__btn-sub" type="submit">
+          войти
+        </router-link>
         <a class="regist__btn-recover-pas" href="">Забыли пароль?</a>
       </form>
     </div>

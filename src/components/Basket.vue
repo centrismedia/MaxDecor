@@ -1,6 +1,6 @@
 <template>
-  <aside class="basket__container" v-show="basketOpen">
-    <div class="blackout"></div>
+  <aside class="basket__container" @click.stop="">
+    <div class="blackout" @click="toggleBasket()"></div>
 
     <div class="basket__pos">
       <div class="basket__wrapper">
@@ -50,8 +50,15 @@
         </div>
 
         <div class="aside__btn-container">
-          <div class="aside__close">ПРОДОЛЖИТЬ ПОКУПКИ</div>
-          <div class="aside_buy">ОФОРМИТЬ ЗАКАЗ</div>
+          <a class="aside__close" @click="toggleBasket">
+            ПРОДОЛЖИТЬ ПОКУПКИ
+          </a>
+          <router-link
+            @click.native="toggleBasket"
+            to="/verify-order"
+            class="aside_buy"
+            >ОФОРМИТЬ ЗАКАЗ</router-link
+          >
         </div>
       </div>
     </div>
@@ -64,30 +71,11 @@ export default {
     deleteImg: require("@/assets/img/basket/basket-item__delete.svg"),
     basketSecondImg: require("@/assets/img/basket/basket-img-2.png"),
     basketFirstImg: require("@/assets/img/basket/basket_BIG_img.png"),
-    basketOpen: false,
   }),
   methods: {
     toggleBasket() {
-      this.basketOpen = !this.basketOpen;
+      this.$emit("toggle-basket");
     },
-  },
-  mounted() {
-    const headerBasket = document.querySelector(".header__basket");
-    const blackout = document.querySelector(".blackout");
-    const asideClose = document.querySelector(".aside__close");
-
-    headerBasket.addEventListener("click", this.toggleBasket);
-    blackout.addEventListener("click", this.toggleBasket);
-    asideClose.addEventListener("click", this.toggleBasket);
-  },
-  beforeUnmount() {
-    const headerBasket = document.querySelector(".header__basket");
-    const blackout = document.querySelector(".blackout");
-    const asideClose = document.querySelector(".aside__close");
-
-    headerBasket.removeEventListener("click", this.toggleBasket);
-    blackout.removeEventListener("click", this.toggleBasket);
-    asideClose.removeEventListener("click", this.toggleBasket);
   },
 };
 </script>

@@ -319,6 +319,9 @@ input:not(:placeholder-shown)+label {
 .regist__btn-sub {
     width: 545px;
     height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     margin-top: 10px;
 

@@ -9,6 +9,7 @@
           class="main__video"
           :src="video"
           ref="video"
+          autoplay
         ></video>
         <img
           class="play__btn"
@@ -32,7 +33,7 @@ export default {
     video: require("@/assets/video/10501.mp4"),
     playBtn: require("@/assets/video/playBtn.svg"),
     playposter: require("@/assets/video/10501-frame.jpg"),
-    isVideoPlaying: false,
+    isVideoPlaying: true,
   }),
   mounted() {
     this.$refs.video.addEventListener("ended", this.handleVideoEnded);

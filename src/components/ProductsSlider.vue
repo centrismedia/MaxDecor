@@ -3,7 +3,7 @@
     <div class="first-navigation-next">
       <img :src="swiperArrow" alt="" />
     </div>
-    <div class="swiper mySwiper container" ref="swiper">
+    <div class="swiper mySwiper " ref="swiper">
       <div class="swiper-wrapper">
         <div
           id="slide_1"

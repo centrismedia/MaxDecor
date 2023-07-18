@@ -1,13 +1,10 @@
 <template>
   <div class="home">
-
-    <Basket :basketOpen="basketOpen" />
     <Header />
     <Banner />
     <Company />
     <News />
     <FormCard />
-
   </div>
 </template>
 

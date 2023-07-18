@@ -1,12 +1,7 @@
 <template>
   <div class="card-table">
     <section class="table-card__container container">
-      <router-link
-        to="/product"
-        class="card__container"
-        v-for="card in cards"
-        :key="card.id"
-      >
+      <div class="card__container" v-for="card in cards" :key="card.id">
         <div
           class="card__figure"
           @mouseover="card.isActive = true"
@@ -23,19 +18,19 @@
             </div>
             <div
               class="card__figure-btn-fav-icon"
-              @click="toggleFavoriteCard(index)"
+              @click="toggleFavoriteIcon(index)"
               :class="{ 'active__card-figure-btn-fav-icon': card.isActive }"
             >
               <img :src="productionIcon" alt="" />
             </div>
           </div>
         </div>
-        <div class="card__body">
+        <router-link to="/product" class="card__body">
           <div class="card__body-subtitle">{{ card.category }}</div>
           <div class="card__body-title">{{ card.name }}</div>
           <div class="card__body-price">{{ card.price }}</div>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
 
       <div class="table-card__pagination">
         <div class="pagination_prew_btn">
@@ -174,11 +169,8 @@ export default {
   },
 
   methods: {
-    toggleFavoriteCard(index) {
-      this.cards[index].isActive = !this.cards[index].isActive;
-    },
     toggleFavoriteIcon(index) {
-      this.$emit("toggle-favorite-icon", index);
+      this.cards[index].isActive = !this.cards[index].isActive;
     },
     toggleCardFigure(index, show) {
       this.$set(this.isActiveCardFigureBtn, index, show);
@@ -193,6 +185,9 @@ export default {
           ? tableCardContainer.scrollHeight + "px"
           : "";
       }
+    },
+    stopPr(e) {
+      e.stopPropagation();
     },
   },
 };

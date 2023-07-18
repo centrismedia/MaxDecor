@@ -30,7 +30,10 @@
       <div class="nav__second-line">
         <div class="nav__nav">
           <div id="collections" class="nav__nav-collections">
-            <a id="collections_p" @click="toggleMenu"
+            <a
+              id="collections_p"
+              ref="navDropdown"
+              @click="toggleMenu(), closeDropdown()"
               >Коллекции
               <img
                 id="nav__nav_arrow"
@@ -68,16 +71,39 @@
 
         <div class="nav__second-line__right-container">
           <div class="nav__second-line__icon-container">
-            <div class="nav__select">
+            <div
+              class="nav__select"
+              @click="toggleFavoriteIcon(index)"
+              :class="{ 'nav__select-click': toggleFavoriteIcon(index) }"
+            >
               <img :src="select" alt="" />
             </div>
-            <div class="nav__basket">
-              <img :src="bascket" alt="" @click="toggleBasket" />
+            <div class="nav__basket" @click="toggleBasket">
+              <img :src="bascket" alt="" />
             </div>
           </div>
-          <div class="nav__lang-container">
+
+          <div
+            class="nav__lang-container"
+            @click="toggleLangContainer"
+            :class="{ 'nav__lang-container-active': langContainerIsActive }"
+          >
             <p>RU</p>
-            <img :src="arrow" alt="" />
+            <img
+              :src="arrow"
+              alt=""
+              class="nav-arrow"
+              :class="{ deg180: langContainerIsActive }"
+            />
+          </div>
+          <div
+            class="nav__lang-container_select"
+            :class="{
+              'nav__lang-container_select-active': langContainerIsActive,
+            }"
+          >
+            <p>EN</p>
+            <p>UZ</p>
           </div>
         </div>
       </div>
@@ -94,35 +120,33 @@ export default {
     select: require("@/assets/img/header/header-select.svg"),
     bascket: require("@/assets/img/header/header-bascket.svg"),
     menuIsActive: false,
+    langContainerIsActive: false,
   }),
   methods: {
     toggleMenu() {
       this.menuIsActive = !this.menuIsActive;
     },
+    closeDropdown(event) {
+      if (!this.$refs.navDropdown.contains(event.target)) {
+        this.menuIsActive = false;
+      }
+    },
     toggleBasket() {
       this.$emit("toggle-basket");
     },
-    ttoggleFavoriteIcon(index) {
-      const cardFigureBtnFavIcon = document.querySelectorAll(
-        ".card__figure-btn-fav-icon"
-      );
-      const navSelect = document.querySelector(".nav__select");
-
-      cardFigureBtnFavIcon[index].classList.toggle(
-        "card__figure-btn-fav-icon_select"
-      );
-
-      if (
-        cardFigureBtnFavIcon[index].classList.contains(
-          "card__figure-btn-fav-icon_select"
-        )
-      ) {
-        navSelect.classList.add("nav__select-click");
-        setTimeout(function () {
-          navSelect.classList.remove("nav__select-click");
-        }, 1500);
-      }
+    toggleFavoriteIcon(index) {
+      this.$emit("toggle-favorite-icon", index);
     },
+
+    toggleLangContainer() {
+      this.langContainerIsActive = !this.langContainerIsActive;
+    },
+  },
+  mounted() {
+    window.addEventListener("click", this.closeDropdown);
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.closeDropdown);
   },
 };
 </script>

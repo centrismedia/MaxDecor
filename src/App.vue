@@ -1,6 +1,7 @@
 <template>
-  <div class="app">
-    <Navbar></Navbar>
+  <div class="app" ref="app">
+    <Navbar :basketOpen="basketOpen" @toggle-basket="toggleBasket" />
+    <Basket :class="{ open_aside: basketOpen }" @toggle-basket="toggleBasket" />
     <div class="app-page">
       <transition name="fade" mode="out-in">
         <router-view></router-view>
@@ -13,11 +14,29 @@
 <script>
 import Navbar from "@/components/TheNavbar.vue";
 import Footer from "@/components/Footer.vue";
+import Basket from "@/components/Basket.vue";
 
 export default {
   components: {
     Navbar,
     Footer,
+    Basket,
+  },
+  data() {
+    return {
+      basketOpen: false,
+    };
+  },
+  methods: {
+    toggleBasket() {
+      this.basketOpen = !this.basketOpen;
+    },
+  },
+  mounted() {
+    window.addEventListener("click", this.closeBasket);
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.closeBasket);
   },
 };
 </script>

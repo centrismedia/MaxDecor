@@ -14,6 +14,7 @@
 import Navbar from "@/components/TheNavbar.vue";
 import Basket from "@/components/Basket.vue";
 import InfoProduct from "@/components/InfoProduct.vue";
+import VideoSlider from "@/components/VideoSlider.vue";
 import ProductsSlider from "@/components/ProductsSlider.vue";
 import CollectionSlider from "@/components/CollectionSlider.vue";
 import News from "@/components/News.vue";
@@ -23,7 +24,7 @@ export default {
   components: {
     Navbar,
     Basket,
-
+    VideoSlider,
     InfoProduct,
     ProductsSlider,
     CollectionSlider,
