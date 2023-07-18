@@ -7,30 +7,32 @@
           @mouseover="card.isActive = true"
           @mouseout="card.isActive = false"
         >
-          <img class="card__img" :src="card.img" alt="" />
+          <router-link class="" to="/product">
+            <img class="card__img" :src="card.img" alt="" />
 
-          <div class="card__figure-elem">
-            <div class="card__figure-title">{{ card.status }}</div>
-            <div
-              class="card__figure-btn"
-              :class="{ 'active__card-figure-btn': card.isActive }"
-            >
-              ДОБАВИТЬ В КОРЗИНУ
+            <div class="card__figure-elem">
+              <div class="card__figure-title">{{ card.status }}</div>
+              <div
+                class="card__figure-btn"
+                :class="{ 'active__card-figure-btn': card.isActive }"
+              >
+                ДОБАВИТЬ В КОРЗИНУ
+              </div>
             </div>
-            <div
-              class="card__figure-btn-fav-icon"
-              @click="toggleFavoriteIcon(index)"
-              :class="{ 'active__card-figure-btn-fav-icon': card.favActive }"
-            >
-              <img :src="productionIcon" alt="" />
-            </div>
+          </router-link>
+          <div
+            class="card__figure-btn-fav-icon"
+            @click="toggleFavoriteIcon(index)"
+            :class="{ 'active__card-figure-btn-fav-icon': card.favActive }"
+          >
+            <img :src="productionIcon" alt="" />
           </div>
         </div>
-        <router-link to="/product" class="card__body">
+        <div class="card__body">
           <div class="card__body-subtitle">{{ card.category }}</div>
           <div class="card__body-title">{{ card.name }}</div>
           <div class="card__body-price">{{ card.price }}</div>
-        </router-link>
+        </div>
       </div>
 
       <div class="table-card__pagination">
@@ -170,7 +172,6 @@ export default {
         favActive: false,
       },
     ],
-
   }),
   computed: {
     totalPages() {

@@ -6,6 +6,12 @@
 
     background-color: #F3F3F3;
 
+    .card__body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .mySwiper-2 {
         position: relative;
     }
@@ -100,6 +106,7 @@
         }
     }
 }
+
 
 
 
