@@ -1,7 +1,12 @@
 .header {
+    width: 100%;
+    min-height: 60vh;
+    height: 100%;
+
     .swiper {
         width: 100%;
-        margin-top: 144px;
+        margin-top: 64px;
+        height: 50%;
     }
 
     .swiper-slide {
