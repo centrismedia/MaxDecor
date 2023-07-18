@@ -7,6 +7,7 @@ import './assets/css/all.min.css'
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'; // Choose the desired theme
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
+export const eventBus = new Vue();
 Vue.config.productionTip = false
 
 new Vue({

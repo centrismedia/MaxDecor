@@ -1,8 +1,8 @@
 .slider-prod__container {
     position: relative;
     width: 100%;
-    height: 910px;
-
+    min-height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 

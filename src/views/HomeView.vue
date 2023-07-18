@@ -32,7 +32,13 @@ export default {
   }),
   methods: {
     toggleFavoriteIcon(index) {
-      this.$emit("toggle-favorite-icon", index);
+      const navSelect = document.querySelector(".nav__select");
+      if (navSelect) {
+        navSelect.classList.add("nav__select-click");
+        setTimeout(() => {
+          navSelect.classList.remove("nav__select-click");
+        }, 1500);
+      }
     },
   },
 };

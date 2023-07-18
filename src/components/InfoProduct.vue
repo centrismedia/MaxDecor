@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info-product">
     <div class="navigation-chain__container container">
       <a href="">Коллекции</a>
       <div class="navigation-chain__delimiter"></div>
@@ -26,8 +26,11 @@
     </section>
     <section class="card-product__container container">
       <!-- Блок с фото -->
-      <div class="card-product__img-container">
-        <img class="card-product__img" :src="hero" alt="" />
+      <div class="card-product__img-container transition">
+        <div
+          :style="{ background: 'url(' + hero + ') center center / cover' }"
+          class="card-product__img transition"
+        ></div>
       </div>
 
       <!-- Блок с информацией -->
@@ -114,8 +117,34 @@ export default {
     hero: require("@/assets/img/info/10501-1.jpg"),
     icon: require("@/assets/img/info/card-product-icon.svg"),
   }),
+  props: {
+    hero: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    updateHeroImage(image) {
+      const img = document.querySelector(".card-product__img");
+      img.classList.add("hidden");
+
+      setTimeout(() => {
+        this.hero = image;
+        img.classList.remove("hidden");
+      }, 300); // Задержка 300 мс (0.3 сек)
+    },
+  },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.transition {
+  transition: opacity 0.3s ease, background-image 0.3s ease;
+  opacity: 1;
+}
+
+.transition.hidden {
+  opacity: 0;
+}
 </style>
+

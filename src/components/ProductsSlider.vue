@@ -3,15 +3,16 @@
     <div class="first-navigation-next">
       <img :src="swiperArrow" alt="" />
     </div>
-    <div class="swiper mySwiper " ref="swiper">
+    <div class="swiper mySwiper" ref="swiper">
       <div class="swiper-wrapper">
         <div
           id="slide_1"
           class="swiper-slide"
           v-for="slide in slides"
           :key="slide.id"
+          @click="changeHeroImg(slide)" 
         >
-          <img :src="slide.img" alt="" />
+          <img :src="slide.img" alt=""  />
           <p>{{ slide.id }} <span>10501</span></p>
         </div>
       </div>
@@ -74,6 +75,9 @@ export default {
         this.swiper.destroy();
         this.initSwiper();
       }
+    },
+    changeHeroImg(slide) {
+      this.$emit("update-hero-image", slide.img);
     },
   },
 };

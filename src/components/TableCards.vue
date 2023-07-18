@@ -8,6 +8,7 @@
           @mouseout="card.isActive = false"
         >
           <img class="card__img" :src="card.img" alt="" />
+
           <div class="card__figure-elem">
             <div class="card__figure-title">{{ card.status }}</div>
             <div
@@ -19,7 +20,7 @@
             <div
               class="card__figure-btn-fav-icon"
               @click="toggleFavoriteIcon(index)"
-              :class="{ 'active__card-figure-btn-fav-icon': card.isActive }"
+              :class="{ 'active__card-figure-btn-fav-icon': card.favActive }"
             >
               <img :src="productionIcon" alt="" />
             </div>
@@ -67,6 +68,7 @@ export default {
         name: "BRICLY ",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/2.png"),
@@ -75,6 +77,7 @@ export default {
         name: "KARAKUM",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/3.png"),
@@ -83,6 +86,7 @@ export default {
         name: "MAGIC",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/4.png"),
@@ -91,6 +95,7 @@ export default {
         name: "CARAT",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/5.png"),
@@ -99,6 +104,7 @@ export default {
         name: "PLANTS",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/6.png"),
@@ -107,6 +113,7 @@ export default {
         name: "FENIX",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/7.png"),
@@ -115,6 +122,7 @@ export default {
         name: "Madonna",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/8.png"),
@@ -123,6 +131,7 @@ export default {
         name: "ELEGANCE",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/9.png"),
@@ -131,6 +140,7 @@ export default {
         name: "BAMBUK",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/10.png"),
@@ -139,6 +149,7 @@ export default {
         name: "AFFRA",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/11.png"),
@@ -147,6 +158,7 @@ export default {
         name: "DIANA",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
       {
         img: require("@/assets/img/cards/card/12.png"),
@@ -155,10 +167,10 @@ export default {
         name: "ROMB",
         price: "545,000 сум",
         isActive: false,
+        favActive: false,
       },
     ],
 
-    isActiveCardFigureBtn: [],
   }),
   computed: {
     totalPages() {
@@ -170,7 +182,21 @@ export default {
 
   methods: {
     toggleFavoriteIcon(index) {
-      this.cards[index].isActive = !this.cards[index].isActive;
+      const card = this.cards[index];
+      card.favActive = !card.favActive;
+
+      if (card.favActive) {
+        this.$emit("toggle-favorite-icon", index);
+        this.$nextTick(() => {
+          const navSelect = document.querySelector(".nav__select");
+          if (navSelect) {
+            navSelect.classList.add("nav__select-click");
+            setTimeout(() => {
+              navSelect.classList.remove("nav__select-click");
+            }, 1500);
+          }
+        });
+      }
     },
     toggleCardFigure(index, show) {
       this.$set(this.isActiveCardFigureBtn, index, show);

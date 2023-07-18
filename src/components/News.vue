@@ -3,7 +3,7 @@
     <div class="news-card__section-title">Новости</div>
 
     <div class="news-card__container-pos">
-      <a class="news_card" href="" v-for="info in news" :key="info.id">
+      <div class="news_card"  v-for="info in news" :key="info.id">
         <div class="news-card__img-container">
           <img class="news-card__img" :src="info.img" alt="" />
         </div>
@@ -14,9 +14,9 @@
           <div class="news-card__body">
             {{ info.information }}
           </div>
-          <div class="news-card__btn">подробнее</div>
+          <router-link to="/news" class="news-card__btn">подробнее</router-link>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 </template>

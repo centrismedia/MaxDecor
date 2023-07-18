@@ -2,8 +2,12 @@
   <div class="home">
     <Basket :basketOpen="basketOpen" />
     <VideoSlider />
-    <InfoProduct />
-    <ProductsSlider />
+    <InfoProduct
+      :hero="hero"
+      
+      @update-hero-image="updateHeroImage"
+    />
+    <ProductsSlider @update-hero-image="updateHeroImage" />
     <CollectionSlider />
     <News />
     <FormCard />
@@ -34,6 +38,7 @@ export default {
   },
   data: () => ({
     basketOpen: false,
+    hero: require("@/assets/img/info/10501-1.jpg"),
   }),
   methods: {
     toggleBasket() {
@@ -41,6 +46,12 @@ export default {
     },
     toggleFavoriteCard(index) {
       this.cards[index].isActive = !this.cards[index].isActive;
+    },
+    toggleFavoriteCard(index) {
+      this.cards[index].isActive = !this.cards[index].isActive;
+    },
+    updateHeroImage(image) {
+      this.hero = image;
     },
   },
 };

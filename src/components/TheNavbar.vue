@@ -73,8 +73,6 @@
           <div class="nav__second-line__icon-container">
             <div
               class="nav__select"
-              @click="toggleFavoriteIcon(index)"
-              :class="{ 'nav__select-click': toggleFavoriteIcon(index) }"
             >
               <img :src="select" alt="" />
             </div>
@@ -85,6 +83,7 @@
 
           <div
             class="nav__lang-container"
+            ref="navLang"
             @click="toggleLangContainer"
             :class="{ 'nav__lang-container-active': langContainerIsActive }"
           >
@@ -131,12 +130,15 @@ export default {
         this.menuIsActive = false;
       }
     },
+    closeLang(event) {
+      if (!this.$refs.navLang.contains(event.target)) {
+        this.langContainerIsActive = false;
+      }
+    },
     toggleBasket() {
       this.$emit("toggle-basket");
     },
-    toggleFavoriteIcon(index) {
-      this.$emit("toggle-favorite-icon", index);
-    },
+   
 
     toggleLangContainer() {
       this.langContainerIsActive = !this.langContainerIsActive;
@@ -144,9 +146,11 @@ export default {
   },
   mounted() {
     window.addEventListener("click", this.closeDropdown);
+    window.addEventListener("click", this.closeLang);
   },
   beforeDestroy() {
     window.removeEventListener("click", this.closeDropdown);
+    window.removeEventListener("click", this.closeLang);
   },
 };
 </script>

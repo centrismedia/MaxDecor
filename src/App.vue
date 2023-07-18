@@ -4,7 +4,7 @@
     <Basket :class="{ open_aside: basketOpen }" @toggle-basket="toggleBasket" />
     <div class="app-page">
       <transition name="fade" mode="out-in">
-        <router-view></router-view>
+        <router-view @toggle-favorite-icon="toggleFavoriteIcon"></router-view>
       </transition>
     </div>
     <Footer></Footer>
@@ -30,6 +30,15 @@ export default {
   methods: {
     toggleBasket() {
       this.basketOpen = !this.basketOpen;
+    },
+    toggleFavoriteIcon(index) {
+      const navSelect = document.querySelector(".nav__select");
+      if (navSelect) {
+        navSelect.classList.add("nav__select-click");
+        setTimeout(() => {
+          navSelect.classList.remove("nav__select-click");
+        }, 1500);
+      }
     },
   },
   mounted() {
