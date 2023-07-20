@@ -57,23 +57,18 @@
           class="nav__drop-menu-container"
           :class="{ active: menuIsActive }"
         >
-          <router-link class="menu-i" to="/product">Bricly</router-link>
-          <router-link class="menu-i" to="/product">Karacum</router-link>
-          <router-link class="menu-i" to="/product">Magik</router-link>
-          <router-link class="menu-i" to="/product">Carat</router-link>
-          <router-link class="menu-i" to="/product">Plants</router-link>
-          <router-link class="menu-i" to="/product">Bricly</router-link>
-          <router-link class="menu-i" to="/product">Karacum</router-link>
-          <router-link class="menu-i" to="/product">Magik</router-link>
-          <router-link class="menu-i" to="/product">Carat</router-link>
-          <router-link class="menu-i" to="/product">Plants</router-link>
+          <router-link
+            class="menu-i"
+            to="/product"
+            v-for="item in collections"
+            :key="item.id"
+            >{{ item.title }}</router-link
+          >
         </div>
 
         <div class="nav__second-line__right-container">
           <div class="nav__second-line__icon-container">
-            <div
-              class="nav__select"
-            >
+            <div class="nav__select">
               <img :src="select" alt="" />
             </div>
             <div class="nav__basket" @click="toggleBasket">
@@ -111,6 +106,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     logo: require("@/assets/img/header/header-logo.svg"),
@@ -121,7 +117,9 @@ export default {
     menuIsActive: false,
     langContainerIsActive: false,
   }),
+  computed: { ...mapGetters("collections", ["collections"]) },
   methods: {
+    ...mapActions("collections", ["getCollections"]),
     toggleMenu() {
       this.menuIsActive = !this.menuIsActive;
     },
@@ -138,16 +136,17 @@ export default {
     toggleBasket() {
       this.$emit("toggle-basket");
     },
-   
 
     toggleLangContainer() {
       this.langContainerIsActive = !this.langContainerIsActive;
     },
   },
-  mounted() {
+  async mounted() {
     window.addEventListener("click", this.closeDropdown);
     window.addEventListener("click", this.closeLang);
+    await this.getCollections();
   },
+
   beforeDestroy() {
     window.removeEventListener("click", this.closeDropdown);
     window.removeEventListener("click", this.closeLang);
