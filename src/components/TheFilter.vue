@@ -22,8 +22,11 @@
     <!-- Таблица фильтра -->
     <div
       class="table-filter__container"
+      :class="{ 'table-filter__visible': isActiveTopCircle }"
       :style="{ maxHeight: tableFilterMaxHeight }"
+      ref="tableFilterContainer"
     >
+      <div class="reset-filter">СБРОСИТЬ ВСЁ</div>
       <div class="table-filter__column-pos">
         <div class="table-filter__column">
           <p class="table-filter__title">Назначение</p>
@@ -40,7 +43,11 @@
         </div>
         <div class="table-filter__column">
           <p class="table-filter__title">Стиль</p>
-          <div class="table-filter__element" v-for="item in style" :key="item.id">
+          <div
+            class="table-filter__element"
+            v-for="item in style"
+            :key="item.id"
+          >
             <div class="table-filter__marker">
               <img :src="checkMark" alt="" />
             </div>
@@ -76,9 +83,13 @@
 
         <!-- Add other table-filter__column elements here -->
 
-        <div class="table-filter__color-container" ref="tableFilterContainer">
+        <div class="table-filter__color-container">
           <p class="table-filter__title">Цвет</p>
-          <div class="table-filter__color_row" v-for="row in colors" :key="row.id">
+          <div
+            class="table-filter__color_row"
+            v-for="row in colors"
+            :key="row.id"
+          >
             <div
               class="table-filter__color-active"
               v-for="color in row"

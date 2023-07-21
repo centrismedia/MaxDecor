@@ -8,12 +8,17 @@
           @mouseout="card.isActive = false"
         >
           <router-link class="" to="/product">
-            <img class="card__img" :src="card.img" alt="" />
+            <img
+              class="card__img"
+              :class="{ card__img_slace: card.isActive }"
+              :src="card.img"
+              alt=""
+            />
 
             <div class="card__figure-elem">
               <div class="card__figure-title">{{ card.status }}</div>
               <div
-                class="card__figure-btn"
+                class="card__figure-btn active__card-figure-btn__phone"
                 :class="{ 'active__card-figure-btn': card.isActive }"
               >
                 ДОБАВИТЬ В КОРЗИНУ
@@ -220,5 +225,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

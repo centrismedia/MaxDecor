@@ -1,5 +1,7 @@
 .form__container-bg {
     width: 100%;
+    overflow: hidden;
+
     background-color: #F5F5F7;
 
     padding: 80px 0 300px 0;
@@ -10,6 +12,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: 0 20px;
 }
 
 
@@ -19,7 +23,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 35px;
+    @include adaptiv-font(35, 16);
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -30,8 +34,10 @@
 .form__container {
     display: flex;
     flex-direction: column;
-
     row-gap: 35px;
+
+    max-width: 510px;
+    width: 100%;
 
     z-index: 1;
 }
@@ -48,7 +54,7 @@
 
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 18px;
+        @include adaptiv-font(18, 11);
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -58,13 +64,14 @@
     }
 
     input {
-        width: 510px;
+        max-width: 510px;
+        width: 100%;
 
         padding: 6px 0;
 
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 16px;
+        @include adaptiv-font(16, 14);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -97,7 +104,8 @@
 }
 
 .form__btn-subm {
-    width: 511px;
+    max-width: 511px;
+    width: 100%;
     height: 53px;
 
     margin-top: 60px;
@@ -110,7 +118,7 @@
 
     color: #FFF;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 23px;
+    @include adaptiv-font(23, 17);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -133,7 +141,6 @@
     display: flex;
     position: absolute;
     bottom: -220px;
-    left: 350px;
 }
 
 .form__descritor {
@@ -141,12 +148,35 @@
     top: 165px;
     left: 230px;
 
+    width: 330px;
+
     color: #1E1E1E;
     text-align: center;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 18px;
+    @include adaptiv-font(18, 11);
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     letter-spacing: 1px;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+@media (max-width:620px) {
+    .form__container {
+        row-gap: 25px;
+    }
+
+    .form__title {
+        margin-bottom: 30px;
+    }
+
+    .form__btn-subm {
+        margin-top: 0px;
+    }
 }

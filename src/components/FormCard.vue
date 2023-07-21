@@ -24,7 +24,7 @@
       <div class="form__img-decor">
         <img :src="boxShadow" alt="" />
         <div class="form__descritor">
-          *Поля обозначенные звёздочкой,<br />
+          *Поля обозначенные звёздочкой,
           обязательны для заполнения.
         </div>
       </div>
