@@ -1,0 +1,147 @@
+.news-card__container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 100px;
+    margin-bottom: 160px;
+}
+
+
+.news-card__section-title {
+    margin-bottom: 80px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Bold";
+    font-size: 28.002px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+}
+
+
+.news-card__container-pos {
+    display: flex;
+    column-gap: 55px;
+}
+
+
+
+
+
+// Стили карточки
+.news_card {
+    display: flex;
+    flex-direction: column;
+
+    width: 453px;
+    height: 643px;
+
+
+    box-shadow: -2px 1.900549292564392px 10px 0px rgba(0, 0, 0, 0.03);
+}
+
+.news-card__img-container {
+    width: 453px;
+    height: 209px;
+    overflow: hidden;
+}
+
+.news-card__img {
+    width: 100%;
+    transition: all 0.2s linear 0.1s;
+}
+
+.news-card__txt {
+    width: 360px;
+
+    margin-left: 22px;
+    z-index: 10;
+}
+
+.news-card__data {
+    margin-top: 35px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Light";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+}
+
+.news-card__title {
+    margin-top: 18px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%;
+}
+
+.news-card__body {
+    margin-top: 30px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    text-transform: lowercase;
+}
+
+.news-card__btn {
+    margin-top: 70px;
+
+    display: inline-block;
+
+    color: #36548F;
+    font-family: "AvenirNextCyr-Light";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    z-index: 4;
+    cursor: pointer;
+    border-bottom: solid 1px #36548F;
+}
+
+
+.news_card {
+    perspective: 800px;
+
+    &:hover {
+        transform: rotatex(10deg);
+        box-shadow: 0 16px 17px 2px rgba(0, 0, 0, 0.05);
+
+        &:before {
+            height: 150%;
+        }
+    }
+
+    position: relative;
+    transition: all 0.4s linear 0s;
+    top: 0;
+    left: 0;
+    transform-origin: center top;
+    box-shadow: -2px 2px 10px 0px rgba(0, 0, 0, 0.03);
+}
+
+.news_card {
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(45deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 65%,
+                rgba(255, 255, 255, 0));
+        transition: height 0.4s;
+    }
+
+}

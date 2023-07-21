@@ -1,0 +1,167 @@
+.footer__container {
+    width: 100%;
+    background-color: #192965;
+
+    padding: 60px 0;
+}
+
+.footer__container-pos {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__body {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 25px;
+}
+
+
+// Логотип подвала
+.footer__logo-container {
+    width: 163px;
+    height: 66px;
+}
+
+
+
+
+// первый столбец
+.footer__contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+
+
+.footer__tel-cont {
+    display: flex;
+    flex-direction: column;
+    row-gap: 11px;
+}
+
+.footer__tel-1,
+.footer__tel-2 {
+    display: flex;
+    column-gap: 17px;
+
+    color: #FFF;
+    text-align: center;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px;
+}
+
+
+
+.footer__address-1,
+.footer__address-2 {
+    color: #FFF;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+}
+
+
+
+.footer__social {}
+
+.footer__social-titel {
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    color: #FFF;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px;
+
+    border-bottom: solid 1px #fff;
+}
+
+.footer__social-cont-icon {
+    display: flex;
+    column-gap: 28px;
+}
+
+.footer__social-inst,
+.footer__social-tg,
+.footer__social-fb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    border: solid 2px #ffffff3f;
+    border-radius: 50%;
+
+    &:hover {
+        border: solid 2px #ffffff;
+    }
+}
+
+
+
+
+
+// Второй столбец
+.footer__links-cont {
+    display: flex;
+
+    column-gap: 145px;
+}
+
+.footer__links-collections,
+.footer__links-hits {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    p {
+        margin-bottom: 15px;
+
+        color: #FFF;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+        letter-spacing: 1px;
+    }
+
+    a {
+        color: #FFF;
+        font-family: "AvenirNextCyr-Light";
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 180%;
+    }
+}
+
+.footer__aoq {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    a {
+        color: #FFF;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+
+    }
+
+}

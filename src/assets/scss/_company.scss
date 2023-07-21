@@ -1,0 +1,152 @@
+.about__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+
+    margin: 130px auto 200px auto;
+
+    p {
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Medium";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 180%;
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 
+// Карта
+// 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.map__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    width: 1470px;
+    height: 900px;
+}
+
+
+.map__title {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+
+    margin-bottom: 70px;
+}
+
+
+
+
+.map__body {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+.map-world {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.uz__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 138px;
+    left: 856px;
+}
+
+.uz__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.uz__title_name {
+    color: #192965;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.uz__title_body {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Light";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.uz__main-dot {
+    width: 25px;
+    height: 145px;
+}
+
+
+
+
+.ru__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 246px;
+    left: 840px;
+
+    cursor: pointer;
+}
+
+.kz__container {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    position: absolute;
+    top: 305px;
+    left: 960px;
+
+    cursor: pointer;
+}
+
+.ru__name,
+.kz__name {
+    color: #192965;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+}
+
+.ru__main-dot,
+.kz__main-dot {
+    width: 13px;
+    height: 13px;
+    transition: all 0.2s linear 0s;
+}
+
+.ru__container:hover>img,
+.kz__container:hover>img {
+    transition: all 0.2s linear 0s;
+    transform: scale(1.4);
+}

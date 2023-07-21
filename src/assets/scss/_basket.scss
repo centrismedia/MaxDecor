@@ -1,0 +1,276 @@
+.basket__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s linear 0s;
+
+    z-index: 13;
+}
+
+.open_aside {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.2s linear 0s;
+}
+
+.blackout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: #0000008a;
+}
+
+
+
+
+
+
+
+.basket__pos {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 640px;
+    height: 100%;
+
+    background-color: #fff;
+}
+
+.basket__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 520px;
+
+    margin-top: 60px;
+}
+
+
+
+
+.aside__title {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: solid 2px #1E1E1E;
+}
+
+.basket__title {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.basket__clear {
+    color: #332FEB;
+    font-family: "AvenirNextCyr-Medium";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+
+
+
+
+
+
+.basket__item {
+    display: flex;
+
+    margin-top: 100px;
+    padding-bottom: 15px;
+
+    border-bottom: solid 1px #707070;
+}
+
+.basket__img {
+    width: 133px;
+    height: 147px;
+
+    img {
+        width: 133px;
+        height: 147px;
+
+        object-fit: cover;
+        object-position: center;
+
+        border-radius: 7px;
+    }
+
+}
+
+.basket__body {
+    margin-left: 20px;
+}
+
+.basket-item__name {
+    margin-bottom: 40px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+}
+
+.basket-item__price {
+    color: #192965;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+}
+
+
+
+
+// количество штук
+.basket__quantity {
+    display: flex;
+    align-items: flex-start;
+
+    height: 48px;
+
+    margin-left: 100px;
+
+    background: #EFEFEF;
+
+    .basket__minus {
+        background: #EFEFEF;
+
+        border-radius: 4px 0 0 4px;
+
+        padding: 14.3px;
+
+        cursor: pointer;
+    }
+
+    .basket__plus {
+        background: #EFEFEF;
+
+        border-radius: 0 4px 4px 0;
+
+        padding: 14.3px;
+
+        cursor: pointer;
+    }
+
+    .basket__input {
+        max-width: 35px;
+
+        color: #1E1E1E;
+        font-size: 16px;
+        font-family: "AvenirNextCyr-Medium";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        background: #EFEFEF;
+        text-align: center;
+
+        padding: 9px 0;
+
+        border: none;
+        outline: none;
+
+        &[type="number"],
+        &[type="number"]::-webkit-outer-spin-button,
+        &[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+}
+
+.basket-item__delete {
+    margin-left: 50px;
+
+    cursor: pointer;
+}
+
+
+// Кнопки корзины
+
+.aside__btn-container {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 40px;
+
+    .aside__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 223px;
+        height: 48px;
+
+        border-radius: 30px;
+        border: 1px solid #1E1E1E;
+
+        color: #1E1E1E;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+
+        cursor: pointer;
+
+        transition: all 0.2s linear 0s;
+
+        &:hover {
+            background-color: #F3F3F3;
+            border-color: #F3F3F3;
+            color: #1E1E1E;
+
+            transition: all 0.2s linear 0s;
+        }
+    }
+
+    .aside_buy {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 180px;
+        height: 48px;
+        border-radius: 30px;
+
+        background: #192965;
+
+        color: #FFF;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+        cursor: pointer;
+
+        transition: all 0.2s linear 0s;
+
+        &:hover {
+            background-color: #0c132e;
+
+            transition: all 0.2s linear 0s;
+        }
+    }
+}

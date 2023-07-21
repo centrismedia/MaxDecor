@@ -1,0 +1,115 @@
+.ss {
+    overflow: hidden;
+    position: relative;
+
+    margin-top: 145px;
+
+    .mySwiper {
+        position: relative;
+    }
+
+    .swiper {
+        width: 1312px;
+        height: 333px;
+    }
+
+    .swiper-slide {
+     
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        cursor: pointer;
+
+        p {
+            margin-top: 13px;
+            text-align: left;
+
+            color: #1E1E1E;
+            font-family: "AvenirNextCyr-Medium";
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 180%;
+
+            span {
+                font-family: "AvenirNextCyr-Medium";
+                font-weight: 500;
+            }
+        }
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 288px;
+        height: 288px;
+        object-fit: cover;
+    }
+
+    .first-navigation-prev {
+        position: absolute !important;
+        top: 150px !important;
+        left: 10px !important;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 46px !important;
+        height: 46px !important;
+
+        border-radius: 50%;
+        background: #192965;
+
+        cursor: pointer;
+
+        transition: all 0.2s linear 0s;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .first-navigation-next {
+        position: absolute !important;
+        top: 150px !important;
+        right: 10px !important;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        width: 46px !important;
+        height: 46px !important;
+
+        border-radius: 50%;
+        background: #192965;
+
+        cursor: pointer;
+
+        transition: all 0.2s linear 0s;
+
+        img {
+            transform: rotate(180deg);
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.swiper-button__container {
+    display: flex;
+    column-gap: 30px;
+}
+
+.swiper-button-disabled {
+    transition: all 0.2s linear 0s;
+    background: rgba(109, 109, 109, 0.60) !important;
+}
+

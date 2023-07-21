@@ -1,0 +1,88 @@
+<template>
+  <div class="user">
+    <section class="personalArea__header container">
+      <div class="personalArea__header-title_container">
+        <router-link
+          :to="{ name: 'userOrders' }"
+          class="personalArea-link"
+          :class="{
+            active:
+              isChildRouteActive('userOrders') || isDefaultRoute('userOrders'),
+            disabled: isChildRouteActive('logout'),
+          }"
+          :disabled="isChildRouteActive('logout')"
+          >Заказы</router-link
+        >
+
+        <router-link
+          :to="{ name: 'userFavorites' }"
+          class="personalArea-link"
+          :class="{
+            active: isChildRouteActive('userFavorites'),
+            disabled: isChildRouteActive('logout'),
+          }"
+          :disabled="isChildRouteActive('logout')"
+          >Избранное</router-link
+        >
+
+        <router-link
+          :to="{ name: 'logout' }"
+          class="personalArea-link"
+          :class="{ active: isChildRouteActive('logout') }"
+     
+          >Выход</router-link
+        >
+      </div>
+
+      <div class="personalArea__heade_under-line"></div>
+    </section>
+    <div class="user-routing">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
+    <News />
+    <FormCard />
+  </div>
+</template>
+
+<script>
+import News from "@/components/News.vue";
+import FormCard from "@/components/FormCard.vue";
+export default {
+  components: {
+    News,
+    FormCard,
+  },
+  data: () => ({
+    exitImg: require("@/assets/img/exit-icon.svg"),
+    deleteImg: require("@/assets/img/basket/basket-item__delete.svg"),
+    basketFirstImg: require("@/assets/img/basket/basket_BIG_img.png"),
+    links: [
+      {
+        clickActive: true,
+      },
+      {
+        clickActive: true,
+      },
+      {
+        clickActive: true,
+      },
+    ],
+  }),
+  methods: {
+    isDefaultRoute(routeName) {
+      return this.$route.name === routeName;
+    },
+    isChildRouteActive(routeName) {
+      return this.$route.matched.some((route) => route.name === routeName);
+    },
+  },
+};
+</script>
+
+<style>
+.user-routing {
+  margin-bottom: 500px;
+}
+</style>

@@ -1,0 +1,76 @@
+.about__banner {
+    padding: 140px 0;
+
+    background-color: #F3F3F3;
+}
+
+.about__banner-pos {
+    display: flex;
+    column-gap: 230px;
+}
+
+.banner__power,
+.banner__studio,
+.banner__regions {
+    display: flex;
+    flex-direction: column;
+
+    color: #192965;
+    font-family: "AvenirNextCyr-Bold";
+    font-size: 62.041px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.62px;
+    text-transform: uppercase;
+
+    span {
+        color: #1E1E1E;
+        text-align: center;
+        font-family: "AvenirNextCyr-Medium";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        letter-spacing: 0.25px;
+    }
+
+    p {
+        color: #1E1E1E;
+        text-align: center;
+        font-family: "AvenirNextCyr-Regular";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        letter-spacing: 0.25px;
+    }
+}
+
+.banner__studio {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 67px;
+        height: 67px;
+    }
+}
+
+.banner__regions {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.title__page {
+    margin: 80px auto;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+}
