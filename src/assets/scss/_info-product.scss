@@ -10,7 +10,7 @@
         a {
             color: #1E1E1E;
             font-family: "AvenirNextCyr-Medium";
-            font-size: 20px;
+            @include adaptiv-font(20, 14);
             font-style: normal;
             font-weight: 400;
             line-height: 180%;
@@ -19,7 +19,7 @@
         .navigation-chain__current {
             color: #1E1E1E;
             font-family: "AvenirNextCyr-Regular";
-            font-size: 20px;
+            @include adaptiv-font(20, 14);
             font-style: normal;
             font-weight: 700;
             line-height: 37px;
@@ -58,7 +58,7 @@
 .description-product__left-card_title {
     color: #192965;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 25px;
+    @include adaptiv-font(25, 10);
     font-style: normal;
     font-weight: 700;
     line-height: 33px;
@@ -68,7 +68,7 @@
 .description-product__left-card_body {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 18px;
+    @include adaptiv-font(18, 10);
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
@@ -87,7 +87,7 @@
         margin: 20px 0;
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 18px;
+        @include adaptiv-font(18, 10);
         font-style: normal;
         font-weight: 400;
         line-height: 150%;
@@ -118,13 +118,13 @@
 
 
 .card-product__img-container {
-    width: 712px;
-    height: 713px;
-
+    max-width: 712px;
+    width: 100%;
 }
 
 .card-product__img {
-    width: 712px;
+    max-width: 712px;
+    width: 100%;
     height: 713px;
 
     object-fit: cover;
@@ -138,9 +138,10 @@
 .card-product__info {
     display: flex;
     flex-direction: column;
-    row-gap: 79px;
+    justify-content: space-between;
 
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
     height: 714px;
 }
 
@@ -161,7 +162,7 @@
     border-right: solid 1px #707070;
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 25px;
+    @include adaptiv-font(25, 18);
     font-style: normal;
     font-weight: 700;
     line-height: 33px;
@@ -170,7 +171,7 @@
 .card-product__title_vendor {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 16px;
+    @include adaptiv-font(16, 12);
     font-style: normal;
     font-weight: 700;
     line-height: 33px;
@@ -210,7 +211,7 @@
 .card-product__options_key {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 14px;
+    @include adaptiv-font(14, 12);
     font-style: normal;
     font-weight: 400;
     line-height: 19px;
@@ -229,7 +230,7 @@
     color: #1E1E1E;
     text-align: right;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 14px;
+    @include adaptiv-font(14, 12);
     font-style: normal;
     font-weight: 700;
     line-height: 19px;
@@ -249,7 +250,7 @@
 .card-product__price {
     color: #192965;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 20px;
+    @include adaptiv-font(20, 15);
     font-style: normal;
     font-weight: 500;
     line-height: 26px;
@@ -258,7 +259,7 @@
 .card-product__price-descr {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 14px;
+    @include adaptiv-font(14, 12);
     font-style: normal;
     font-weight: 400;
     line-height: 19px;
@@ -297,7 +298,7 @@
         max-width: 35px;
 
         color: #1E1E1E;
-        font-size: 16px;
+        @include adaptiv-font(16, 14);
         font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 400;
@@ -321,22 +322,29 @@
 
 .card-product__btn-container {
     display: flex;
-    column-gap: 73px;
+    justify-content: space-between;
+
+    width: 100%;
 }
 
 .card-product__btn-call {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 264px;
+
+    max-width: 264px;
+    width: 100%;
+
     height: 64px;
+
+    margin-right: 20px;
 
     border-radius: 30px;
     background: #192965;
 
     color: #FFF;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 13px;
+    @include adaptiv-font(13, 10);
     font-style: normal;
     font-weight: 400;
     line-height: 180%;
@@ -356,7 +364,8 @@
     justify-content: center;
     align-items: center;
 
-    width: 360px;
+    max-width: 360px;
+    width: 100%;
     height: 65px;
 
     border-radius: 30px;
@@ -365,7 +374,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 13px;
+    @include adaptiv-font(13, 10);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -380,4 +389,240 @@
         background-color: #F3F3F3;
         border-color: #F3F3F3;
     }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы (и стили для мобильной версии)
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width:1500px) {
+    .navigation-chain__container {
+        padding: 0 20px;
+    }
+
+    .description-product__container {
+        padding: 0 20px;
+    }
+
+    .card-product__container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width:1300px) {
+    .card-product__img {
+        height: 600px;
+    }
+
+    .card-product__info {
+        height: 600px;
+    }
+}
+
+@media (max-width:1000px) {
+    .card-product__img {
+        height: 500px;
+    }
+
+    .card-product__info {
+        height: 500px;
+    }
+
+    .card-product__btn-call,
+    .card-product__add-basket {
+        height: 44px;
+    }
+}
+
+
+
+@media (max-width:762px) {
+    .description-product__container {
+        display: none;
+    }
+
+    .card-product__container {
+        flex-direction: column;
+        row-gap: 30px;
+
+        margin-top: 50px;
+    }
+
+    .card-product__img {
+        height: 300px;
+    }
+
+    .card-product__info {
+        row-gap: 30px;
+        height: auto;
+    }
+
+    .card-product__btn-container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+    }
+
+    .card-product__btn-call,
+    .card-product__add-basket {
+        max-width: 360px;
+        width: 100%;
+
+        margin: 0;
+    }
+}
+
+// Стили карусели для мобильной версии 
+// (в версии для компьютера эта карусель 
+// находится в отдельном компоненте)
+
+.product-carousel__mob {
+    display: none;
+    
+}
+
+@media (max-width:762px) {
+    .product-carousel__mob {
+        display: flex;
+        column-gap: 15px;
+        width: 100%;
+
+        overflow-y: hidden;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #eaeaea;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #3043b4;
+            height: 3px;
+            border-radius: 20px;
+        }
+    }
+
+    .product-carousel__mob-slide {
+        margin-bottom: 20px;
+
+        img {
+            display: block;
+            width: 88px;
+            height: 88px;
+            object-fit: cover;
+        }
+
+        p {
+            // margin-top: 13px;
+            text-align: left;
+
+            color: #1E1E1E;
+            font-family: "AvenirNextCyr-Medium";
+            @include adaptiv-font(17, 7);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 180%;
+
+            span {
+                font-family: "AvenirNextCyr-Medium";
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+// Информация о товаре для мобильной версии
+
+.description-product__wrapper-mob {
+    display: none;
+}
+
+.description-product__btn-mob {
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+
+    color: #192965;
+
+    font-family: "AvenirNextCyr-Medium";
+    @include adaptiv-font(20, 15);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+.description-product__arrow {
+    transition: all 0.2s linear 0s;
+}
+.description-product__arrow__active {
+    transform: rotate(180deg);
+    transition: all 0.2s linear 0s;
+}
+
+
+
+
+
+.description-product__container-mob {
+    max-height: 0px;
+    opacity: 0;
+    overflow: hidden;
+
+    transition: all 0.2s linear 0s;
+}
+
+.description-product__container-mob__active {
+    opacity: 1;
+    overflow: visible;
+    
+    transition: all 0.2s linear 0s;
+}
+
+
+@media (max-width:762px) {
+    .description-product__wrapper-mob {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+}
+
+.description-product__top-mob__container {
+    padding: 15px;
+    border-radius: 2px;
+    background: #F3F3F3;
+}
+
+.description-product__top-mob__title {
+    color: #192965;
+    font-family: "AvenirNextCyr-Medium";
+    @include adaptiv-font(25, 10);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}
+
+.description-product__top-mob__text {
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    @include adaptiv-font(18, 10);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.description-product__bot-mob__text {
+    padding: 15px;
+
+    color: #1E1E1E;
+    font-family: "AvenirNextCyr-Regular";
+    @include adaptiv-font(18, 10);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
 }

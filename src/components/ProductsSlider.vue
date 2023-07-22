@@ -59,6 +59,14 @@ export default {
       loop: false,
       slidesPerView: 4,
       spaceBetween: 54,
+      breakpoints: {
+        1100: {
+          slidesPerView: 4,
+        },
+        200: {
+          slidesPerView: 3,
+        },
+      },
       grabCursor: true,
       navigation: {
         nextEl: ".first-navigation-next",

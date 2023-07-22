@@ -35,6 +35,58 @@
 
       <!-- Блок с информацией -->
       <div class="card-product__info">
+        <div class="product-carousel__mob">
+          <div
+            id="slide_1"
+            class="product-carousel__mob-slide"
+            v-for="slide in slides"
+            :key="slide.id"
+            @click="changeHeroImg(slide)"
+          >
+            <img :src="slide.img" alt="" />
+            <p>{{ slide.id }} <span>10501</span></p>
+          </div>
+        </div>
+
+        <div class="description-product__wrapper-mob">
+          <div class="description-product__btn-mob" @click="openDescr">
+            Смотреть описание
+            <img
+              class="description-product__arrow"
+              :class="{'description-product__arrow__active': isOpenDescr}"
+              :src="arrow"
+              alt=""
+            />
+          </div>
+          <div
+            class="description-product__container-mob"
+            :class="{
+              'description-product__container-mob__active': isOpenDescr,
+            }"
+            ref="descr"
+          >
+            <div class="description-product__top-mob__container">
+              <p class="description-product__top-mob__title">
+                Коллекция Bricly
+              </p>
+              <p class="description-product__top-mob__text">
+                Кухня — это самое популярное место в доме, место всеобщего
+                сбора, пространство, где получаешь удовольствие, как от
+                приготовления пищи, так и от прекрасного времяпрепровождения.
+              </p>
+            </div>
+
+            <p class="description-product__bot-mob__text">
+              Но на ряду с этим, кухня одно из самых часто часто загрязняемых
+              мест в квартире. Поэтому обои для вашей кухни должны прекрасно
+              чиститься с использованием специальных моющих средств. Коллекция
+              обоев «BRICLY» — не боится многократного намокания, а его
+              структура удерживает влагу на поверхности и не допускает её
+              впитывания в основу обоев.
+            </p>
+          </div>
+        </div>
+
         <div class="card-product__title-container">
           <div class="card-product__title">
             <p class="card-product__title_name">Коллекция Bricly</p>
@@ -114,8 +166,32 @@
 <script>
 export default {
   data: () => ({
+    isOpenDescr: false,
     hero: require("@/assets/img/info/10501-1.jpg"),
     icon: require("@/assets/img/info/card-product-icon.svg"),
+    arrow: require("@/assets/img/info/arrow.svg"),
+    slides: [
+      {
+        img: require("@/assets/img/slider/10501-1.jpg"),
+        name: "Bricly",
+      },
+      {
+        img: require("@/assets/img/slider/10501-2.jpg"),
+        name: "Bricly",
+      },
+      {
+        img: require("@/assets/img/slider/10501-3.jpg"),
+        name: "Bricly",
+      },
+      {
+        img: require("@/assets/img/slider/10501-4.jpg"),
+        name: "Bricly",
+      },
+      {
+        img: require("@/assets/img/slider/10501-5.jpg"),
+        name: "Bricly",
+      },
+    ],
   }),
   props: {
     hero: {
@@ -133,6 +209,17 @@ export default {
         img.classList.remove("hidden");
       }, 300); // Задержка 300 мс (0.3 сек)
     },
+    changeHeroImg(slide) {
+      this.$emit("update-hero-image", slide.img);
+    },
+    openDescr() {
+      this.isOpenDescr = !this.isOpenDescr;
+      if (this.isOpenDescr) {
+        this.$refs.descr.style.maxHeight = this.$refs.descr.scrollHeight + "px";
+      } else {
+        this.$refs.descr.style.maxHeight = "";
+      }
+    },
   },
 };
 </script>
@@ -147,4 +234,3 @@ export default {
   opacity: 0;
 }
 </style>
-
