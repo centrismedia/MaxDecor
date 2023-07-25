@@ -134,7 +134,7 @@
     p {
         color: #1e1e1e;
         text-align: center;
-        @include adaptiv-font(12, 10);
+        @include adaptiv-font(12, 9);
         font-family: $medium;
         font-style: normal;
         font-weight: 600;
@@ -155,10 +155,10 @@
 // Навигация
 .nav__nav {
     display: flex;
-    column-gap: 40px;
+    column-gap: 20px;
 
     a {
-        width: 85px;
+        width: 105px;
 
         color: #1e1e1e;
         @include adaptiv-font(14, 10);
@@ -184,7 +184,7 @@
         display: flex;
         align-items: center;
 
-        width: 115px;
+        width: 130px;
 
         color: #1e1e1e;
         @include adaptiv-font(14, 10);
@@ -622,7 +622,7 @@
 
 .nav__menu-phone__prev {
     position: absolute;
-    top: 40px;
+    top: 45px;
     left: 50px;
     color: #000;
     font-family: $medium;
@@ -747,6 +747,9 @@
 }
 
 @media (max-width: 762px) {
+    .nav__container {
+        z-index: 15;
+    }
     .nav__third-line {
         display: flex;
     }
@@ -819,7 +822,7 @@
     }
 
     .nav__login-auth {
-        max-width: 157px;
+        max-width: 165px;
         height: 37px;
     }
 
@@ -827,4 +830,10 @@
         display: flex;
         z-index: 15;
     }
+
+    .third-line__search-btn {
+        padding: 0 25px;
+    }
+
 }
+

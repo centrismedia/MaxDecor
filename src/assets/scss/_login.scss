@@ -307,7 +307,7 @@ input:not(:placeholder-shown)+label {
 
 
     label {
-        font-size: 13.486px; 
+        font-size: 15px; 
         margin-left: 20px;
         display: flex;
     }
@@ -393,6 +393,9 @@ input:not(:placeholder-shown)+label {
     }
     .login__container {
         margin: 0px auto 10px auto;
+    }
+    .regist__btn-sub {
+        height: 70px;
     }
 }
 
