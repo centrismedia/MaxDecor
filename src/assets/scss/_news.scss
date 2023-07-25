@@ -98,7 +98,7 @@
 }
 
 .news-card__btn {
-    margin-top: 70px;
+    margin-top: 20px;
 
     display: inline-block;
 
@@ -162,6 +162,11 @@
 // Медиазапросы
 //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@media (max-width: 1920px) {
+    .news-card__btn {
+        margin-top: 70px;
+    }
+}
 
 @media (max-width: 1500px) {
 
@@ -170,13 +175,13 @@
         width: 100%;
         height: 643px;
     }
-    
+
     .news-card__img-container {
         max-width: 400px;
         width: 100%;
         height: 209px;
     }
-    
+
     .news-card__txt {
         max-width: 310px;
         width: 100%;
@@ -187,10 +192,11 @@
         margin-top: 70px;
         margin-bottom: 120px;
     }
+
     .news-card__section-title {
         margin-bottom: 50px;
     }
-    
+
 }
 
 @media (max-width: 900px) {
@@ -202,6 +208,7 @@
         margin-top: 50px;
         margin-bottom: 90px;
     }
+
     .news-card__section-title {
         margin-bottom: 40px;
     }
@@ -213,9 +220,8 @@
         margin-top: 30px;
         margin-bottom: 20px;
     }
+
     .news-card__section-title {
         margin-bottom: 0px;
     }
 }
-
-
