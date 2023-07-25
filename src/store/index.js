@@ -4,6 +4,8 @@ import social from "./modules/socail.module";
 import phone from "./modules/phone.module";
 import addresses from "./modules/addresses.module";
 import collections from "./modules/collections.module";
+import products from "./modules/products.module";
+import inquiry from "./modules/inquiry.module";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -11,7 +13,9 @@ export default new Vuex.Store({
     social,
     phone,
     addresses,
-    collections
+    collections,
+    inquiry,
+    products
   },
   state: {},
   getters: {},

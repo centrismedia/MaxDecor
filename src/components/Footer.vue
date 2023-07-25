@@ -82,17 +82,17 @@ export default {
       {
         img: require("@/assets/img/footer/footer_tg.svg"),
         class: "footer__social-tg",
-        verifyLink: "tg",
+        verifyLink: "telegram",
       },
       {
         img: require("@/assets/img/footer/footer_fb.svg"),
         class: "footer__social-fb",
-        verifyLink: "fb",
+        verifyLink: "facebook",
       },
       {
         img: require("@/assets/img/footer/footer_inst.svg"),
         class: "footer__social-inst",
-        verifyLink: "ig",
+        verifyLink: "instagram",
       },
     ],
   }),

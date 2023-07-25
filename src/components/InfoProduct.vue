@@ -112,6 +112,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     hero: require("@/assets/img/info/10501-1.jpg"),
@@ -123,7 +124,13 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapGetters("products", ["products", "infoProduct"]),
+    ...mapGetters("collections", ["collections"]),
+  },
   methods: {
+    ...mapActions("products", ["getProducts", "getInfoProduct"]),
+    ...mapActions("collections", ["getCollections"]),
     updateHeroImage(image) {
       const img = document.querySelector(".card-product__img");
       img.classList.add("hidden");
@@ -133,6 +140,10 @@ export default {
         img.classList.remove("hidden");
       }, 300); // Задержка 300 мс (0.3 сек)
     },
+  },
+  async mounted() {
+    this.getProducts();
+    this.getInfoProduct();
   },
 };
 </script>

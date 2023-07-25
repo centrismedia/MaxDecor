@@ -9,7 +9,7 @@
               <div class="slide-card__subtitle">{{ slide.subtitle }}</div>
               <div class="slide-card__title">{{ slide.title }}</div>
               <div class="slide-card__price">{{ slide.price }}</div>
-              <a class="slide-card__button" href=""> {{ slide.about }} </a>
+              <a class="slide-card__button" href=""> {{ $t("more") }} </a>
             </div>
           </div>
         </div>
@@ -23,6 +23,7 @@
 
 <script>
 import Swiper, { Navigation, Pagination } from "swiper";
+import { mapActions, mapGetters } from "vuex";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -52,6 +53,14 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters("products", ["products"]),
+    ...mapGetters("collections", ["collections"]),
+  },
+  methpds: {
+        ...mapActions("products", ["getProducts"]),
+    ...mapActions("collections", ["getCollections"]),
+  },
   mounted() {
     new Swiper(this.$refs.swiper, {
       modules: [Navigation, Pagination],

@@ -1,14 +1,21 @@
 <template>
   <div class="card-table">
     <section class="table-card__container container">
-      <div class="card__container" v-for="card in cards" :key="card.id">
+      <div class="card__container" v-for="card in products" :key="card.id">
         <div
           class="card__figure"
           @mouseover="card.isActive = true"
           @mouseout="card.isActive = false"
         >
-          <router-link class="" to="/product">
-            <img class="card__img" :src="card.img" alt="" />
+          <router-link
+            class=""
+            :to="{
+              name: 'product',
+              params: { name: card.title, id: card.id },
+            }"
+            @click="getProductDetails(card.id)"
+          >
+            <img class="card__img" :src="card.photo" alt="" />
 
             <div class="card__figure-elem">
               <div class="card__figure-title">{{ card.status }}</div>
@@ -29,8 +36,8 @@
           </div>
         </div>
         <div class="card__body">
-          <div class="card__body-subtitle">{{ card.category }}</div>
-          <div class="card__body-title">{{ card.name }}</div>
+          <div class="card__body-subtitle">{{ $t("collection") }}</div>
+          <div class="card__body-title">{{ card.get_collection }}</div>
           <div class="card__body-price">{{ card.price }}</div>
         </div>
       </div>
@@ -51,129 +58,22 @@
         </div>
       </div>
     </section>
-    <div class="card-table__open" @click="toggleCardTableOpen">
-      ВСЕ КОЛЛЕКЦИИ
+    <div class="card-table__open" @click="logMethod">
+      {{ $t("allCollection") }}
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     productionIcon: require("@/assets/img/cards/card-product-icon.svg"),
     paginationArrow: require("@/assets/img/cards/pagination_arrow.svg"),
-    cards: [
-      {
-        img: require("@/assets/img/cards/card/1.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "BRICLY ",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/2.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "KARAKUM",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/3.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "MAGIC",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/4.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "CARAT",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/5.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "PLANTS",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/6.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "FENIX",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/7.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "Madonna",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/8.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "ELEGANCE",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/9.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "BAMBUK",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/10.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "AFFRA",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/11.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "DIANA",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-      {
-        img: require("@/assets/img/cards/card/12.png"),
-        status: "NEW",
-        category: "Коллекция",
-        name: "ROMB",
-        price: "545,000 сум",
-        isActive: false,
-        favActive: false,
-      },
-    ],
   }),
   computed: {
+    ...mapGetters("products", ["products", "infoProduct"]),
+    ...mapGetters("collections", ["collections"]),
     totalPages() {
       // Calculate the total number of pages based on the number of cards per page
       const cardsPerPage = 8; // Change this value according to your needs
@@ -182,6 +82,24 @@ export default {
   },
 
   methods: {
+    ...mapActions("products", ["getProducts", "getInfoProduct"]),
+    ...mapActions("collections", ["getCollections"]),
+    logMethod() {
+      console.log(this.products);
+    },
+    async getProductDetails(productId) {
+      // Make sure the "productId" parameter is valid
+      console.log("Product ID:", this.productId);
+
+      if (!productId) {
+        console.error("Invalid product ID");
+        return;
+      }
+
+      await this.getInfoProduct(productId);
+      // Navigate to the "product" route passing the product details as route params
+      this.$router.push({ name: "product", params: { id: productId } });
+    },
     toggleFavoriteIcon(index) {
       const card = this.cards[index];
       card.favActive = !card.favActive;
@@ -213,9 +131,14 @@ export default {
           : "";
       }
     },
+
     stopPr(e) {
       e.stopPropagation();
     },
+  },
+  async mounted() {
+    this.getProducts();
+    this.getInfoProduct();
   },
 };
 </script>

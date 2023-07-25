@@ -16,7 +16,7 @@
           ></div>
         </div>
       </div>
-      <div class="filter__btn__txt">FILTER</div>
+      <div class="filter__btn__txt">{{ $t("filter") }}</div>
     </div>
 
     <!-- Таблица фильтра -->
@@ -26,7 +26,7 @@
     >
       <div class="table-filter__column-pos">
         <div class="table-filter__column">
-          <p class="table-filter__title">Назначение</p>
+          <p class="table-filter__title">{{ $t("destination") }}</p>
           <div
             class="table-filter__element"
             v-for="item in destinations"
@@ -39,8 +39,12 @@
           </div>
         </div>
         <div class="table-filter__column">
-          <p class="table-filter__title">Стиль</p>
-          <div class="table-filter__element" v-for="item in style" :key="item.id">
+          <p class="table-filter__title">{{ $t("style") }}</p>
+          <div
+            class="table-filter__element"
+            v-for="item in style"
+            :key="item.id"
+          >
             <div class="table-filter__marker">
               <img :src="checkMark" alt="" />
             </div>
@@ -48,7 +52,7 @@
           </div>
         </div>
         <div class="table-filter__column">
-          <p class="table-filter__title">Рисунок</p>
+          <p class="table-filter__title">{{ $t("picture") }}</p>
           <div
             class="table-filter__element"
             v-for="item in picture"
@@ -61,7 +65,7 @@
           </div>
         </div>
         <div class="table-filter__column">
-          <p class="table-filter__title">Размер</p>
+          <p class="table-filter__title">{{$t('size')}}</p>
           <div
             class="table-filter__element"
             v-for="item in sizes"
@@ -77,8 +81,12 @@
         <!-- Add other table-filter__column elements here -->
 
         <div class="table-filter__color-container" ref="tableFilterContainer">
-          <p class="table-filter__title">Цвет</p>
-          <div class="table-filter__color_row" v-for="row in colors" :key="row.id">
+          <p class="table-filter__title">{{$t('color')}}</p>
+          <div
+            class="table-filter__color_row"
+            v-for="row in colors"
+            :key="row.id"
+          >
             <div
               class="table-filter__color-active"
               v-for="color in row"

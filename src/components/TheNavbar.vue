@@ -16,13 +16,15 @@
             type="search"
             name=""
             id="nav_search"
-            placeholder="Поиск..."
+            :placeholder="$t('search')"
           />
-          <button class="nav__search-btn" type="submit">искать</button>
+          <button class="nav__search-btn" type="submit">
+            {{ $t("lookFor") }}
+          </button>
         </div>
 
         <router-link class="nav__login-auth" to="/auth">
-          <p>Регистрация /Авторизация</p>
+          <p>{{ $t("registrationAuth") }}</p>
         </router-link>
       </div>
 
@@ -34,7 +36,7 @@
               id="collections_p"
               ref="navDropdown"
               @click="toggleMenu(), closeDropdown()"
-              >Коллекции
+              >{{ $t("collection") }}
               <img
                 id="nav__nav_arrow"
                 class="nav__nav-arrow"
@@ -43,13 +45,15 @@
                 alt=""
             /></a>
           </div>
-          <router-link class="nav__nav-about" to="/company"
-            >О фабрике</router-link
-          >
-          <a class="nav__nav-Show" href="">Шоурум</a>
-          <router-link class="nav__nav-new" to="news">Новости</router-link>
-          <a class="nav__nav-buy" href="">Где купить?</a>
-          <a class="nav__nav-cont" href="">Контакты</a>
+          <router-link class="nav__nav-about" to="/company">{{
+            $t("aboutfactory")
+          }}</router-link>
+          <a class="nav__nav-Show" href="">{{ $t("Showroom") }}</a>
+          <router-link class="nav__nav-new" to="news">{{
+            $t("news")
+          }}</router-link>
+          <a class="nav__nav-buy" href="">{{ $t("whereBuy") }}</a>
+          <a class="nav__nav-cont" href="">{{ $t("contacts") }}</a>
         </div>
 
         <div
@@ -60,6 +64,7 @@
           <router-link
             class="menu-i"
             to="/product"
+            style="text-transform: capitalize !important"
             v-for="item in collections"
             :key="item.id"
             >{{ item.title }}</router-link
@@ -82,7 +87,7 @@
             @click="toggleLangContainer"
             :class="{ 'nav__lang-container-active': langContainerIsActive }"
           >
-            <p>RU</p>
+            <p>{{ languages[langIndex].name }}</p>
             <img
               :src="arrow"
               alt=""
@@ -91,13 +96,19 @@
             />
           </div>
           <div
+            v-if="langContainerIsActive"
             class="nav__lang-container_select"
             :class="{
               'nav__lang-container_select-active': langContainerIsActive,
             }"
           >
-            <p>EN</p>
-            <p>UZ</p>
+            <p
+              v-for="(lang, index) in filteredLanguages"
+              :key="lang.name"
+              @click.stop="changeHandler(index, lang.value)"
+            >
+              {{ lang.name }}
+            </p>
           </div>
         </div>
       </div>
@@ -116,10 +127,33 @@ export default {
     bascket: require("@/assets/img/header/header-bascket.svg"),
     menuIsActive: false,
     langContainerIsActive: false,
+    langIndex: parseInt(localStorage.getItem("localeIndex")) || 0,
   }),
-  computed: { ...mapGetters("collections", ["collections"]) },
+  computed: {
+    ...mapGetters("collections", ["collections"]),
+    languages: () => [
+      {
+        name: "RU",
+        value: "ru",
+      },
+      { name: "UZ", value: "uz" },
+      { name: "EN", value: "en" },
+    ],
+    filteredLanguages() {
+      // Return a filtered array that excludes the currently selected language
+      return this.languages.filter((lang, index) => index !== this.langIndex);
+    },
+  },
   methods: {
     ...mapActions("collections", ["getCollections"]),
+
+    changeHandler(index, value) {
+      localStorage.setItem("locale", value);
+      localStorage.setItem("localeIndex", index); // Store the selected language index
+      this.$i18n.locale = value;
+      this.langIndex = index;
+      this.langContainerIsActive = false;
+    },
     toggleMenu() {
       this.menuIsActive = !this.menuIsActive;
     },

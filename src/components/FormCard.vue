@@ -6,19 +6,31 @@
       <form class="form__container" action="">
         <div class="form__name-cont">
           <label for="name">Ваше имя*</label>
-          <input type="text" name="name" id="name" required />
+          <input type="text" name="name" id="name" required v-model="name" />
         </div>
 
         <div class="form__tel-cont">
           <label for="tel">Номер телефона*</label>
-          <input type="tel" name="name" id="tel" required />
+          <input
+            type="tel"
+            name="name"
+            id="tel"
+            required
+            v-model="phoneNumber"
+          />
         </div>
         <div class="form__email-cont">
           <label for="email">Email</label>
-          <input type="email" name="name" id="email" autocomplete="on" />
+          <input
+            type="email"
+            name="name"
+            id="email"
+            autocomplete="on"
+            v-model="email"
+          />
         </div>
 
-        <button class="form__btn-subm" type="submit">Отправить</button>
+        <a class="form__btn-subm" @click="submitHandler()"> Отправить </a>
       </form>
 
       <div class="form__img-decor">
@@ -33,10 +45,51 @@
 </template>
 
 <script>
+import axios from "axios";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     boxShadow: require("@/assets/img/formCard/card__shadow.png"),
+    name: "",
+    phoneNumber: "",
+    email: "",
   }),
+  computed: {
+    ...mapGetters("inquiry", ["inquiry"]),
+  },
+  methods: {
+    ...mapActions("inquiry", ["addInquiry"]),
+    async submitHandler() {
+      try {
+        // Perform form validation here (optional)
+        if (!this.name || !this.phoneNumber) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Create an object with the form data
+        const formData = {
+          full_name: this.name,
+          pho: this.phoneNumber,
+          email: this.email,
+        };
+
+        // Send the POST request using Axios
+        const response = await axios.post("/inquiries/inquiry", formData);
+        // Handle the response if needed
+
+        // Reset form fields after successful form submission
+        this.name = "";
+        this.phoneNumber = "";
+        this.email = "";
+
+        alert("Inquiry submitted successfully!");
+      } catch (error) {
+        // Handle error if needed
+        alert("Error submitting inquiry: " + error.message);
+      }
+    },
+  },
 };
 </script>
 

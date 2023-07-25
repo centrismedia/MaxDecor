@@ -8,11 +8,14 @@ import './assets/css/all.min.css'
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'; // Choose the desired theme
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
+import i18n from "./i18n";
 export const eventBus = new Vue();
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  i18n,
+
+  render: h => h(App),
 }).$mount('#app')
