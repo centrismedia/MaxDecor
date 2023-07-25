@@ -102,6 +102,12 @@ export default {
   border-radius: 20px;
 }
 
+@media (max-width: 1500px) {
+  .user-routing {
+    margin: 0 20px;
+  }
+}
+
 @media (max-width: 500px) {
   .user-routing {
     margin-bottom: 50px;

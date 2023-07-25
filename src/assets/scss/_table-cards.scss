@@ -19,8 +19,6 @@
 
     width: 440px;
     height: 575px;
-
-    margin: 0 12px;
 }
 
 .card__figure-btn-fav-icon_select {
@@ -315,6 +313,10 @@
         justify-content: space-evenly;
     }
 
+    .card__container {
+        margin: 0 12px;
+    }
+
 }
 
 @media (max-width: 927px) {
@@ -338,6 +340,7 @@
     .card__body-title {
         margin-bottom: 0px;
     }
+
     .table-card__pagination {
         margin-top: 30px;
     }
@@ -350,6 +353,7 @@
         width: 44px;
         height: 44px;
     }
+
     .pagination_numb {
         p {
             padding: 7px 14px;
@@ -398,7 +402,7 @@
             padding: 5px 7px;
         }
     }
-    
+
     .card-table__open {
         width: 280px;
         height: 43px;
