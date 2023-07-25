@@ -15,7 +15,7 @@
 
     <!-- Свайпер -->
 
-    <div class="swiper mySwiper" ref="swiper">
+    <div class="swiper mySwiper news__swiper" ref="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
           <img :src="slide.img" alt="" />

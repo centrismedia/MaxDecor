@@ -239,6 +239,15 @@
             font-size: 12px !important;
         }
     }
+    .news__swiper {
+        height: 600px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .news__swiper {
+        height: 500px;
+    }
 }
 
 @media (max-width: 762px) {
@@ -272,7 +281,15 @@
 
         border: solid 2px #fff;
     }
+
     .swiper-pagination {
         margin-bottom: 0px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .news__swiper {
+        height: 400px;
     }
 }
