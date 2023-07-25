@@ -12,7 +12,20 @@
         в городе Ташкент можно по адресу: улица Паркентская 182, ориентир:
         бывшая корзинка Авиатор.
       </p>
-      <p>
+      <div
+        class="about__btn-open__body-text"
+        :class="{ 'display-none': bodyTextHidden }"
+        @click="toggleBodyText"
+      >
+        Развернуть <img :src="arrow" alt="" />
+      </div>
+      <p
+        :class="{
+          'about__body-text__hidden': !bodyTextHidden,
+          'about__body-text': bodyTextHidden,
+        }"
+        ref="bodyText"
+      >
         Faucibus facilisi morbi pharetra quis sed. Vitae suspendisse facilisis
         facilisis ligula felis et a parturient aenean. Ac maecenas ultricies
         felis risus scelerisque duis posuere. Lectus tellus montes, ac sed diam.
@@ -49,6 +62,10 @@
           <p class="kz__name">Казахстан</p>
         </div>
       </div>
+      
+      <div class="mini-map__container">
+          <img class="mini-map__img" :src="miniMap" alt="" />
+        </div>
     </section>
   </div>
 </template>
@@ -59,9 +76,21 @@ export default {
     map: require("@/assets/img/company/map-world.png"),
     mainDot: require("@/assets/img/company/main-dot.svg"),
     smallDot: require("@/assets/img/company/small-dot.svg"),
+    arrow: require("@/assets/img/company/about_arrow.svg"),
+    miniMap: require("@/assets/img/company/mini-map.png"),
+    bodyTextHidden: false,
   }),
+  methods: {
+    toggleBodyText() {
+      this.bodyTextHidden = !this.bodyTextHidden;
+      if (this.bodyTextHidden) {
+        this.$refs.bodyText.style.maxHeight =
+          this.$refs.bodyText.scrollHeight + "px";
+      } else {
+        this.$refs.bodyText.style.maxHeight = "";
+      }
+    },
+  },
 };
 </script>
-
-<style>
-</style>
+<style></style>

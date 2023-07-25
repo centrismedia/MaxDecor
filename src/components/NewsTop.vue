@@ -2,11 +2,13 @@
   <div>
     <div class="news__title-container container">
       <p class="news__title">
-        Bedroom Design is the Most Personal Reflection of the Owner, Really?
+        Bedroom Design is the Most Personal
+        Reflection of the Owner, Really?
       </p>
       <p class="news__title_descr">
         Is it true that the bedroom design is the most personal reflection of
-        the owner? Many people believe that to be able to judge a person's
+        the owner? Many people believe
+        that to be able to judge a person's
         personality, it is enough to
       </p>
     </div>

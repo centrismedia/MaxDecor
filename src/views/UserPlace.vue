@@ -29,7 +29,6 @@
           :to="{ name: 'logout' }"
           class="personalArea-link"
           :class="{ active: isChildRouteActive('logout') }"
-     
           >Выход</router-link
         >
       </div>
@@ -83,6 +82,29 @@ export default {
 
 <style>
 .user-routing {
-  margin-bottom: 500px;
+  margin-bottom: 150px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.user-routing::-webkit-scrollbar {
+  height: 3px;
+}
+
+.user-routing::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.user-routing::-webkit-scrollbar-thumb {
+  background-color: #192965;
+  height: 3px;
+  border-radius: 20px;
+}
+
+@media (max-width: 500px) {
+  .user-routing {
+    margin-bottom: 50px;
+  }
 }
 </style>

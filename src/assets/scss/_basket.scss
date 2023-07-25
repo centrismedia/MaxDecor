@@ -41,7 +41,26 @@
     right: 0;
     top: 0;
 
-    width: 640px;
+    padding: 0 20px;
+
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #cecece;
+        width: 3px;
+        border-radius: 20px;
+    }
+
+    max-width: 640px;
+    width: 100%;
     height: 100%;
 
     background-color: #fff;
@@ -50,7 +69,8 @@
 .basket__wrapper {
     display: flex;
     flex-direction: column;
-    width: 520px;
+    max-width: 520px;
+    width: 100%;
 
     margin-top: 60px;
 }
@@ -70,7 +90,7 @@
 .basket__title {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 21px;
+    @include adaptiv-font(21, 10);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -79,7 +99,7 @@
 .basket__clear {
     color: #332FEB;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 14px;
+    @include adaptiv-font(14, 10);
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
@@ -93,6 +113,7 @@
 
 .basket__item {
     display: flex;
+    justify-content: space-between;
 
     margin-top: 100px;
     padding-bottom: 15px;
@@ -101,12 +122,14 @@
 }
 
 .basket__img {
-    width: 133px;
-    height: 147px;
+    @include adaptiv-mw(133, 71);
+    width: 100%;
+    @include adaptiv-h(147, 79);
 
     img {
-        width: 133px;
-        height: 147px;
+        @include adaptiv-mw(133, 71);
+        width: 100%;
+        @include adaptiv-h(147, 79);
 
         object-fit: cover;
         object-position: center;
@@ -116,16 +139,14 @@
 
 }
 
-.basket__body {
-    margin-left: 20px;
-}
+.basket__body {}
 
 .basket-item__name {
     margin-bottom: 40px;
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 18px;
+    @include adaptiv-font(18, 13);
     font-style: normal;
     font-weight: 600;
     line-height: 26px;
@@ -134,10 +155,15 @@
 .basket-item__price {
     color: #192965;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 14px;
+    @include adaptiv-font(14, 8);
     font-style: normal;
     font-weight: 500;
     line-height: 27px;
+}
+
+.basket__img-name__position {
+    display: flex;
+    column-gap: 25px;
 }
 
 
@@ -146,11 +172,9 @@
 // количество штук
 .basket__quantity {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 
-    height: 48px;
-
-    margin-left: 100px;
+    height: 47px;
 
     background: #EFEFEF;
 
@@ -159,7 +183,7 @@
 
         border-radius: 4px 0 0 4px;
 
-        padding: 14.3px;
+        padding: 14px;
 
         cursor: pointer;
     }
@@ -169,20 +193,20 @@
 
         border-radius: 0 4px 4px 0;
 
-        padding: 14.3px;
+        padding: 14px;
 
         cursor: pointer;
     }
 
     .basket__input {
-        max-width: 35px;
+        width: 35px;
 
         color: #1E1E1E;
-        font-size: 16px;
+        @include adaptiv-font(16, 11);
         font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 400;
-        line-height: 27px;
+        line-height: 24px;
         background: #EFEFEF;
         text-align: center;
 
@@ -200,8 +224,6 @@
 }
 
 .basket-item__delete {
-    margin-left: 50px;
-
     cursor: pointer;
 }
 
@@ -212,22 +234,24 @@
     display: flex;
     justify-content: space-between;
 
-    margin-top: 40px;
+    padding: 40px 0;
 
     .aside__close {
         display: flex;
         align-items: center;
         justify-content: center;
 
-        width: 223px;
-        height: 48px;
+        max-width: 223px;
+        @include adaptiv-mw(223, 125);
+        width: 100%;
+        @include adaptiv-h(48, 32);
 
         border-radius: 30px;
         border: 1px solid #1E1E1E;
 
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 14px;
+        @include adaptiv-font(14, 8);
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -250,15 +274,16 @@
         align-items: center;
         justify-content: center;
 
-        width: 180px;
-        height: 48px;
+        @include adaptiv-mw(180, 101);
+        width: 100%;
+        @include adaptiv-h(48, 32);
         border-radius: 30px;
 
         background: #192965;
 
         color: #FFF;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 14px;
+        @include adaptiv-font(14, 8);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -272,5 +297,69 @@
 
             transition: all 0.2s linear 0s;
         }
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .basket-item__name {
+        margin-bottom: 30px;
+    }
+    .basket__quantity {
+        transform: scale(0.9);
+    }
+    .basket-item__delete {
+        transform: scale(0.9);
+    }
+    .basket__item {
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .basket-item__name {
+        margin-bottom: 20px;
+    }
+    .basket__quantity {
+        transform: scale(0.8);
+    }
+
+    .basket__item {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 700px) {
+    .basket-item__name {
+        margin-bottom: 10px;
+    }
+    .basket__quantity {
+        transform: scale(0.7);
+    }
+    .basket-item__delete {
+        transform: scale(0.8);
+    }
+    .basket__item {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    .basket-item__name {
+        margin-bottom: 0px;
+    }
+    .basket__quantity {
+        transform: scale(0.6);
+    }
+    .basket-item__delete {
+        transform: scale(0.7);
+    }
+    .basket__item {
+        margin-top: 30px;
     }
 }

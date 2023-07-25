@@ -12,7 +12,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Bold";
-    font-size: 28.002px;
+    @include adaptiv-font(28, 15);
     font-style: normal;
     font-weight: 700;
     line-height: 38px;
@@ -21,7 +21,6 @@
 
 .news-card__container-pos {
     display: flex;
-    column-gap: 55px;
 }
 
 
@@ -33,15 +32,17 @@
     display: flex;
     flex-direction: column;
 
-    width: 453px;
+    max-width: 453px;
+    width: 100%;
     height: 643px;
 
 
-    box-shadow: -2px 1.900549292564392px 10px 0px rgba(0, 0, 0, 0.03);
+    box-shadow: -2px 2px 10px 0px rgba(0, 0, 0, 0.03);
 }
 
 .news-card__img-container {
-    width: 453px;
+    max-width: 453px;
+    width: 100%;
     height: 209px;
     overflow: hidden;
 }
@@ -52,7 +53,8 @@
 }
 
 .news-card__txt {
-    width: 360px;
+    max-width: 360px;
+    width: 100%;
 
     margin-left: 22px;
     z-index: 10;
@@ -63,7 +65,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Light";
-    font-size: 17px;
+    @include adaptiv-font(17, 11);
     font-style: normal;
     font-weight: 400;
     line-height: 160%;
@@ -74,7 +76,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 27px;
+    @include adaptiv-font(27, 17);
     font-style: normal;
     font-weight: 600;
     line-height: 160%;
@@ -86,6 +88,7 @@
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
     font-size: 23px;
+    @include adaptiv-font(23, 15);
     font-style: normal;
     font-weight: 400;
     line-height: 160%;
@@ -99,7 +102,7 @@
 
     color: #36548F;
     font-family: "AvenirNextCyr-Light";
-    font-size: 22px;
+    @include adaptiv-font(22, 15);
     font-style: normal;
     font-weight: 300;
     z-index: 4;
@@ -145,3 +148,74 @@
     }
 
 }
+
+// Стили свайпера
+
+.swiper-slide {
+    text-align: start;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+
+    .news_card {
+        max-width: 400px;
+        width: 100%;
+        height: 643px;
+    }
+    
+    .news-card__img-container {
+        max-width: 400px;
+        width: 100%;
+        height: 209px;
+    }
+    
+    .news-card__txt {
+        max-width: 310px;
+        width: 100%;
+    }
+
+    .news-card__container {
+        padding: 0 20px;
+        margin-top: 70px;
+        margin-bottom: 120px;
+    }
+    .news-card__section-title {
+        margin-bottom: 50px;
+    }
+    
+}
+
+@media (max-width: 900px) {
+    .news_card {
+        height: 600px;
+    }
+
+    .news-card__container {
+        margin-top: 50px;
+        margin-bottom: 90px;
+    }
+    .news-card__section-title {
+        margin-bottom: 40px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+    .news-card__container {
+        height: 700px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .news-card__section-title {
+        margin-bottom: 0px;
+    }
+    
+}
+
+

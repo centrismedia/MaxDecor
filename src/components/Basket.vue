@@ -10,12 +10,14 @@
         </div>
 
         <div class="basket__item">
-          <div class="basket__img">
-            <img :src="basketFirstImg" alt="" />
-          </div>
-          <div class="basket__body">
-            <div class="basket-item__name">Bricly</div>
-            <div class="basket-item__price">545 000 сум</div>
+          <div class="basket__img-name__position">
+            <div class="basket__img">
+              <img :src="basketFirstImg" alt="" />
+            </div>
+            <div class="basket__body">
+              <div class="basket-item__name">Bricly</div>
+              <div class="basket-item__price">545 000 сум</div>
+            </div>
           </div>
 
           <div class="basket__quantity">
@@ -28,14 +30,78 @@
             <img :src="deleteImg" alt="" />
           </div>
         </div>
-
         <div class="basket__item">
-          <div class="basket__img">
-            <img :src="basketSecondImg" alt="" />
+          <div class="basket__img-name__position">
+            <div class="basket__img">
+              <img :src="basketFirstImg" alt="" />
+            </div>
+            <div class="basket__body">
+              <div class="basket-item__name">Bricly</div>
+              <div class="basket-item__price">545 000 сум</div>
+            </div>
           </div>
-          <div class="basket__body">
-            <div class="basket-item__name">Caracum</div>
-            <div class="basket-item__price">545 000 сум</div>
+
+          <div class="basket__quantity">
+            <div class="basket__minus">-</div>
+            <input class="basket__input" type="number" />
+            <div class="basket__plus">+</div>
+          </div>
+
+          <div class="basket-item__delete">
+            <img :src="deleteImg" alt="" />
+          </div>
+        </div>
+        <div class="basket__item">
+          <div class="basket__img-name__position">
+            <div class="basket__img">
+              <img :src="basketFirstImg" alt="" />
+            </div>
+            <div class="basket__body">
+              <div class="basket-item__name">Bricly</div>
+              <div class="basket-item__price">545 000 сум</div>
+            </div>
+          </div>
+
+          <div class="basket__quantity">
+            <div class="basket__minus">-</div>
+            <input class="basket__input" type="number" />
+            <div class="basket__plus">+</div>
+          </div>
+
+          <div class="basket-item__delete">
+            <img :src="deleteImg" alt="" />
+          </div>
+        </div>
+        <div class="basket__item">
+          <div class="basket__img-name__position">
+            <div class="basket__img">
+              <img :src="basketFirstImg" alt="" />
+            </div>
+            <div class="basket__body">
+              <div class="basket-item__name">Bricly</div>
+              <div class="basket-item__price">545 000 сум</div>
+            </div>
+          </div>
+
+          <div class="basket__quantity">
+            <div class="basket__minus">-</div>
+            <input class="basket__input" type="number" />
+            <div class="basket__plus">+</div>
+          </div>
+
+          <div class="basket-item__delete">
+            <img :src="deleteImg" alt="" />
+          </div>
+        </div>
+        <div class="basket__item">
+          <div class="basket__img-name__position">
+            <div class="basket__img">
+              <img :src="basketFirstImg" alt="" />
+            </div>
+            <div class="basket__body">
+              <div class="basket-item__name">Bricly</div>
+              <div class="basket-item__price">545 000 сум</div>
+            </div>
           </div>
 
           <div class="basket__quantity">
@@ -50,9 +116,7 @@
         </div>
 
         <div class="aside__btn-container">
-          <a class="aside__close" @click="toggleBasket">
-            ПРОДОЛЖИТЬ ПОКУПКИ
-          </a>
+          <a class="aside__close" @click="toggleBasket"> ПРОДОЛЖИТЬ ПОКУПКИ </a>
           <router-link
             @click.native="toggleBasket"
             to="/verify-order"
@@ -80,5 +144,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
