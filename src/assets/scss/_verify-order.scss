@@ -4,13 +4,13 @@
     column-gap: 25px;
     height: 50px;
 
-    margin: 194px auto 50px auto;
+    margin: 50px auto 50px auto;
 
 
     a {
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 20px;
+        @include adaptiv-font(20, 12);
         font-style: normal;
         font-weight: 400;
         line-height: 180%;
@@ -19,7 +19,7 @@
     .navigation-chain__current {
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 20px;
+        @include adaptiv-font(20, 12);
         font-style: normal;
         font-weight: 700;
         line-height: 37px;
@@ -50,7 +50,7 @@
     color: #1E1E1E;
     text-align: center;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 32px;
+    @include adaptiv-font(32, 14);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -79,19 +79,24 @@
 
 .checkout-card__item {
     display: flex;
+    justify-content: space-between;
 
-    width: 520px;
-    height: 147px;
+    max-width: 500px;
+    width: 100%;
 
+    margin-top: 25px;
+    padding-bottom: 15px;
 }
 
 .checkout-card__img {
-    width: 133px;
-    height: 147px;
+    @include adaptiv-mw(133, 71);
+    width: 100%;
+    @include adaptiv-h(147, 79);
 
     img {
-        width: 133px;
-        height: 147px;
+        @include adaptiv-mw(133, 71);
+        width: 100%;
+        @include adaptiv-h(147, 79);
 
         object-fit: cover;
         object-position: center;
@@ -101,16 +106,14 @@
 
 }
 
-.checkout-card__body {
-    margin-left: 20px;
-}
+.checkout-card__body {}
 
 .checkout-card-item__name {
     margin-bottom: 40px;
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 18px;
+    @include adaptiv-font(18, 15);
     font-style: normal;
     font-weight: 600;
     line-height: 26px;
@@ -119,10 +122,15 @@
 .checkout-card-item__price {
     color: #192965;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 14px;
+    @include adaptiv-font(14, 12);
     font-style: normal;
     font-weight: 500;
     line-height: 27px;
+}
+
+.checkout-card__img-name__position {
+    display: flex;
+    column-gap: 25px;
 }
 
 
@@ -131,11 +139,9 @@
 // количество штук
 .checkout-card__quantity {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 
-    height: 48px;
-
-    margin-left: 100px;
+    height: 47px;
 
     background: #EFEFEF;
 
@@ -144,7 +150,7 @@
 
         border-radius: 4px 0 0 4px;
 
-        padding: 14.3px;
+        padding: 14px;
 
         cursor: pointer;
     }
@@ -154,20 +160,20 @@
 
         border-radius: 0 4px 4px 0;
 
-        padding: 14.3px;
+        padding: 14px;
 
         cursor: pointer;
     }
 
     .checkout-card__input {
-        max-width: 35px;
+        width: 35px;
 
         color: #1E1E1E;
-        font-size: 16px;
+        @include adaptiv-font(16, 15);
         font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 400;
-        line-height: 27px;
+        line-height: 24px;
         background: #EFEFEF;
         text-align: center;
 
@@ -185,10 +191,9 @@
 }
 
 .checkout-card-item__delete {
-    margin-left: 50px;
-
     cursor: pointer;
 }
+
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,6 +206,10 @@
 .checkout-form__container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 50px;
+
+    overflow: hidden;
 
     margin-bottom: 190px;
 }
@@ -240,14 +249,15 @@
 }
 
 .form__buyer-row_input {
-    width: 433px;
+    max-width: 433px;
+    width: 100%;
     height: 50px;
 
     padding-left: 17px;
 
     color: #192965;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 17px;
+    @include adaptiv-font(17, 14);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -267,7 +277,7 @@
     &::placeholder {
         color: #707070;
         font-family: "AvenirNextCyr-Regular";
-        font-size: 14px;
+        @include adaptiv-font(14, 12);
         font-style: normal;
         font-weight: 300;
         line-height: 20px;
@@ -301,7 +311,7 @@
 
     color: #1E1E1E;
     font-family: Roboto, sans-serif;
-    font-size: 22px;
+    @include adaptiv-font(22, 17);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -310,7 +320,7 @@
 .form__shop-title_name {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 22px;
+    @include adaptiv-font(22, 17);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -327,7 +337,8 @@
     display: flex;
     align-items: center;
 
-    width: 432px;
+    max-width: 432px;
+    width: 100%;
     height: 50px;
 
     padding: 0 25px;
@@ -352,7 +363,7 @@
     color: #192965;
     font-family: Inter,
     sans-serif;
-    font-size: 16px;
+    @include adaptiv-font(16, 14);
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
@@ -366,7 +377,7 @@
     width: 25px;
     height: 25px;
     color: #fff;
-    font-size: 16px;
+    @include adaptiv-font(16, 14);
     border-radius: 50%;
     background-color: #1E1E1E;
     cursor: pointer;
@@ -414,7 +425,7 @@
 
     color: #707070;
     font-family: Inter, sans-serif;
-    font-size: 16px;
+    @include adaptiv-font(16, 14);
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
@@ -451,7 +462,7 @@
 
 .form__receiving-row {
     display: flex;
-column-gap: 12px;
+    column-gap: 12px;
     align-items: center;
 
     label {
@@ -460,7 +471,7 @@ column-gap: 12px;
         color: #1E1E1E;
 
         font-family: "AvenirNextCyr-Medium";
-        font-size: 16px;
+        @include adaptiv-font(16, 14);
         font-style: normal;
         font-weight: 500;
         line-height: 24px;
@@ -505,8 +516,8 @@ column-gap: 12px;
     flex-direction: column;
     justify-content: space-between;
 
-    width: 580px;
-    height: 846px;
+    max-width: 580px;
+    width: 100%;
 
     padding: 65px 60px 75px 65px;
 
@@ -517,12 +528,14 @@ column-gap: 12px;
     display: flex;
     flex-direction: column;
     row-gap: 27px;
+
+    padding-bottom: 300px;
 }
 
 .form-card__body-title {
     color: #000;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 16px;
+    @include adaptiv-font(16, 13);
     font-style: normal;
     font-weight: 400;
     line-height: 27px;
@@ -542,7 +555,7 @@ column-gap: 12px;
     p {
         color: #707070;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 16px;
+        @include adaptiv-font(16, 13);
         font-style: normal;
         font-weight: 400;
         line-height: 27px;
@@ -555,7 +568,7 @@ column-gap: 12px;
 
     color: #192965;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 16px;
+    @include adaptiv-font(16, 13);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -564,6 +577,7 @@ column-gap: 12px;
 .form-card__bottom {
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 25px;
 }
 
@@ -574,6 +588,7 @@ column-gap: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 
     cursor: pointer;
 
@@ -602,7 +617,8 @@ column-gap: 12px;
     justify-content: center;
     align-items: center;
 
-    width: 462px;
+    max-width: 462px;
+    width: 100%;
     height: 53px;
 
     border-radius: 4px;
@@ -612,7 +628,7 @@ column-gap: 12px;
 
     color: #FFF;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 16px;
+    @include adaptiv-font(16, 13);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -625,4 +641,104 @@ column-gap: 12px;
         transition: all 0.2s linear 0s;
         background: #0c1431;
     }
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .checkout-card__container {
+        padding: 0 20px;
+    }
+
+    .form-personal-area {
+        padding: 0 20px;
+    }
+
+    .checkout__title {
+        padding: 0 20px;
+    }
+
+
+
+    .checkout-card-item__name {
+        margin-bottom: 30px;
+    }
+
+    .checkout-card-item__delete {
+        transform: scale(0.9);
+    }
+
+    .form__card {
+        margin: 0 20px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .checkout-card-item__name {
+        margin-bottom: 20px;
+    }
+
+    .checkout-card__quantity {
+        transform: scale(0.9);
+    }
+
+    .form__card {
+        margin: 0 20px;
+    }
+    .checkout-card__item {
+        max-width: 400px;
+    }
+    
+}
+
+@media (max-width: 762px) {
+    .aside__title {
+        margin-top: 167px;
+    }
+    .form__card {
+        padding: 30px 20px;
+    }
+    .form-card__body {
+        padding-bottom: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+    .checkout-card-item__name {
+        margin-bottom: 10px;
+    }
+
+    .checkout-card__quantity {
+        transform: scale(0.8);
+    }
+
+    .checkout-card-item__delete {
+        transform: scale(0.8);
+    }
+
+    .checkout__title {
+        margin-bottom: 25px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .checkout-card-item__name {
+        margin-bottom: 0px;
+    }
+
+    .checkout-card__quantity {
+        transform: scale(0.7);
+    }
+
+    .checkout-card-item__delete {
+        transform: scale(0.7);
+    }
+
 }
