@@ -49,9 +49,7 @@
             $t("aboutfactory")
           }}</router-link>
           <a class="nav__nav-Show" href="">{{ $t("Showroom") }}</a>
-          <router-link class="nav__nav-new" to="news">{{
-            $t("news")
-          }}</router-link>
+          <a class="nav__nav-new" @click="openNews()">{{ $t("news") }}</a>
           <a class="nav__nav-buy" href="">{{ $t("whereBuy") }}</a>
           <a class="nav__nav-cont" href="">{{ $t("contacts") }}</a>
         </div>
@@ -171,6 +169,20 @@ export default {
       this.$emit("toggle-basket");
     },
 
+    async openNews() {
+      try {
+        await this.$store.dispatch("news/getNews");
+        const allNews = this.$store.getters["news/news"];
+        allNews.sort((a, b) => new Date(b.created) - new Date(a.created));
+        if (allNews.length > 0) {
+          this.$router.push({ name: "news", params: { id: allNews[0].id } });
+        } else {
+          console.warn("No news found.");
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    },
     toggleLangContainer() {
       this.langContainerIsActive = !this.langContainerIsActive;
     },

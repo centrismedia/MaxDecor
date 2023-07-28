@@ -8,12 +8,14 @@
         <div
           id="slide_1"
           class="swiper-slide"
-          v-for="slide in slides"
+          v-for="slide in infoProductData.variants"
           :key="slide.id"
-          @click="changeHeroImg(slide)" 
+          @click="changeHeroImg(slide)"
         >
-          <img :src="slide.img" alt=""  />
-          <p>{{ slide.id }} <span>10501</span></p>
+          <img :src="slide.photo" alt="" />
+          <p>
+            {{ slide.id }}-<span>{{ slide.title }}</span>
+          </p>
         </div>
       </div>
     </div>
@@ -27,6 +29,7 @@
 import Swiper, { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     slides: [
@@ -53,6 +56,15 @@ export default {
     ],
     swiperArrow: require("@/assets/img/slider/product-swiper-arrow.svg"),
   }),
+  computed: {
+    ...mapGetters("products", ["products", "infoProduct"]),
+    ...mapGetters("collections", ["collections"]),
+
+    infoProductData() {
+      return this.infoProduct;
+    },
+   
+  },
   mounted() {
     new Swiper(this.$refs.swiper, {
       modules: [Navigation],
@@ -70,14 +82,30 @@ export default {
     });
   },
   methods: {
+    ...mapActions("products", ["getProducts", "getInfoProduct"]),
+    ...mapActions("collections", ["getCollections"]),
+
     onWindowResize() {
       if (this.swiper) {
         this.swiper.destroy();
         this.initSwiper();
       }
     },
+    async fetchProductDetails(productId) {
+      try {
+        // Call the getInfoProduct action to fetch the data
+        await this.getInfoProduct(productId);
+
+        // Once the data is fetched, update the component's data with the received information
+        this.hero = this.infoProductData.photo;
+        // Update other data properties as needed
+        // ...
+      } catch (error) {
+        console.error(error);
+      }
+    },
     changeHeroImg(slide) {
-      this.$emit("update-hero-image", slide.img);
+      this.$emit("update-hero-image", slide.photo);
     },
   },
 };

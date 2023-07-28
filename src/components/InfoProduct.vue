@@ -3,24 +3,22 @@
     <div class="navigation-chain__container container">
       <a href="">Коллекции</a>
       <div class="navigation-chain__delimiter"></div>
-      <a class="navigation-chain__current" href="">Bricly</a>
+      <a class="navigation-chain__current" href="">{{
+        infoProductData.title
+      }}</a>
     </div>
     <section class="description-product__container container">
       <div class="description-product__left-card">
-        <p class="description-product__left-card_title">Коллекция Bricly</p>
+        <p class="description-product__left-card_title">
+          Коллекция {{ infoProductData.title }}
+        </p>
         <p class="description-product__left-card_body">
-          Кухня — это самое популярное место в доме, место всеобщего сбора,
-          пространство, где получаешь удовольствие, как от приготовления пищи,
-          так и от прекрасного времяпрепровождения.
+          {{ infoProductData.description }}
         </p>
       </div>
       <div class="description-product__right-card">
         <p>
-          Но на ряду с этим, кухня одно из самых часто часто загрязняемых мест в
-          квартире. Поэтому обои для вашей кухни должны прекрасно чиститься с
-          использованием специальных моющих средств. Коллекция обоев «BRICLY» —
-          не боится многократного намокания, а его структура удерживает влагу на
-          поверхности и не допускает её впитывания в основу обоев.
+          {{ infoProductData.description }}
         </p>
       </div>
     </section>
@@ -37,7 +35,9 @@
       <div class="card-product__info">
         <div class="card-product__title-container">
           <div class="card-product__title">
-            <p class="card-product__title_name">Коллекция Bricly</p>
+            <p class="card-product__title_name">
+              Коллекция {{ infoProductData.title }}
+            </p>
             <p class="card-product__title_vendor">
               Артикул&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10501
             </p>
@@ -51,55 +51,90 @@
           <div class="card-product__options">
             <p class="card-product__options_key">Бренд</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">DILMAX</p>
+            <p
+              class="card-product__options_value"
+              v-for="item in infoProductData.brand"
+              :key="item.id"
+            >
+              {{ item.title }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Тип рисунка</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">Флористика</p>
+            <p
+              class="card-product__options_value"
+              v-for="item in infoProductData.picture_type"
+              :key="item.id"
+            >
+              {{ item.title }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Тип помещения</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">Гостиная</p>
+            <p
+              class="card-product__options_value"
+              v-for="item in infoProductData.target_room"
+              :key="item.id"
+            >
+              {{ item.title }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Размер рулона</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">1.06 х 10.05</p>
+            <p
+              class="card-product__options_value"
+              v-for="item in infoProductData.size"
+              :key="item.id"
+            >
+              {{ item.height }} х {{ item.height }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Способ производства</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">Горячее тиснение</p>
+            <p
+              class="card-product__options_value"
+              v-for="item in infoProductData.manufacturing_method"
+              :key="item.id"
+            >
+              {{ item.title }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Основа</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">Флизелиновая</p>
+            <p class="card-product__options_value">
+              {{ infoProductData.building_material.title }}
+            </p>
           </div>
 
           <div class="card-product__options">
             <p class="card-product__options_key">Рулонов в коробке</p>
             <div class="card-product__options_line"></div>
-            <p class="card-product__options_value">6</p>
+            <p class="card-product__options_value">
+              {{ infoProductData.no_in_pack }}
+            </p>
           </div>
         </div>
 
         <div class="card-product__price-container">
-          <p class="card-product__price">545 000 сум</p>
-          <P class="card-product__price-descr">цена указана за один рулон</P>
+          <p class="card-product__price">
+            {{ prettifySum(infoProductData.price) }}
+          </p>
+          <p class="card-product__price-descr">цена указана за один рулон</p>
         </div>
-
         <div class="card-product__quantity">
-          <div class="card-product__minus">-</div>
-          <input class="card-product__input" type="number" />
-          <div class="card-product__plus">+</div>
+          <div class="card-product__minus" @click="decrementQuantity">-</div>
+          <div>{{ quantity }}</div>
+          <div class="card-product__plus" @click="incrementQuantity">+</div>
         </div>
 
         <div class="card-product__btn-container">
@@ -113,10 +148,13 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import { prettifySum } from "@/use/prettify";
 export default {
   data: () => ({
     hero: require("@/assets/img/info/10501-1.jpg"),
     icon: require("@/assets/img/info/card-product-icon.svg"),
+    quantity: 1,
+    prettifySum,
   }),
   props: {
     hero: {
@@ -127,8 +165,24 @@ export default {
   computed: {
     ...mapGetters("products", ["products", "infoProduct"]),
     ...mapGetters("collections", ["collections"]),
+
+    infoProductData() {
+      return this.infoProduct;
+    },
+    totalPrice() {
+      return (this.quantity * this.infoProductData.price).toFixed(2); // Using toFixed to format the price to two decimal places
+    },
   },
   methods: {
+    incrementQuantity() {
+      this.quantity++;
+    },
+
+    decrementQuantity() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      }
+    },
     ...mapActions("products", ["getProducts", "getInfoProduct"]),
     ...mapActions("collections", ["getCollections"]),
     updateHeroImage(image) {
@@ -140,10 +194,27 @@ export default {
         img.classList.remove("hidden");
       }, 300); // Задержка 300 мс (0.3 сек)
     },
+    async fetchProductDetails(productId) {
+      try {
+        // Call the getInfoProduct action to fetch the data
+        await this.getInfoProduct(productId);
+
+        // Once the data is fetched, update the component's data with the received information
+        this.hero = this.infoProductData.photo;
+        // Update other data properties as needed
+        // ...
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
   async mounted() {
-    this.getProducts();
-    this.getInfoProduct();
+    // Get the product ID from the route parameter
+    const productId = this.$route.params.id;
+
+    // Fetch the product details using the product ID
+    await this.fetchProductDetails(productId);
+    console.log(this.infoProductData);
   },
 };
 </script>

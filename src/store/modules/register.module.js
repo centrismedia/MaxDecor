@@ -3,21 +3,21 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: () => ({
-        inquiry: [],
+        register: [],
     }),
     mutations: {
-        setInquiry(state, inquiryData) {
-            state.inquiries.push(inquiryData);
+        setRegister(state, registerData) {
+            state.inquiries.push(registerData);
         },
     },
     actions: {
-        async addInquiry({
+        async addRegister({
             commit,
             state
         }, formData) {
             try {
-                const res = await axios.post("/inquiries/inquiry", formData);
-                commit("setInquiry", res.data);
+                const res = await axios.post("/inquiries/register", formData);
+                commit("setRegister", res.data);
 
                 return res.data;
 
@@ -31,8 +31,8 @@ export default {
 
     },
     getters: {
-        inquiry(state) {
-            return state.inquiry;
+        register(state) {
+            return state.register;
         },
     },
 };

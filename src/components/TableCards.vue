@@ -1,3 +1,4 @@
+
 <template>
   <div class="card-table">
     <section class="table-card__container container">
@@ -7,14 +8,7 @@
           @mouseover="card.isActive = true"
           @mouseout="card.isActive = false"
         >
-          <router-link
-            class=""
-            :to="{
-              name: 'product',
-              params: { name: card.title, id: card.id },
-            }"
-            @click="getProductDetails(card.id)"
-          >
+          <a class="" @click="getProductDetails(card.id)">
             <img class="card__img" :src="card.photo" alt="" />
 
             <div class="card__figure-elem">
@@ -22,11 +16,12 @@
               <div
                 class="card__figure-btn"
                 :class="{ 'active__card-figure-btn': card.isActive }"
+                @click.stop="addToCart(card)"
               >
-                ДОБАВИТЬ В КОРЗИНУ
+                {{ $t("addBasket") }}
               </div>
             </div>
-          </router-link>
+          </a>
           <div
             class="card__figure-btn-fav-icon"
             @click="toggleFavoriteIcon(index)"
@@ -65,6 +60,7 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
 import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
@@ -87,19 +83,18 @@ export default {
     logMethod() {
       console.log(this.products);
     },
-    async getProductDetails(productId) {
-      // Make sure the "productId" parameter is valid
-      console.log("Product ID:", this.productId);
 
+    async getProductDetails(productId) {
+      console.log("Product ID:", productId);
       if (!productId) {
         console.error("Invalid product ID");
         return;
       }
 
-      await this.getInfoProduct(productId);
-      // Navigate to the "product" route passing the product details as route params
+      await this.$store.dispatch("products/getInfoProduct", productId);
       this.$router.push({ name: "product", params: { id: productId } });
     },
+
     toggleFavoriteIcon(index) {
       const card = this.cards[index];
       card.favActive = !card.favActive;
@@ -131,6 +126,35 @@ export default {
           : "";
       }
     },
+    addToCart(card) {
+      // Prepare the file information that you want to store in the cookie
+      const fileData = {
+        price: card.price,
+        photo: card.photo,
+        collection: card.get_collection,
+        quantity: 1,
+      };
+
+      // Get the existing cart data from the cookie
+      const existingCartData = Cookies.get("cart");
+      const cart = existingCartData ? JSON.parse(existingCartData) : [];
+
+      // Check if the item already exists in the cart
+      const existingItem = cart.find((item) => item.photo === card.photo);
+      if (existingItem) {
+        // If the item already exists, increment the quantity
+        existingItem.quantity++;
+      } else {
+        // If the item doesn't exist, add it to the cart
+        cart.push(fileData);
+      }
+
+      // Save the updated cart back to the cookie
+      Cookies.set("cart", JSON.stringify(cart), { expires: 7 });
+    },
+    saveCartToCookie() {
+      Cookies.set("cart", JSON.stringify(this.cart), { expires: 7 });
+    },
 
     stopPr(e) {
       e.stopPropagation();
@@ -138,7 +162,6 @@ export default {
   },
   async mounted() {
     this.getProducts();
-    this.getInfoProduct();
   },
 };
 </script>

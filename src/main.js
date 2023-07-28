@@ -9,6 +9,7 @@ import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'; // Choose th
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 import i18n from "./i18n";
+
 export const eventBus = new Vue();
 Vue.config.productionTip = false
 

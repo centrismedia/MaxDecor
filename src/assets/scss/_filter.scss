@@ -174,6 +174,9 @@
 }
 
 
+.check-mark {
+    display: none;
+}
 
 // Стили цвета в фильтре
 
@@ -185,7 +188,12 @@
 
 .table-filter__color_row {
     display: flex;
-    column-gap: 23px;
+
+    flex-wrap: wrap;
+    gap: 23px;
+    flex-wrap: wrap;
+    max-width: 214px;
+    width: 100%;
 }
 
 
@@ -209,18 +217,7 @@
     background-color: #85AEFF;
 }
 
-.table-filter__color-1,
-.table-filter__color-2,
-.table-filter__color-3,
-.table-filter__color-4,
-.table-filter__color-5,
-.table-filter__color-6,
-.table-filter__color-7,
-.table-filter__color-8,
-.table-filter__color-9,
-.table-filter__color-10,
-.table-filter__color-11,
-.table-filter__color-12 {
+.table-filter__color {
     width: 40px;
     height: 40px;
 

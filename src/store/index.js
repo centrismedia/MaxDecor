@@ -5,7 +5,10 @@ import phone from "./modules/phone.module";
 import addresses from "./modules/addresses.module";
 import collections from "./modules/collections.module";
 import products from "./modules/products.module";
+import news from "./modules/news.module";
 import inquiry from "./modules/inquiry.module";
+import filter from "./modules/filter.module";
+import cart from "./modules/cart.module";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,7 +18,10 @@ export default new Vuex.Store({
     addresses,
     collections,
     inquiry,
-    products
+    products,
+    cart,
+    news,
+    filter
   },
   state: {},
   getters: {},

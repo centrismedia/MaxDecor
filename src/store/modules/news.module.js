@@ -3,66 +3,68 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: () => ({
-        products: {},
-        infoProduct: {}
+        news: {},
+        infoNews: {}
 
     }),
     mutations: {
-        setProducts(state, products) {
-            const productsWithIsActive = products.map(product => ({
+        setNews(state, news) {
+            const newsWithIsActive = news.map(product => ({
                 ...product,
                 isActive: false,
             }));
-            state.products = productsWithIsActive;
+            state.news = newsWithIsActive;
         },
-        setInfoProduct(state, infoProduct) {
-            state.infoProduct = infoProduct
+        setInfoNews(state, infoNews) {
+            state.infoNews = infoNews
         }
     },
     actions: {
-        async getProducts({
+        async getNews({
             commit,
             state
         }) {
             state.isLoading = true;
             try {
-                const res = await axios.get("/store/products/list", {
+                const res = await axios.get("/news/list/", {
                     headers: {
                         'content-language': "ru"
                     }
                 });
                 if (res.status === 200) {
-                    commit("setProducts", res.data);
+                    commit("setNews", res.data);
                 }
             } catch (error) {
                 console.error(error);
             }
         },
-        async getInfoProduct({
+        async getInfoNews({
             commit,
             state
-        }, productId) {
+        }, newsId) {
             state.isLoading = true;
             try {
-                const res = await axios.get(`/store/products/retrieve/${productId}`, {
+                const res = await axios.get(`/news/retrieve/${newsId}`, {
                     headers: {
                         'content-language': "ru",
                     },
                 });
                 if (res.status === 200) {
-                    commit("setInfoProduct", res.data);
+                    commit("setInfoNews", res.data);
                 }
             } catch (error) {
                 console.error(error);
             }
-        }
+        },
+
+
     },
     getters: {
-        products(state) {
-            return state.products;
+        news(state) {
+            return state.news;
         },
-        infoProduct(state) {
-            return state.infoProduct;
+        infoNews(state) {
+            return state.infoNews;
         },
     },
 };

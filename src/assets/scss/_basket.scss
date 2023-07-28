@@ -146,8 +146,8 @@
 // количество штук
 .basket__quantity {
     display: flex;
-    align-items: flex-start;
-
+    align-items: center;
+    justify-content: space-between;
     height: 48px;
 
     margin-left: 100px;

@@ -29,70 +29,69 @@
           <p class="table-filter__title">{{ $t("destination") }}</p>
           <div
             class="table-filter__element"
-            v-for="item in destinations"
+            v-for="item in rooms"
             :key="item.id"
           >
             <div class="table-filter__marker">
-              <img :src="checkMark" alt="" />
+              <img :src="checkMark" class="check-mark" alt="" />
             </div>
-            <p>{{ item }}</p>
+            <p>{{ item.title }}</p>
           </div>
         </div>
         <div class="table-filter__column">
           <p class="table-filter__title">{{ $t("style") }}</p>
           <div
             class="table-filter__element"
-            v-for="item in style"
+            v-for="item in styles"
             :key="item.id"
           >
             <div class="table-filter__marker">
-              <img :src="checkMark" alt="" />
+              <img :src="checkMark" class="check-mark" alt="" />
             </div>
-            <p>{{ item }}</p>
+            <p>{{ item.title }}</p>
           </div>
         </div>
         <div class="table-filter__column">
           <p class="table-filter__title">{{ $t("picture") }}</p>
           <div
             class="table-filter__element"
-            v-for="item in picture"
+            v-for="item in pictureTypes"
             :key="item.id"
           >
             <div class="table-filter__marker">
-              <img :src="checkMark" alt="" />
+              <img :src="checkMark" class="check-mark" alt="" />
             </div>
-            <p>{{ item }}</p>
+            <p>{{ item.title }}</p>
           </div>
         </div>
         <div class="table-filter__column">
-          <p class="table-filter__title">{{$t('size')}}</p>
+          <p class="table-filter__title">{{ $t("size") }}</p>
           <div
             class="table-filter__element"
             v-for="item in sizes"
             :key="item.id"
           >
             <div class="table-filter__marker">
-              <img :src="checkMark" alt="" />
+              <img :src="checkMark" class="check-mark" alt=""  />
             </div>
-            <p>{{ item }}</p>
+            <p>{{ item.width }} x {{ item.height }}</p>
           </div>
         </div>
 
         <!-- Add other table-filter__column elements here -->
 
         <div class="table-filter__color-container" ref="tableFilterContainer">
-          <p class="table-filter__title">{{$t('color')}}</p>
-          <div
-            class="table-filter__color_row"
-            v-for="row in colors"
-            :key="row.id"
-          >
+          <p class="table-filter__title">{{ $t("color") }}</p>
+          <div class="table-filter__color_row">
             <div
               class="table-filter__color-active"
-              v-for="color in row"
-              :key="color.id"
+              v-for="row in colors"
+              :key="row.id"
             >
-              <div :class="color"></div>
+              <div
+                class="table-filter__color"
+                :style="{ background: row.hexa_value }"
+              ></div>
             </div>
           </div>
         </div>
@@ -103,45 +102,45 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+import { formatHexColor } from "@/use/prettify";
 export default {
   data() {
     return {
+      formatHexColor,
       isActiveTopCircle: false,
       isActiveBotCircle: false,
       tableFilterMaxHeight: "0px",
       destinations: ["Гостиная", "Спальня", "Прихожая", "Кухня", "Детская"],
-      style: ["Классика", "Флористика", "Орнамент", "Геометрия", "Детский"],
-      picture: ["Природа", "Фоновый", "Подкраска"],
-      sizes: ["0,53 x 10", "1,06 x 10", "1.06 x 25"],
 
-      // Add other data properties here
-      colors: [
-        [
-          "table-filter__color-1",
-          "table-filter__color-2",
-          "table-filter__color-3",
-        ],
-        [
-          "table-filter__color-4",
-          "table-filter__color-5",
-          "table-filter__color-6",
-        ],
-        [
-          "table-filter__color-7",
-          "table-filter__color-8",
-          "table-filter__color-9",
-        ],
-        [
-          "table-filter__color-10",
-          "table-filter__color-11",
-          "table-filter__color-12",
-        ],
-      ],
       checkMark: require("@/assets/img/Filter/check-mark.svg"),
     };
   },
-
+  computed: {
+    ...mapGetters("filter", [
+      "rooms",
+      "colors",
+      "pictureTypes",
+      "styles",
+      "sizes",
+    ]),
+   
+  },
   methods: {
+    ...mapActions("filter", [
+      "getRooms",
+      "getStyles",
+      "getPictureTypes",
+      "getSizes",
+      "getColors",
+    ]),
+    logMethod() {
+      console.log(this.rooms);
+      console.log(this.colors);
+      console.log(this.pictureTypes);
+      console.log(this.styles);
+      console.log(this.sizes);
+    },
     toggleFilter() {
       this.isActiveTopCircle = !this.isActiveTopCircle;
       this.isActiveBotCircle = !this.isActiveBotCircle;
@@ -152,6 +151,14 @@ export default {
         this.tableFilterMaxHeight = "0px";
       }
     },
+  },
+  async mounted() {
+    this.getRooms(),
+      this.getStyles(),
+      this.getPictureTypes(),
+      this.getSizes(),
+      this.getColors();
+    this.logMethod();
   },
 };
 </script>
