@@ -1,4 +1,5 @@
 .filter__container {
+    position: relative;
     margin-top: 100px;
 }
 
@@ -7,7 +8,7 @@
 
 // Кнопка фильтра
 .filter__btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     column-gap: 25px;
 
@@ -77,8 +78,8 @@
 
 .filter__btn__txt {
     color: #192965;
-    font-family: "AvenirNextCyr-Bold";
-    font-size: 24px;
+    font-family: $medium;
+    @include adaptiv-font(24, 12);
     font-style: normal;
     font-weight: 700;
     line-height: 44px;
@@ -109,11 +110,17 @@
     align-items: flex-end;
 
     margin-top: 60px;
-    margin-bottom: 84px;
     max-height: 0;
     overflow: hidden;
+    opacity: 0;
 
-    transition: max-height 0.5s ease-out 0.2s;
+    transition: all 0.5s ease-out 0.2s;
+}
+
+.table-filter__visible {
+    overflow: visible;
+    opacity: 1;
+    transition: all 0.5s ease-out 0.2s;
 }
 
 .table-filter__column-pos {
@@ -130,8 +137,8 @@
 
 .table-filter__title {
     color: #1E1E1E;
-    font-family: "AvenirNextCyr-Medium";
-    font-size: 32px;
+    font-family: $medium;
+    @include adaptiv-font(32, 21);
     font-style: normal;
     font-weight: 600;
     line-height: 180%;
@@ -166,7 +173,7 @@
     p {
         color: #1E1E1E;
         font-family: "AvenirNextCyr-Light";
-        font-size: 22px;
+        @include adaptiv-font(22, 15);
         font-style: normal;
         font-weight: 400;
         line-height: 180%;
@@ -236,63 +243,16 @@
     border-radius: 50%;
 }
 
-.table-filter__color-1 {
-    background-color: #85AEFF;
-}
-
-.table-filter__color-2 {
-    background-color: #ADA1A1;
-}
-
-.table-filter__color-3 {
-    background-color: #AEA5B8;
-}
-
-.table-filter__color-4 {
-    background-color: #E7E7CF;
-}
-
-.table-filter__color-5 {
-    background-color: #FEF1CF;
-}
-
-.table-filter__color-6 {
-    background-color: #F9D1FF;
-}
-
-.table-filter__color-7 {
-    background-color: #ADA1A1;
-}
-
-.table-filter__color-8 {
-    background-color: #718482;
-}
-
-.table-filter__color-9 {
-    background-color: #5C808E;
-}
-
-.table-filter__color-10 {
-    background-color: #AA8A8B;
-}
-
-.table-filter__color-11 {
-    background-color: #B3DCD4;
-}
-
-.table-filter__color-12 {
-    background-color: #B3DCD4;
-}
 
 
 
 .table-filter__search-btn {
-    margin-top: 60px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 40px;
 
     color: #1E1E1E;
-    font-family: "AvenirNextCyr-Medium";
-    font-size: 16px;
+    font-family: $medium;
+    @include adaptiv-font(16, 10);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -307,5 +267,205 @@
         transition: all 0.2s linear 0s;
         color: #192965;
         border-color: #192965;
+    }
+}
+
+.reset-filter {
+    color: #192965;
+    font-family: $medium;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    display: none;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .filter__container {
+        padding: 0 20px;
+    }
+
+    .table-filter__column-pos {
+        flex-wrap: wrap;
+        row-gap: 30px;
+    }
+
+    .table-filter__column {
+        row-gap: 30px;
+
+        width: 210px;
+        margin-left: 30px;
+    }
+
+}
+
+@media (max-width: 1220px) {
+    .table-filter__column-pos {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 762px) {
+    .table-filter__container {
+        position: absolute;
+        top: 0px;
+        left: 0;
+
+        width: 80vw;
+
+        align-items: flex-start;
+
+        z-index: 1;
+        background: #F8F8F8;
+    }
+
+    .table-filter__search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 143px;
+        height: 38px;
+
+        margin: 60px 0 60px 30px;
+        padding: 13px 0;
+
+        border-radius: 20px;
+        background: #192965;
+
+        border: none;
+
+        color: #FFFFFF;
+    }
+
+    .table-filter__element {
+        .table-filter__marker {
+            width: 27px;
+            height: 27px;
+
+            img {
+                width: 13px;
+                height: 13px;
+            }
+        }
+    }
+
+    .table-filter__color-active {
+        width: 36px;
+        height: 36px;
+
+        border: #192965 2px solid;
+    }
+
+
+
+    .reset-filter {
+        display: block;
+
+        margin: 25px 0px 10px 65%;
+    }
+
+    .table-filter__column-pos {
+        justify-content: flex-start;
+    }
+
+    .table-filter__color-container {
+        margin-left: 30px;
+    }
+
+    .table-filter__color.active {
+        width: 80%;
+        transition: all .2s;
+        height: 80%;
+    }
+
+
+
+    .table-filter__color {
+        width: 100%;
+        height: 100%;
+        transition: all .2s;
+
+        border-radius: 50%;
+    }
+
+
+
+    // Кнопка фильтра
+    .filter__btn {
+        background-color: #192965;
+        border-radius: 20px;
+        column-gap: 15px;
+
+        margin-bottom: 50px;
+    }
+
+
+    .filter__btn__icon {
+        width: 25px;
+        height: 10px;
+
+        margin-left: 15px;
+
+        .btn_top-line {
+            background-color: #fff;
+
+            .btn_top-circle {
+                position: absolute;
+                top: -2px;
+                left: 3px;
+
+                width: 6px;
+                height: 6px;
+                background-color: #fff;
+            }
+        }
+
+        .btn_bot-line {
+            background-color: #fff;
+
+            .btn_bot-circle {
+                bottom: -2px;
+                right: 3px;
+
+                width: 6px;
+                height: 6px;
+                background-color: #fff;
+            }
+        }
+
+    }
+
+    .filter__btn__txt {
+        color: #fff;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: 3px;
+
+        margin-right: 15px;
+    }
+
+
+
+    .filter__btn-active-top {
+        transform: translateX(13px);
+    }
+
+    .filter__btn-active-bot {
+        transform: translateX(-13px);
+    }
+
+}
+
+@media (max-width: 500px) {
+    .filter__container {
+        margin-top: 40px;
     }
 }

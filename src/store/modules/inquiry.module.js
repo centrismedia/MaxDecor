@@ -16,7 +16,7 @@ export default {
             state
         }, formData) {
             try {
-                const res = await axios.post("/inquiries/inquiry", formData);
+                const res = await axios.post("/en/inquiries/inquiry", formData);
                 commit("setInquiry", res.data);
 
                 return res.data;

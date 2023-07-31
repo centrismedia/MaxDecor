@@ -16,15 +16,13 @@
             type="search"
             name=""
             id="nav_search"
-            :placeholder="$t('search')"
+            placeholder="Поиск..."
           />
-          <button class="nav__search-btn" type="submit">
-            {{ $t("lookFor") }}
-          </button>
+          <button class="nav__search-btn" type="submit">искать</button>
         </div>
 
         <router-link class="nav__login-auth" to="/auth">
-          <p>{{ $t("registrationAuth") }}</p>
+          <p>Регистрация /Авторизация</p>
         </router-link>
       </div>
 
@@ -92,22 +90,120 @@
               class="nav-arrow"
               :class="{ deg180: langContainerIsActive }"
             />
-          </div>
-          <div
-            v-if="langContainerIsActive"
-            class="nav__lang-container_select"
-            :class="{
-              'nav__lang-container_select-active': langContainerIsActive,
-            }"
-          >
-            <p
-              v-for="(lang, index) in filteredLanguages"
-              :key="lang.name"
-              @click.stop="changeHandler(index, lang.value)"
+
+            <div
+              v-if="langContainerIsActive"
+              class="nav__lang-container_select"
+              :class="{
+                'nav__lang-container_select-active': langContainerIsActive,
+              }"
             >
-              {{ lang.name }}
-            </p>
+              <p
+                v-for="(lang, index) in filteredLanguages"
+                :key="lang.name"
+                @click.stop="changeHandler(index, lang.value)"
+              >
+                {{ lang.name }}
+              </p>
+            </div>
           </div>
+        </div>
+
+        <!-- Кнопка открытия меню для телефона -->
+        <div
+          class="nav__btn-phone-menu"
+          @click="toggleMobMenu"
+          :class="{ 'nav__btn-phone-menu-active': mobMenuIsActive }"
+        >
+          <div
+            class="btn-phone-menu__top"
+            :class="{ 'btn-phone-menu__top-active': mobMenuIsActive }"
+          ></div>
+          <div
+            class="btn-phone-menu__mid"
+            :class="{ 'btn-phone-menu__mid-active': mobMenuIsActive }"
+          ></div>
+          <div
+            class="btn-phone-menu__bot"
+            :class="{ 'btn-phone-menu__bot-active': mobMenuIsActive }"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Третья линия (для телефона)-->
+      <div class="nav__third-line">
+        <div class="third-line__search-container">
+          <label class="third-line__search-label" for="third-line_search">
+            <img :src="search" alt="" />
+          </label>
+          <input
+            class="third-line__search-input"
+            type="search"
+            name=""
+            id="third-line_search"
+            placeholder="Поиск..."
+          />
+          <button class="third-line__search-btn" type="submit">искать</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Меню для телефона -->
+    <div class="nav__menu-phone" :class="{ 'display-none': !mobMenuIsActive }">
+      <div
+        class="nav__menu-phone__item-container"
+        :class="{ 'display-none': collectionActive }"
+      >
+        <div
+          class="nav__menu-phone__item-collections"
+          @click="toggleCollection"
+        >
+          Коллекции
+        </div>
+        <div class="nav__menu-phone__item">О фабрике</div>
+        <div class="nav__menu-phone__item">Шоурум</div>
+        <div class="nav__menu-phone__item">Новости</div>
+        <div class="nav__menu-phone__item">Где купить?</div>
+        <div class="nav__menu-phone__item">Контакты</div>
+      </div>
+
+      <div
+        class="nav__menu-phone__collections-container"
+        :class="{ 'display-none': !collectionActive }"
+      >
+        <div class="nav__menu-phone__prev" @click="toggleCollection">Назад</div>
+
+        <div class="nav__menu-phone__collections-item">Bricly</div>
+        <div class="nav__menu-phone__collections-item">Karacum</div>
+        <div class="nav__menu-phone__collections-item">Magik</div>
+        <div class="nav__menu-phone__collections-item">Carat</div>
+        <div class="nav__menu-phone__collections-item">Plants</div>
+      </div>
+
+      <div
+        class="nav__lang-container lang-collections__mob-pos"
+        ref="navLangMob"
+        @click="toggleLangContainerMob"
+        :class="{
+          'nav__lang-container-active': langContainerIsActiveMob,
+          'lang__mob-pos': collectionActive,
+        }"
+      >
+        <p>RU</p>
+        <img
+          :src="arrow"
+          alt=""
+          class="nav-arrow"
+          :class="{ deg180: langContainerIsActiveMob }"
+        />
+        <div
+          class="nav__lang-container_select lang-select__mob"
+          :class="{
+            'nav__lang-container_select-active': langContainerIsActiveMob,
+          }"
+        >
+          <p>EN</p>
+          <p>UZ</p>
         </div>
       </div>
     </div>
@@ -125,10 +221,16 @@ export default {
     bascket: require("@/assets/img/header/header-bascket.svg"),
     menuIsActive: false,
     langContainerIsActive: false,
+    langContainerIsActiveMob: false,
+    mobMenuIsActive: false,
+    collectionActive: false,
     langIndex: parseInt(localStorage.getItem("localeIndex")) || 0,
   }),
   computed: {
     ...mapGetters("collections", ["collections"]),
+    logMethod() {
+      console.log(this.collections);
+    },
     languages: () => [
       {
         name: "RU",
@@ -144,7 +246,6 @@ export default {
   },
   methods: {
     ...mapActions("collections", ["getCollections"]),
-
     changeHandler(index, value) {
       localStorage.setItem("locale", value);
       localStorage.setItem("localeIndex", index); // Store the selected language index
@@ -165,10 +266,11 @@ export default {
         this.langContainerIsActive = false;
       }
     },
-    toggleBasket() {
-      this.$emit("toggle-basket");
+    closeLangMob(event) {
+      if (!this.$refs.navLangMob.contains(event.target)) {
+        this.langContainerIsActiveMob = false;
+      }
     },
-
     async openNews() {
       try {
         await this.$store.dispatch("news/getNews");
@@ -183,22 +285,38 @@ export default {
         console.error("Error fetching news:", error);
       }
     },
+    toggleBasket() {
+      this.$emit("toggle-basket");
+    },
+
     toggleLangContainer() {
       this.langContainerIsActive = !this.langContainerIsActive;
+    },
+
+    toggleLangContainerMob() {
+      this.langContainerIsActiveMob = !this.langContainerIsActiveMob;
+    },
+
+    toggleMobMenu() {
+      this.mobMenuIsActive = !this.mobMenuIsActive;
+    },
+    toggleCollection() {
+      this.collectionActive = !this.collectionActive;
     },
   },
   async mounted() {
     window.addEventListener("click", this.closeDropdown);
     window.addEventListener("click", this.closeLang);
+    window.addEventListener("click", this.closeLangMob);
     await this.getCollections();
   },
 
   beforeDestroy() {
     window.removeEventListener("click", this.closeDropdown);
     window.removeEventListener("click", this.closeLang);
+    window.removeEventListener("click", this.closeLangMob);
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

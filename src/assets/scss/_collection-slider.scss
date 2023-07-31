@@ -22,10 +22,12 @@
     }
 
     .swiper-slide {
-        width: 440px;
+        max-width: 440px;
+        width: 100%;
         height: 575px;
 
         text-align: center;
+
         font-size: 18px;
         background-color: #F3F3F3;
         display: flex;
@@ -57,6 +59,46 @@
             height: 22px;
             width: 22px;
         }
+    }
+
+    .card__figure-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        width: 100%;
+        height: 69px;
+    
+        background: #192965;
+    
+        color: #FFF;
+        font-family: "AvenirNextCyr-Medium";
+        @include adaptiv-font(15, 10);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    
+        transition: all 0.2s linear 0s;
+    
+        cursor: pointer;
+    
+        visibility: hidden;
+        opacity: 0;
+    
+        &:hover {
+            transition: all 0.2s linear 0s;
+            background: #0c1431;
+        }
+    }
+    
+    .active__card-figure-btn {
+        transition: all 0.2s linear 0.1s;
+        visibility: visible;
+        opacity: 1;
     }
 
     .second-slider-prev {
@@ -119,7 +161,7 @@
 .recom__titel {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 28px;
+    @include adaptiv-font(28, 15);
     font-style: normal;
     font-weight: 500;
     line-height: 38px;
@@ -133,4 +175,33 @@
 .swiper-button-disabled {
     transition: all 0.2s linear 0s;
     background: rgba(109, 109, 109, 0.60) !important;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .ss-2 {
+        padding: 100px 20px;
+        margin: 100px 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .ss-2 {
+        padding: 25px 20px;
+        margin: 50px 0;
+        .swiper {
+            height: 450px;
+        }
+    }
+    .recom__container {
+        margin-bottom: 0;
+        .swiper-button__container {
+            display: none;
+        }
+    }
 }

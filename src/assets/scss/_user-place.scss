@@ -5,26 +5,22 @@
     position: relative;
 
     margin-bottom: 100px;
-    margin-top: 161px;
+    margin-top: 40px;
 }
 
 .personalArea__header-title_container {
     display: flex;
-
-
-
-
-
+    column-gap: 80px;
 
     .personalArea-link {
         font-family: "AvenirNextCyr-Regular";
-        font-size: 23px;
+        @include adaptiv-font(23, 14);
         font-style: normal;
         font-weight: 400;
         line-height: 30px;
         color: #1E1E1E;
         cursor: pointer;
-        padding: 40px 110px;
+        padding: 40px 10px;
         position: relative;
         transition: all .4s;
 
@@ -39,11 +35,6 @@
             width: 0;
         }
 
-        &:nth-of-type(1) {
-            padding: 40px 1px;
-            transition: all .4s;
-        }
-
         &.disabled {
             z-index: -1;
             opacity: 0.5;
@@ -53,7 +44,7 @@
         &.active {
             color: #1E1E1E;
             font-family: "AvenirNextCyr-Medium";
-            font-size: 23px;
+            @include adaptiv-font(23, 14);
             font-style: normal;
             font-weight: 600;
             line-height: 30px;
@@ -89,7 +80,10 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.personalArea__table-order {}
+.personalArea__table-order {
+    width: 1470px;
+    margin: 0 auto;
+}
 
 
 // Header таблицы
@@ -104,7 +98,7 @@
     div {
         color: #000;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 18px;
+        @include adaptiv-font(18, 10);
         font-style: normal;
         font-weight: 400;
         line-height: 31px;
@@ -139,20 +133,20 @@
     div {
         color: #707070;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 18px;
+        @include adaptiv-font(18, 10);
         font-style: normal;
         font-weight: 400;
         line-height: 33px;
     }
 
     .table-body_order {
-        font-size: 25px;
+        @include adaptiv-font(25, 12);
     }
 
     .table-body_status {
         color: #192965;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 18px;
+        @include adaptiv-font(18, 10);
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -162,6 +156,8 @@
 
 .table-body__content {
     display: flex;
+    align-items: center;
+
     padding: 25px 0;
 }
 
@@ -214,6 +210,9 @@
 .personalArea-card__container {
     display: flex;
     flex-direction: column;
+
+    max-width: 520px;
+    width: 100%;
 }
 
 .personalArea-card__under-line {
@@ -227,7 +226,8 @@
 
     display: flex;
 
-    width: 520px;
+    max-width: 520px;
+    width: 100%;
     height: 147px;
 
     margin-bottom: 40px;
@@ -260,7 +260,7 @@
 .personalArea-card-item__name {
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 18px;
+    @include adaptiv-font(18, 14);
     font-style: normal;
     font-weight: 600;
     line-height: 26px;
@@ -269,7 +269,7 @@
 .personalArea-card-item__price {
     color: #192965;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 14px;
+    @include adaptiv-font(14, 11);
     font-style: normal;
     font-weight: 500;
     line-height: 27px;
@@ -278,7 +278,7 @@
 .personalArea-card-item__add-basket {
     color: #192965;
     font-family: "AvenirNextCyr-Regular";
-    font-size: 16px;
+    @include adaptiv-font(16, 12);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -322,7 +322,7 @@
         color: #1E1E1E;
         text-align: center;
         font-family: "AvenirNextCyr-Medium";
-        font-size: 20px;
+        @include adaptiv-font(20, 12);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -341,7 +341,7 @@
 
     color: #1E1E1E;
     font-family: "AvenirNextCyr-Medium";
-    font-size: 16px;
+    @include adaptiv-font(16, 9);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -371,6 +371,263 @@
 .personalArea__dis-none {
     display: none !important;
 }
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .personalArea__header {
+        padding: 0 20px;
+    }
+
+    .personalArea__select {
+        padding: 0 20px;
+    }
+
+    .personalArea__table-order {
+        width: 1365px;
+    }
+
+
+
+
+    .table-header_order,
+    .table-body_order {
+        width: 350px;
+    }
+
+    .table-header_date,
+    .table-body_date {
+        width: 260px;
+    }
+
+    .table-header_quantity,
+    .table-body_quantity {
+        width: 280px;
+    }
+
+    .table-header_price,
+    .table-body_price {
+        width: 270px;
+    }
+
+}
+
+@media (max-width: 1370px) {
+
+    .table-header_order,
+    .table-body_order {
+        width: 320px;
+    }
+
+    .table-header_date,
+    .table-body_date {
+        width: 240px;
+    }
+
+    .table-header_quantity,
+    .table-body_quantity {
+        width: 260px;
+    }
+
+    .table-header_price,
+    .table-body_price {
+        width: 250px;
+    }
+
+    .personalArea__table-order {
+        width: 1285px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .table-header_order,
+    .table-body_order {
+        width: 300px;
+    }
+
+    .table-header_date,
+    .table-body_date {
+        width: 200px;
+    }
+
+    .table-header_quantity,
+    .table-body_quantity {
+        width: 240px;
+    }
+
+    .table-header_price,
+    .table-body_price {
+        width: 230px;
+    }
+
+    .personalArea__table-order {
+        width: 1205px;
+    }
+
+    .personalArea__header-title_container {
+        column-gap: 60px;
+
+        .personalArea-link {
+            padding: 30px 10px;
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .personalArea__header {
+        margin-bottom: 60px;
+        margin-top: 20px;
+    }
+
+
+
+    .table-header_order,
+    .table-body_order {
+        width: 280px;
+    }
+
+    .table-header_date,
+    .table-body_date {
+        width: 180px;
+    }
+
+    .table-header_quantity,
+    .table-body_quantity {
+        width: 220px;
+    }
+
+    .table-header_price,
+    .table-body_price {
+        width: 210px;
+    }
+
+    .personalArea__table-order {
+        width: 1125px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .personalArea__header-title_container {
+        column-gap: 40px;
+
+        .personalArea-link {
+            padding: 20px 8px;
+        }
+    }
+
+
+
+    .personalArea__header {
+        margin-bottom: 35px;
+        margin-top: 10px;
+    }
+
+    .table-body__content {
+        padding: 5px 0;
+    }
+
+
+
+    .table-header_order,
+    .table-body_order {
+        width: 240px;
+    }
+
+    .table-header_date,
+    .table-body_date {
+        width: 140px;
+    }
+
+    .table-header_quantity,
+    .table-body_quantity {
+        width: 180px;
+    }
+
+    .table-header_price,
+    .table-body_price {
+        width: 170px;
+    }
+
+    .personalArea__table-order {
+        width: 900px;
+    }
+
+    .personalArea-card__item {
+        height: 100px;
+    }
+
+    .personalArea-card__img {
+        width: 100px;
+        height: 114px;
+
+        img {
+            width: 100px;
+            height: 114px;
+        }
+
+    }
+
+
+    .personalArea__exit {
+        img {
+            width: 100px;
+            height: 100px;
+
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    }
+
+    .personalArea__exit-btn {
+
+        width: 200px;
+        height: 30px;
+
+        margin-top: 60px;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

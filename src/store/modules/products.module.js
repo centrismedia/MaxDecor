@@ -4,8 +4,8 @@ export default {
     namespaced: true,
     state: () => ({
         products: {},
-        infoProduct: {}
-
+        infoProduct: {},
+        filteredProducts: [],
     }),
     mutations: {
         setProducts(state, products) {
@@ -55,6 +55,33 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+        },
+        async applyFilter({
+            commit,
+            state
+        }, filterOptions) {
+            // Implement the filtering logic based on the selected filter options
+            // and update the filteredProducts array in the state accordingly
+
+            const filteredProducts = state.products.filter((product) => {
+                // Implement the filtering logic based on the selected filter options
+                // For example, you can check if product matches the filter options
+
+                const matchesDestination = filterOptions.destination ?
+                    filterOptions.destination.includes(product.destination) :
+                    true;
+
+                const matchesStyle = filterOptions.style ?
+                    filterOptions.style.includes(product.style) :
+                    true;
+
+                // Add other filter conditions based on your data structure and filter options
+
+                return matchesDestination && matchesStyle;
+            });
+
+            commit("setProducts", filteredProducts);
+
         }
     },
     getters: {
@@ -64,5 +91,6 @@ export default {
         infoProduct(state) {
             return state.infoProduct;
         },
+        filteredProducts: (state) => state.filteredProducts,
     },
 };

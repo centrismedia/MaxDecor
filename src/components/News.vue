@@ -1,9 +1,9 @@
 <template>
-  <section class="news-card__container container">
-    <div class="news-card__section-title">Новости</div>
+  <section class="news-card__container container swiper" ref="swiper">
+    <div class="news-card__section-title">{{ pageTitle }}</div>
 
-    <div class="news-card__container-pos">
-      <div class="news_card" v-for="info in news" :key="info.id">
+    <div class="news-card__container-pos swiper-wrapper">
+      <div class="news_card swiper-slide" v-for="info in news" :key="info.id">
         <div class="news-card__img-container">
           <img class="news-card__img" :src="info.photo" alt="" />
         </div>
@@ -14,10 +14,8 @@
           <div class="news-card__body">
             {{ info.subtitle }}
           </div>
-          <a class="news-card__btn" @click="getNewsDetails(info.id)"
-            >подробнее</a
-          >
         </div>
+        <a class="news-card__btn" @click="getNewsDetails(info.id)">подробнее</a>
       </div>
     </div>
   </section>
@@ -26,18 +24,53 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { formatDate } from "@/use/prettify";
+import Swiper, { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 export default {
   data: () => ({
     formatDate,
   }),
   computed: {
     ...mapGetters("news", ["news", "infoNews"]),
+    pageTitle() {
+      // Check if the current route name is "news" and return the appropriate title
+      return this.$route.name === "news"
+        ? this.$t("otherNews")
+        : this.$t("news");
+    },
   },
   methods: {
+    ...mapActions("news", ["getNews", "getInfoNews"]),
+    onWindowResize() {
+      if (this.swiper) {
+        this.swiper.destroy();
+        this.initSwiper();
+      }
+    },
+    initSwiper() {
+      new Swiper(this.$refs.swiper, {
+        modules: [Navigation],
+        loop: true,
+        slidesPerView: 3,
+  
+        grabCursor: true,
+        breakpoints: {
+          1500: {
+            slidesPerView: 3,
+          },
+          762: {
+            slidesPerView: 2,
+          },
+          100: {
+            slidesPerView: 1,
+          },
+        },
+      });
+    },
     logMethods() {
       console.log(this.news);
     },
-    ...mapActions("news", ["getNews", "getInfoNews"]),
 
     async getNewsDetails(newsId) {
       console.log("News ID:", newsId);
@@ -57,11 +90,11 @@ export default {
     },
   },
   async mounted() {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    this.initSwiper();
     this.getNews();
-  
   },
 };
 </script>
-
-<style>
-</style>
+<style></style>

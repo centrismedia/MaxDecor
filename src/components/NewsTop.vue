@@ -13,7 +13,7 @@
 
     <!-- Свайпер -->
     <div>
-      <div class="swiper mySwiper" ref="swiper">
+      <div class="swiper mySwiper news__swiper" ref="swiper">
         <div class="swiper-wrapper">
           <div
             class="swiper-slide"

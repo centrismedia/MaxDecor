@@ -31,13 +31,28 @@
         class="regist__container-form"
         :class="{ 'login_dis-none': isLoginSelected }"
         action=""
+        @submit.prevent="submitRegister"
       >
         <div class="regist__name-cont">
-          <input type="text" name="name" id="name" placeholder=" " required />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder=" "
+            v-model="registerUsername"
+            required
+          />
           <label for="name">Ваше имя</label>
         </div>
         <div class="regist__tel-cont">
-          <input type="tel" name="tel" id="tel" placeholder=" " required />
+          <input
+            type="tel"
+            name="tel"
+            id="tel"
+            placeholder=" "
+            v-model="registerNumber"
+            required
+          />
           <label for="tel">Номер телефона </label>
         </div>
         <div class="regist__email-cont">
@@ -47,6 +62,7 @@
             id="email"
             placeholder=" "
             required
+            v-model="registerEmail"
           />
           <label for="email"> Email</label>
         </div>
@@ -57,6 +73,7 @@
             id="password_1"
             placeholder=" "
             required
+            v-model="registerPassword1"
           />
           <label for="password_1">Пароль</label>
         </div>
@@ -67,6 +84,7 @@
             id="password_2"
             placeholder=" "
             required
+            v-model="registerPassword2"
           />
           <label for="password_2"> Повторите пароль</label>
         </div>
@@ -88,24 +106,26 @@
         class="regist__container-form"
         :class="{ 'login_dis-none': isRegistrationSelected }"
         action=""
+        @submit.prevent="submitLogin"
+        method="post"
       >
         <div class="regist__email-cont">
-          <input type="email" placeholder=" " required />
+          <input type="text" placeholder=" " v-model="username" required />
           <label for="login_email"> Email</label>
         </div>
         <div class="regist__password_1-cont">
-          <input type="password" placeholder=" " required />
+          <input type="password" placeholder=" " v-model="password" required />
           <label for="login_password">Пароль</label>
         </div>
 
         <div class="regist__agreement-cont">
-          <input type="checkbox" required />
+          <input type="checkbox"  />
           <label for="remember">запомните меня</label>
         </div>
 
-        <router-link to="/user" class="regist__btn-sub" type="submit">
+        <button @click="submitLogin()" class="regist__btn-sub" type="submit">
           войти
-        </router-link>
+        </button>
         <a class="regist__btn-recover-pas" href="">Забыли пароль?</a>
       </form>
     </div>
@@ -113,15 +133,73 @@
 </template>
 
 <script>
+import axios from "axios";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
       title: "Мой аккаунт",
       isRegistrationSelected: false,
       isLoginSelected: true,
+      username: "",
+      password: "",
+      registerUsername: "",
+      registerNumber: "",
+      registerEmail: "",
+      registerPassword1: "",
+      registerPassword2: "",
     };
   },
+  computed: {
+    ...mapGetters("auth", ["loginError"]),
+  },
   methods: {
+    submitRegister(e) {
+      const formData = {
+        username: this.registerUsername,
+        first_name: this.registerUsername,
+        last_name: this.registerUsername,
+        phone_number: this.registerNumber,
+        email: this.registerEmail,
+        password1: this.registerPassword1,
+        password2: this.registerPassword2,
+      };
+      axios
+        .post("/users/register/", formData)
+        .then((response) => {
+          console.log(response);
+          const token = response.data.access;
+          this.$store.commit("setToken", token);
+          axios.defaults.headers.common["Authorization"] = "Token" + token;
+          localStorage.setItem("token", token);
+          this.$router.push("/user");
+        })
+        .catch((error) => {
+          console.log(error);
+          this.username = "";
+          this.password = "";
+        });
+    },
+    async submitLogin(e) {
+      const formData = { username: this.username, password: this.password };
+      axios
+        .post("/token/", formData)
+        .then((response) => {
+          console.log(response);
+          const token = response.data.access;
+          this.$store.commit("setToken", token);
+          axios.defaults.headers.common["Authorization"] = "Token" + token;
+          localStorage.setItem("token", token);
+          this.$router.push("/user");
+        })
+        .catch((error) => {
+          console.log(error);
+          this.username = "";
+          this.password = "";
+        });
+    },
+    suibmitRegistration() {},
+
     selectLogin() {
       const loginBtnSelectBgr = this.$refs.loginBtnSelectBgr;
 

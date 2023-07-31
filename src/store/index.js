@@ -9,6 +9,7 @@ import news from "./modules/news.module";
 import inquiry from "./modules/inquiry.module";
 import filter from "./modules/filter.module";
 import cart from "./modules/cart.module";
+import auth from "./modules/auth.module";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     products,
     cart,
     news,
-    filter
+    filter,
+    auth
   },
   state: {},
   getters: {},

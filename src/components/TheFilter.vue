@@ -16,14 +16,17 @@
           ></div>
         </div>
       </div>
-      <div class="filter__btn__txt">{{ $t("filter") }}</div>
+      <div class="filter__btn__txt">FILTER</div>
     </div>
 
     <!-- Таблица фильтра -->
     <div
       class="table-filter__container"
+      :class="{ 'table-filter__visible': isActiveTopCircle }"
       :style="{ maxHeight: tableFilterMaxHeight }"
+      ref="tableFilterContainer"
     >
+      <div class="reset-filter">СБРОСИТЬ ВСЁ</div>
       <div class="table-filter__column-pos">
         <div class="table-filter__column">
           <p class="table-filter__title">{{ $t("destination") }}</p>
@@ -123,7 +126,7 @@
           </div>
         </div>
       </div>
-      <div class="table-filter__search-btn">Подобрать</div>
+      <div class="table-filter__search-btn" @click="applyFilter()">Подобрать</div>
     </div>
   </section>
 </template>
@@ -163,6 +166,19 @@ export default {
       "getSizes",
       "getColors",
     ]),
+    applyFilter() {
+      // Gather the selected filter options
+      const filterOptions = {
+        destination: this.activeMarksDestination,
+        style: this.activeMarksStyle,
+        pictures: this.activeMarksPictures,
+        sizes: this.activeMarksSizes,
+        colors: this.activeColors,
+      };
+
+      // Dispatch the action to apply the filter
+      this.applyFilter(filterOptions);
+    },
     logMethod() {
       console.log(this.rooms);
       console.log(this.colors);
@@ -238,7 +254,7 @@ export default {
       this.isActiveBotCircle = !this.isActiveBotCircle;
 
       if (this.isActiveTopCircle) {
-        this.tableFilterMaxHeight = `${600}px`;
+        this.tableFilterMaxHeight = `${this.$refs.tableFilterContainer.scrollHeight}px`;
       } else {
         this.tableFilterMaxHeight = "0px";
       }

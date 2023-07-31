@@ -153,6 +153,17 @@ export default {
       slidesPerView: 3,
       spaceBetween: 70,
       spaceBetween: 54,
+      breakpoints: {
+        1500: {
+          slidesPerView: 3,
+        },
+        1000: {
+          slidesPerView: 2,
+        },
+        100: {
+          slidesPerView: 1,
+        },
+      },
       grabCursor: true,
       navigation: {
         nextEl: ".second-slider-next",
@@ -174,5 +185,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

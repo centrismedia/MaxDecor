@@ -67,3 +67,54 @@
         background-color: #fff;
     }
 }
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .player__container {
+        height: 600px;
+
+        .main__video {
+            height: 600px;
+        }
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .player__container {
+        height: 500px;
+
+        .main__video {
+            height: 500px;
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .player__container {
+        height: 400px;
+
+        .main__video {
+            height: 400px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .player__container {
+        height: 320px;
+        
+        margin-top: 50px;
+
+        .main__video {
+            height: 320px;
+        }
+    }
+}

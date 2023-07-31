@@ -1,7 +1,7 @@
 <template>
   <section class="personalArea__table-order">
     <!-- Header таблицы -->
-    <div class="personalArea__table-header container">
+    <div class="personalArea__table-header">
       <div class="table-header_order">заказаз</div>
       <div class="table-header_date">дата</div>
       <div class="table-header_quantity">Колличество</div>
@@ -10,7 +10,7 @@
     </div>
 
     <!-- Body таблицы -->
-    <div class="personalArea__table-body container">
+    <div class="personalArea__table-body">
       <div class="table-body__row">
         <div class="table-body__content">
           <div class="table-body_order">Коллекция Bricly</div>

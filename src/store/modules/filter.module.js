@@ -112,6 +112,9 @@ export default {
         sizes(state) {
             return state.sizes;
         },
+        styles(state) {
+            return state.styles;
+        },
         colors(state) {
             return state.colors;
         },

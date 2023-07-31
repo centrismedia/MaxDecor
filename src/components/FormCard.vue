@@ -3,7 +3,7 @@
     <div class="form__container-pos container">
       <div class="form__title">Оставить заявку</div>
 
-      <form class="form__container" action="">
+      <form class="form__container" action="" @submit.prevent="submitHandler()">
         <div class="form__name-cont">
           <label for="name">Ваше имя*</label>
           <input type="text" name="name" id="name" required v-model="name" />
@@ -30,7 +30,7 @@
           />
         </div>
 
-        <a class="form__btn-subm" @click="submitHandler()"> Отправить </a>
+        <button type="submit" class="form__btn-subm">Отправить</button>
       </form>
 
       <div class="form__img-decor">
@@ -59,35 +59,36 @@ export default {
   },
   methods: {
     ...mapActions("inquiry", ["addInquiry"]),
-    async submitHandler() {
-      try {
-        // Perform form validation here (optional)
-        if (!this.name || !this.phoneNumber) {
-          alert("Please fill in all required fields.");
-          return;
-        }
+    submitHandler() {
+      const formData = {
+        full_name: this.name,
+        phone_number: this.phoneNumber,
+        email: this.email,
+      };
+      const jsonFormData = JSON.stringify(formData);
 
-        // Create an object with the form data
-        const formData = {
-          full_name: this.name,
-          pho: this.phoneNumber,
-          email: this.email,
-        };
+      // Send the POST request using Axios with proper headers
+      axios
+        .post("/inquiries/inquiry/", jsonFormData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          // Handle the response if needed
+          // Reset form fields after successful form submission
+          this.name = "";
+          this.phoneNumber = "";
+          this.email = "";
 
-        // Send the POST request using Axios
-        const response = await axios.post("/inquiries/inquiry", formData);
-        // Handle the response if needed
+          alert("Inquiry submitted successfully!");
+        })
+        .catch((error) => {
+          // Handle error if needed
+          console.log(jsonFormData);
 
-        // Reset form fields after successful form submission
-        this.name = "";
-        this.phoneNumber = "";
-        this.email = "";
-
-        alert("Inquiry submitted successfully!");
-      } catch (error) {
-        // Handle error if needed
-        alert("Error submitting inquiry: " + error.message);
-      }
+          alert("Error submitting inquiry: " + error.message);
+        });
     },
   },
 };

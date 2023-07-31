@@ -19,13 +19,15 @@
           </div>
           <div class="basket__body">
             <div class="basket-item__name">{{ item.collection }}</div>
-            <div class="basket-item__price">{{ item.price }}</div>
+            <div class="basket-item__price">
+              {{ itemTotalPrice(item) }}
+            </div>
           </div>
 
           <div class="basket__quantity">
-            <div class="basket__minus">-</div>
+            <div class="basket__minus" @click="decrementCartItem(index)">-</div>
             <div>{{ item.quantity }}</div>
-            <div class="basket__plus">+</div>
+            <div class="basket__plus" @click="incrementCartItem(index)">+</div>
           </div>
 
           <div class="basket-item__delete" @click="deleteCartItem(index)">
@@ -59,9 +61,21 @@ export default {
     basketFirstImg: require("@/assets/img/basket/basket_BIG_img.png"),
     cartData: [],
   }),
+  computed: {
+    cartTotalPrice() {
+      return this.cartData
+        .reduce((total, item) => {
+          return total + item.price * item.quantity;
+        }, 0)
+        .toFixed(2);
+    },
+  },
   methods: {
     toggleBasket() {
       this.$emit("toggle-basket");
+    },
+    itemTotalPrice(item) {
+      return (item.price * item.quantity).toFixed(2); // Assuming price is in float or decimal format
     },
     logMethod() {
       console.log(this.getCartDataFromCookie.photo);
@@ -78,6 +92,17 @@ export default {
         cart[index].quantity = newQuantity; // Update the quantity for the specific item
         this.updateCartInCookie(cart); // Save the updated cart back to the cookie
       }
+    },
+    decrementCartItem(index) {
+      const newQuantity = this.cartData[index].quantity - 1;
+      if (newQuantity >= 1) {
+        this.updateCartItemQuantity(index, newQuantity);
+      }
+    },
+
+    incrementCartItem(index) {
+      const newQuantity = this.cartData[index].quantity + 1;
+      this.updateCartItemQuantity(index, newQuantity);
     },
 
     // Method to save the updated cart data to the cookie

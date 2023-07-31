@@ -1,5 +1,5 @@
 .nav__container {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
 
@@ -7,7 +7,7 @@
 
     z-index: 12;
 
-    background-color: #FBFBFB;
+    background-color: #fbfbfb;
 }
 
 .nav__container-pos {
@@ -15,9 +15,7 @@
     flex-direction: column;
 }
 
-
 .nav__select-click {
-
     &::before {
         position: absolute;
         content: "";
@@ -38,8 +36,7 @@
 
     height: 72px;
 
-    border-bottom: solid 1px #DFDFE0;
-    ;
+    border-bottom: solid 1px #dfdfe0;
 }
 
 .nav__logo-container {
@@ -54,8 +51,6 @@
     height: 50px;
 }
 
-
-
 .nav__search-container {
     display: flex;
     align-items: center;
@@ -66,11 +61,10 @@
     height: 44px;
 
     border-radius: 30px;
-    background-color: #F0F1F2;
+    background-color: #f0f1f2;
 }
 
 .nav__search-label {
-
     margin: 2px 0 0 5px;
 
     cursor: pointer;
@@ -82,7 +76,6 @@
 }
 
 .nav__search-input {
-
     max-width: 450px;
     width: 100%;
     height: 20px;
@@ -90,7 +83,7 @@
     border: none;
     outline: none;
 
-    background-color: #F0F1F2;
+    background-color: #f0f1f2;
 }
 
 .nav__search-btn {
@@ -102,9 +95,9 @@
 
     background: #192965;
 
-    color: #FFF;
+    color: #fff;
     text-align: center;
-    font-size: 12px;
+    @include adaptiv-font(12, 10);
     font-family: $regular;
     font-style: normal;
     font-weight: 400;
@@ -119,8 +112,6 @@
     }
 }
 
-
-
 .nav__login-auth {
     display: flex;
     align-items: center;
@@ -131,7 +122,7 @@
     height: 48px;
 
     border-radius: 30px;
-    background: #E3EBFD;
+    background: #e3ebfd;
 
     transition: all 0.2s linear 0s;
 
@@ -141,30 +132,15 @@
     }
 
     p {
-        color: #1E1E1E;
+        color: #1e1e1e;
         text-align: center;
-        font-size: 12px;
+        @include adaptiv-font(12, 9);
         font-family: $medium;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Вторая линия nav
 .nav__second-line {
@@ -176,20 +152,16 @@
     height: 72px;
 }
 
-
-
-
-
 // Навигация
 .nav__nav {
     display: flex;
     column-gap: 40px;
 
     a {
-        width: 85px;
+       
 
-        color: #1E1E1E;
-        font-size: 14px;
+        color: #1e1e1e;
+        @include adaptiv-font(14, 10);
         font-family: $regular;
         font-style: normal;
         font-weight: 400;
@@ -199,7 +171,7 @@
 
         &:hover {
             color: #192965;
-            font-size: 14px;
+            @include adaptiv-font(14, 10);
             font-family: $bold;
             font-style: normal;
             font-weight: 700;
@@ -212,10 +184,10 @@
         display: flex;
         align-items: center;
 
-        width: 115px;
+        width: 130px;
 
-        color: #1E1E1E;
-        font-size: 14px;
+        color: #1e1e1e;
+        @include adaptiv-font(14, 10);
         font-family: $regular;
         font-style: normal;
         font-weight: 400;
@@ -232,31 +204,27 @@
 
         &:hover {
             color: #192965;
-            font-size: 14px;
+            @include adaptiv-font(14, 10);
             font-family: $bold;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
-
         }
     }
-
 }
 
 .active_a {
     color: #192965;
-    font-size: 14px;
+    @include adaptiv-font(14, 10);
     font-family: $bold;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 
-
 // Выпадающее меню навигации nav
 
 .nav__drop-menu-container {
-
     position: absolute;
     top: 71px;
     left: 0;
@@ -269,10 +237,9 @@
 
     overflow-y: auto;
 
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 
     border-radius: 0 0 8px 8px;
-
 
     opacity: 0;
     visibility: hidden;
@@ -282,8 +249,8 @@
         padding: 13px 14px;
         margin: 8px 11px;
 
-        color: #1E1E1E;
-        font-size: 12px;
+        color: #1e1e1e;
+        @include adaptiv-font(12, 9);
         font-family: $medium;
         font-style: normal;
         font-weight: 550;
@@ -294,7 +261,7 @@
         transition: all 0.1s linear 0s;
 
         &:hover {
-            background: #E3EBFD;
+            background: #e3ebfd;
             transition: all 0.1s linear 0s;
         }
     }
@@ -314,7 +281,6 @@
     transition: all 0.2s ease 0s;
 }
 
-
 // Стилизация полосы прокрутки выпадающего меню в nav
 
 .nav__drop-menu-container {
@@ -323,7 +289,6 @@
 
     &::-webkit-scrollbar {
         width: 12px;
-
     }
 
     &::-webkit-scrollbar-track {
@@ -337,18 +302,6 @@
         border: 3px solid #fff;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Правый контейнер второй линии
 .nav__second-line__right-container {
@@ -370,7 +323,7 @@
     align-items: center;
 
     border-radius: 30px;
-    background: #E3EBFD;
+    background: #e3ebfd;
 
     transition: all 0.2s linear 0s;
 
@@ -403,11 +356,12 @@
 }
 
 .nav__lang-container {
+    position: relative;
+
     display: flex;
     align-items: center;
-
-    position: relative;
     column-gap: 6px;
+
     width: 80px;
 
     border-radius: 14px;
@@ -418,14 +372,14 @@
 
     &:hover {
         transition: all 0.2s ease-in-out 0s;
-        background-color: #E3EBFD;
+        background-color: #e3ebfd;
     }
 
     p {
         margin-left: 17px;
 
-        color: #1E1E1E;
-        font-size: 24px;
+        color: #1e1e1e;
+        @include adaptiv-font(24, 15);
         font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 450;
@@ -444,16 +398,15 @@
 .nav__lang-container_select {
     position: absolute;
     top: 47px;
-    left: 174px;
+    left: 0px;
 
     display: flex;
     flex-direction: column;
 
-
     width: 80px;
     height: 108px;
 
-    background-color: #E3EBFD;
+    background-color: #e3ebfd;
 
     border-radius: 0 0 14px 14px;
 
@@ -468,8 +421,8 @@
         margin-left: 6px;
         margin-right: 6px;
 
-        color: #1E1E1E;
-        font-size: 24px;
+        color: #1e1e1e;
+        @include adaptiv-font(24, 15);
         font-family: "AvenirNextCyr-Medium";
         font-style: normal;
         font-weight: 450;
@@ -506,5 +459,381 @@
     transition: all 0.2s ease-in-out 0s;
 
     border-radius: 14px 14px 0 0;
-    background-color: #E3EBFD;
+    background-color: #e3ebfd;
 }
+
+
+
+
+
+
+
+// Строка поиска для телефона (третья линия)
+
+
+.nav__third-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 63px;
+
+    display: none;
+}
+
+
+
+.third-line__search-container {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 44px;
+
+    border-radius: 30px;
+    background-color: #f0f1f2;
+}
+
+.third-line__search-label {
+    margin: 2px 10px 0 20px;
+
+    cursor: pointer;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.third-line__search-input {
+    width: 100%;
+    height: 20px;
+
+    margin-right: 10px;
+
+    border: none;
+    outline: none;
+
+    background-color: #f0f1f2;
+}
+
+.third-line__search-btn {
+    width: 88px;
+    height: 34px;
+
+    margin-right: 10px;
+
+    border-radius: 24px;
+    border: none;
+
+    background: #192965;
+
+    color: #fff;
+    text-align: center;
+    @include adaptiv-font(12, 10);
+    font-family: $regular;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: lowercase;
+
+    transition: all 0.2s linear 0s;
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+        background: #0e1636;
+    }
+}
+
+
+
+// Кнопка меню для телефона
+
+.nav__btn-phone-menu {
+    position: absolute;
+    top: 11px;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out 0s;
+
+    display: none;
+}
+
+
+.btn-phone-menu__top,
+.btn-phone-menu__mid,
+.btn-phone-menu__bot {
+    width: 35px;
+    height: 3px;
+    border-radius: 50px;
+    background-color: #192965;
+
+    transition: all 0.2s ease-in-out 0s;
+}
+
+
+// При клике на "nav__btn-phone-menu" дожны добавляться эти классы
+.nav__btn-phone-menu-active {
+    transform: translateY(-14px);
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.btn-phone-menu__top-active,
+.btn-phone-menu__bot-active,
+.btn-phone-menu__mid-active {
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.btn-phone-menu__top-active {
+    transform: rotate(45deg) translate(6px, 4px);
+}
+
+.btn-phone-menu__bot-active {
+    transform: rotate(-45deg) translate(7px, -5px);
+}
+
+.btn-phone-menu__mid-active {
+    transform: scale(0);
+}
+
+
+
+
+//Меню для телефона 
+
+.nav__menu-phone {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #F8F8F8;
+}
+
+.nav__menu-phone__prev {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    color: #000;
+    font-family: $medium;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    border-bottom: #000 2px solid;
+}
+
+.nav__menu-phone__item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+
+    margin-top: 140px;
+}
+
+.nav__menu-phone__item-collections {
+    color: #192965;
+    font-family: $medium;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.nav__menu-phone__item {
+    color: #1E1E1E;
+    font-family: $medium;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.lang__mob-pos {
+    margin: 15px 0 110px 35px !important;
+}
+
+
+
+
+
+
+
+
+
+.nav__menu-phone__collections-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+
+    overflow-y: auto;
+
+    margin-left: 50px;
+    margin-top: 160px;
+}
+
+.nav__menu-phone__collections-item {
+    color: #1E1E1E;
+    font-family: $regular;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 38px;
+}
+
+.display-none {
+    display: none;
+}
+
+
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 1500px) {
+    .nav__container-pos {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .nav__search-container {
+        margin: 0 10px;
+    }
+
+    .nav__search-label {
+        margin: 0 20px;
+    }
+
+    .nav__search-btn {
+        margin: 0 10px;
+    }
+
+    .nav__login-auth {
+        max-width: 190px;
+    }
+
+    .nav__nav {
+        column-gap: 0px;
+    }
+
+    .nav__nav-arrow {
+        top: 25px !important;
+        right: 30px !important;
+    }
+
+
+    .nav__second-line__right-container {
+        column-gap: 10px;
+    }
+}
+
+@media (max-width: 762px) {
+    .nav__container {
+        z-index: 15;
+    }
+    .nav__third-line {
+        display: flex;
+    }
+
+    .nav__search-container {
+        display: none;
+    }
+
+    .nav__nav {
+        display: none;
+    }
+
+    .nav__lang-container {
+        display: none;
+    }
+
+    .lang-collections__mob-pos {
+        display: flex;
+        margin: 20px auto;
+        transition: none;
+
+        p {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+    }
+
+    // .lang__mob-pos {
+    //     display: flex;
+    //     height: 50px;
+    //     margin: 15px 0 0 35px;
+    // }
+
+    .lang-select__mob {
+        height: 90px;
+    }
+
+    .nav__second-line__icon-container {
+        column-gap: 23px;
+    }
+
+    .nav__first-line {
+        height: 52px;
+    }
+
+    .nav__second-line {
+        height: 52px;
+    }
+
+    .nav__basket,
+    .nav__select {
+        width: 36px;
+        height: 36px;
+
+        img {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .nav__logo-container {
+        width: 85px;
+        height: 36px;
+
+        img {
+            width: 85px;
+            height: 36px;
+        }
+    }
+
+    .nav__login-auth {
+        max-width: 165px;
+        height: 37px;
+    }
+
+    .nav__btn-phone-menu {
+        display: flex;
+        z-index: 15;
+    }
+
+    .third-line__search-btn {
+        padding: 0 25px;
+    }
+
+}
+

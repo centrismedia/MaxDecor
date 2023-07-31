@@ -12,12 +12,14 @@
     <!-- Контейнер карточек -->
     <section class="checkout-card__container container">
       <div class="checkout-card__item" v-for="order in orders" :key="order.id">
-        <div class="checkout-card__img">
-          <img :src="order.img" alt="" />
-        </div>
-        <div class="checkout-card__body">
-          <div class="checkout-card-item__name">{{ order.name }}</div>
-          <div class="checkout-card-item__price">{{ order.price }}</div>
+        <div class="checkout-card__img-name__position">
+          <div class="checkout-card__img">
+            <img :src="order.img" alt="" />
+          </div>
+          <div class="checkout-card__body">
+            <div class="checkout-card-item__name">{{ order.name }}</div>
+            <div class="checkout-card-item__price">{{ order.price }}</div>
+          </div>
         </div>
 
         <div class="checkout-card__quantity">
@@ -113,7 +115,7 @@
               value="Pickup"
               v-model="reception"
             />
-            <label for="sam"> Самовывоз </label>
+            <label for="reception1"> Самовывоз </label>
           </div>
 
           <div class="form__receiving-row">
@@ -123,7 +125,7 @@
               value="Delivery"
               v-model="reception"
             />
-            <label for="dos"> Доставка </label>
+            <label for="reception2"> Доставка </label>
           </div>
         </div>
 
@@ -140,7 +142,7 @@
               value="uponКeceipt"
               v-model="payment"
             />
-            <label for="nal"> Наличными или картой при получении </label>
+            <label for="payment1"> Наличными или картой при получении </label>
           </div>
 
           <div class="form__receiving-row">
@@ -150,7 +152,7 @@
               value="Payme"
               v-model="payment"
             />
-            <label for="pay"> Payme </label>
+            <label for="payment2"> Payme </label>
           </div>
 
           <div class="form__receiving-row">
@@ -160,7 +162,7 @@
               value="Uzum bank"
               v-model="payment"
             />
-            <label for="uzu"> Uzum bank </label>
+            <label for="payment3"> Uzum bank </label>
           </div>
         </div>
       </form>
@@ -229,17 +231,17 @@ export default {
       {
         img: require("@/assets/img/basket/basket_BIG_img.png"),
         name: "Bricly",
-        price: "545 000сум",
+        price: "545 000 сум",
       },
       {
         img: require("@/assets/img/basket/basket_BIG_img.png"),
         name: "Bricly",
-        price: "545 000сум",
+        price: "545 000 сум",
       },
       {
         img: require("@/assets/img/basket/basket_BIG_img.png"),
         name: "Bricly",
-        price: "545 000сум",
+        price: "545 000 сум",
       },
     ],
     reception: null,

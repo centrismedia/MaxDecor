@@ -1,7 +1,7 @@
 .login__container {
     display: flex;
     justify-content: center;
-    margin: 200px auto 100px auto;
+    margin: 70px auto 50px auto;
 }
 
 .login__container-pos {
@@ -307,7 +307,7 @@ input:not(:placeholder-shown)+label {
 
 
     label {
-        font-size: 13.486px; 
+        font-size: 15px; 
         margin-left: 20px;
         display: flex;
     }
@@ -370,4 +370,66 @@ input:not(:placeholder-shown)+label {
     transition: all 0.3s ease-out 0.1s;
     visibility: hidden;
     opacity: 0;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width:762px) {
+    .login__container {
+        transform: scale(0.9);
+    }
+    .login__container {
+        margin: 20px auto 10px auto;
+    }
+}
+
+@media (max-width:560px) {
+    .login__container {
+        transform: scale(0.8);
+    }
+    .login__container {
+        margin: 0px auto 10px auto;
+    }
+    .regist__btn-sub {
+        height: 70px;
+    }
+}
+
+@media (max-width:480px) {
+    .login__container {
+        transform: scale(0.7);
+    }
+    .login__container {
+        margin: 0;
+        margin-top: -70px;
+    }
+    .login__mob-container {
+        height: 750px;
+    }
+
+}
+
+@media (max-width:400px) {
+    .login__container {
+        transform: scale(0.6);
+    }
+    .login__container {
+        margin: 0;
+        margin-top: -120px;
+    }
+    .login__mob-container {
+        height: 650px;
+    }
+
+}
+
+@media (max-width:350px) {
+    .login__container {
+        transform: scale(0.5);
+    }
+
 }

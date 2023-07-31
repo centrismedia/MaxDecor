@@ -1,16 +1,10 @@
 <template>
   <div class="app" ref="app">
     <Navbar :basketOpen="basketOpen" @toggle-basket="toggleBasket" />
-    <Basket
-      :class="{ open_aside: basketOpen }"
-      @toggle-basket="toggleBasket"
-    />
+    <Basket :class="{ open_aside: basketOpen }" @toggle-basket="toggleBasket" />
     <div class="app-page">
       <transition name="fade" mode="out-in">
-        <router-view
-          @toggle-favorite-icon="toggleFavoriteIcon"
-         
-        ></router-view>
+        <router-view @toggle-favorite-icon="toggleFavoriteIcon"></router-view>
       </transition>
     </div>
     <Footer></Footer>
@@ -18,7 +12,6 @@
 </template>
 
 <script>
-import Cookies from "js-cookie";
 import Navbar from "@/components/TheNavbar.vue";
 import Footer from "@/components/Footer.vue";
 import Basket from "@/components/Basket.vue";
@@ -32,15 +25,12 @@ export default {
   data() {
     return {
       basketOpen: false,
-      cartData: [],
     };
   },
   methods: {
     toggleBasket() {
       this.basketOpen = !this.basketOpen;
     },
-  
-
     toggleFavoriteIcon(index) {
       const navSelect = document.querySelector(".nav__select");
       if (navSelect) {

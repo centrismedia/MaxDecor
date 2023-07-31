@@ -8,6 +8,7 @@
 .footer__container-pos {
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .footer__body {
@@ -32,6 +33,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 25px;
+
+    margin-right: 25px;
 }
 
 
@@ -117,8 +120,10 @@
 // Второй столбец
 .footer__links-cont {
     display: flex;
+    justify-content: space-between;
 
-    column-gap: 145px;
+    max-width: 700px;
+    width: 100%;
 }
 
 .footer__links-collections,
@@ -126,6 +131,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 15px;
+
+    margin-right: 25px;
 
     p {
         margin-bottom: 15px;
@@ -164,4 +171,57 @@
 
     }
 
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Медиазапросы
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (max-width: 762px) {
+    .footer__container-pos {
+        align-items: center;
+        row-gap: 65px;
+    }
+
+    .footer__body {
+        flex-direction: column;
+        row-gap: 85px;
+    }
+
+    .footer__contacts {
+        align-items: center;
+    }
+
+    .footer__links-cont {
+        flex-direction: column;
+        row-gap: 55px;
+
+        order: -1;
+    }
+
+    .footer__address-1,
+    .footer__address-2 {
+        text-align: center;
+    }
+
+    .footer__links-collections,
+    .footer__links-hits,
+    .footer__aoq {
+        align-items: center;
+    }
+
+    .footer__social {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__contacts,
+    .footer__links-collections,
+    .footer__links-hits {
+        margin-right: 0px;
+    }
 }

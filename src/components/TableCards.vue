@@ -33,7 +33,7 @@
         <div class="card__body">
           <div class="card__body-subtitle">{{ $t("collection") }}</div>
           <div class="card__body-title">{{ card.get_collection }}</div>
-          <div class="card__body-price">{{ card.price }}</div>
+          <div class="card__body-price">{{ prettifySum(card.price) }}</div>
         </div>
       </div>
 
@@ -62,13 +62,15 @@
 <script>
 import Cookies from "js-cookie";
 import { mapActions, mapGetters } from "vuex";
+import { prettifySum } from "@/use/prettify";
 export default {
   data: () => ({
     productionIcon: require("@/assets/img/cards/card-product-icon.svg"),
     paginationArrow: require("@/assets/img/cards/pagination_arrow.svg"),
+    prettifySum,
   }),
   computed: {
-    ...mapGetters("products", ["products", "infoProduct"]),
+    ...mapGetters("products", ["products", "infoProduct", "filteredProducts"]),
     ...mapGetters("collections", ["collections"]),
     totalPages() {
       // Calculate the total number of pages based on the number of cards per page
@@ -78,7 +80,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("products", ["getProducts", "getInfoProduct"]),
+    ...mapActions("products", ["getProducts", "getInfoProduct", "applyFilter"]),
     ...mapActions("collections", ["getCollections"]),
     logMethod() {
       console.log(this.products);
@@ -161,7 +163,18 @@ export default {
     },
   },
   async mounted() {
-    this.getProducts();
+    // Check if the device is mobile (width <= 767px)
+    const isMobileDevice = window.matchMedia("(max-width: 767px)").matches;
+
+    // Fetch the products or check if it's available before using it
+    try {
+      await this.getProducts(); // Assuming getProducts is an asynchronous action
+      this.products.forEach((card) => {
+        card.isActive = isMobileDevice;
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   },
 };
 </script>
