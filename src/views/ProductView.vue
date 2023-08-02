@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <Basket :basketOpen="basketOpen" />
-    <VideoSlider />
-    <InfoProduct
+    <Basket data-aos="fade-up" :basketOpen="basketOpen" />
+    <VideoSlider data-aos="fade-up" />
+    <InfoProduct data-aos="fade-up"
       :hero="hero"
       
       @update-hero-image="updateHeroImage"
     />
-    <ProductsSlider @update-hero-image="updateHeroImage" />
-    <CollectionSlider />
-    <News />
-    <FormCard />
+    <ProductsSlider data-aos="fade-up" @update-hero-image="updateHeroImage" />
+    <CollectionSlider data-aos="fade-up" />
+    <News data-aos="fade-up" />
+    <FormCard data-aos="fade-up" />
   </div>
 </template>
 

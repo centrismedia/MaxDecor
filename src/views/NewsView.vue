@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <Basket :basketOpen="basketOpen" />
-    <NewsTop />
-    <News />
-    <FormCard />
+    <Basket data-aos="fade-up" :basketOpen="basketOpen" />
+    <NewsTop data-aos="fade-up" />
+    <News data-aos="fade-up" />
+    <FormCard data-aos="fade-up" />
   </div>
 </template>
 

@@ -3,27 +3,29 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: () => ({
-        collections: {},
+        orders: {},
 
 
     }),
     mutations: {
-        setCollections(state, collections) {
-            state.collections = collections;
+        setOrders(state, orders) {
+            state.orders = orders;
         }
     },
     actions: {
-        async getCollections({
+        async getOrders({
             commit,
             state
         }) {
             state.isLoading = true;
             try {
-                const res = await axios.get("/store/collections/list/");
+                const res = await axios.get("/orders/list/", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    }
+                });
                 if (res.status === 200) {
-                    commit("setCollections", res.data);
-                    console.log(res.data);
-
+                    commit("setOrders", res.data);
                 }
             } catch (error) {
                 console.error(error);
@@ -31,8 +33,8 @@ export default {
         },
     },
     getters: {
-        collections(state) {
-            return state.collections;
+        orders(state) {
+            return state.oreders;
         },
     },
 };

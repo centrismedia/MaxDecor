@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <Header />
-    <Banner />
-    <Company />
-    <News />
-    <FormCard />
+    <Banner data-aos="fade-up" />
+    <Company data-aos="fade-up" />
+    <News data-aos="fade-up" />
+    <FormCard data-aos="fade-up" />
   </div>
 </template>
 

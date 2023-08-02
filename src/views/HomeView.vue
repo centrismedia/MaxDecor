@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Header />
+    <Header  />
     <TheFilter />
-    <TableCards />
-    <VideoPlayer />
-    <News />
-    <FormCard />
+    <TableCards  />
+    <VideoPlayer data-aos="fade-up"  data-aos-duration="1000"/>
+    <News data-aos="fade-up" data-aos-duration="1000" />
+    <FormCard data-aos="fade-up" data-aos-duration="1000" />
   </div>
 </template>
 

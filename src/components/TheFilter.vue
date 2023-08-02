@@ -126,7 +126,9 @@
           </div>
         </div>
       </div>
-      <div class="table-filter__search-btn" @click="applyFilter()">Подобрать</div>
+      <div class="table-filter__search-btn" @click="applyFilter()">
+        Подобрать
+      </div>
     </div>
   </section>
 </template>
@@ -134,6 +136,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { formatHexColor } from "@/use/prettify";
+import Hammer from "hammerjs"; // Step 1: Import Hammer.jsF
 export default {
   data() {
     return {
@@ -231,7 +234,11 @@ export default {
       }
       // Аналогично добавьте ветви для остальных столбцов
     },
-
+    handleSwipeLeft(event) {
+      this.isActiveTopCircle = false;
+      this.isActiveBotCircle = false;
+      this.tableFilterMaxHeight = "0px";
+    },
     // Добавьте метод isActiveMarkActive() для определения активности элемента
     isActiveMarkActive(column, markId) {
       let activeMarksArray = null;
@@ -262,6 +269,12 @@ export default {
   },
 
   async mounted() {
+    const tableFilterContainer = this.$refs.tableFilterContainer;
+    const mc = new Hammer.Manager(tableFilterContainer);
+    mc.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_LEFT }));
+
+    // Step 3: Listen for the swipeleft event and call the handleSwipeLeft method
+    mc.on("swipeleft", this.handleSwipeLeft);
     this.getRooms(),
       this.getStyles(),
       this.getPictureTypes(),

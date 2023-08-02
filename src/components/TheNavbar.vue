@@ -13,7 +13,7 @@
           </label>
           <input
             class="nav__search-input"
-            type="search"
+            type="text"
             name=""
             id="nav_search"
             placeholder="Поиск..."
@@ -21,9 +21,9 @@
           <button class="nav__search-btn" type="submit">искать</button>
         </div>
 
-        <router-link class="nav__login-auth" to="/auth">
+        <a @click="nav__login_auth()" class="nav__login-auth">
           <p>Регистрация /Авторизация</p>
-        </router-link>
+        </a>
       </div>
 
       <!-- Вторая линия -->
@@ -73,6 +73,13 @@
               <img :src="select" alt="" />
             </div>
             <div class="nav__basket" @click="toggleBasket">
+              <div
+                class="nav__basket-any"
+                v-for="(item, index) in cart"
+                :key="index"
+              >
+                {{ cartItemCount }}
+              </div>
               <img :src="bascket" alt="" />
             </div>
           </div>
@@ -228,8 +235,11 @@ export default {
   }),
   computed: {
     ...mapGetters("collections", ["collections"]),
-    logMethod() {
-      console.log(this.collections);
+    ...mapGetters("cart", ["cart"]),
+
+    cartItemCount() {
+      // Calculate and return the total count of unique products in the cart
+      return Object.keys(this.cart).length;
     },
     languages: () => [
       {
@@ -245,7 +255,23 @@ export default {
     },
   },
   methods: {
+    logMethod() {
+      console.log(this.cart);
+    },
     ...mapActions("collections", ["getCollections"]),
+    ...mapActions("cart", ["getCart", "addCart", "deleteCart"]),
+
+    nav__login_auth() {
+      // Check if the user has a valid token in localStorage
+      const token = localStorage.getItem("token");
+      if (token) {
+        // If the user has a token, route them to /user
+        this.$router.push({ name: "user" });
+      } else {
+        // If there is no token, route them to /auth
+        this.$router.push({ name: "auth" });
+      }
+    },
     changeHandler(index, value) {
       localStorage.setItem("locale", value);
       localStorage.setItem("localeIndex", index); // Store the selected language index
@@ -309,6 +335,8 @@ export default {
     window.addEventListener("click", this.closeLang);
     window.addEventListener("click", this.closeLangMob);
     await this.getCollections();
+    await this.getCart();
+    this.logMethod();
   },
 
   beforeDestroy() {

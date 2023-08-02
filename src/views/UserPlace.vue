@@ -25,11 +25,11 @@
           >Избранное</router-link
         >
 
-        <router-link
-          :to="{ name: 'logout' }"
+        <a
+          @click="logout"
           class="personalArea-link"
           :class="{ active: isChildRouteActive('logout') }"
-          >Выход</router-link
+          >Выход</a
         >
       </div>
 
@@ -75,6 +75,13 @@ export default {
     },
     isChildRouteActive(routeName) {
       return this.$route.matched.some((route) => route.name === routeName);
+    },
+    logout() {
+      // Clear the token from localStorage
+      localStorage.removeItem("token");
+
+      // Optionally, you may want to redirect the user to the login page after logout
+      this.$router.push({ name: "logout" });
     },
   },
 };

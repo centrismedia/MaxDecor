@@ -7,15 +7,19 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "hammerjs": "^2.0.8",
     "js-cookie": "^3.0.5",
     "primeicons": "^6.0.1",
     "primevue": "^2.10.1",
     "swiper": "^9.4.1",
+    "v-touch": "^1.5.2",
     "vue": "^2.6.14",
     "vue-i18n": "^8.28.2",
     "vue-router": "^3.5.1",
+    "vue2-hammer": "^2.1.2",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

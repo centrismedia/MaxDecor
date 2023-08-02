@@ -67,6 +67,10 @@ const routes = [{
   },
 ];
 
+function hasValidToken() {
+  const token = localStorage.getItem('token'); // Предполагаем, что токен хранится в localStorage
+  return !!token; // Возвращает true, если токен присутствует, и false в противном случае
+}
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -79,6 +83,5 @@ const router = new VueRouter({
     };
   },
 });
-
 
 export default router;

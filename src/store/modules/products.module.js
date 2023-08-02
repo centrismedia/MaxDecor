@@ -26,7 +26,7 @@ export default {
         }) {
             state.isLoading = true;
             try {
-                const res = await axios.get("/store/products/list", {
+                const res = await axios.get("/store/products/list/", {
                     headers: {
                         'content-language': "ru"
                     }
@@ -44,7 +44,7 @@ export default {
         }, productId) {
             state.isLoading = true;
             try {
-                const res = await axios.get(`/store/products/retrieve/${productId}`, {
+                const res = await axios.get(`/store/products/retrieve/${productId}/`, {
                     headers: {
                         'content-language': "ru",
                     },

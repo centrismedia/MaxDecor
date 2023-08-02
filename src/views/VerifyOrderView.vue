@@ -11,20 +11,20 @@
 
     <!-- Контейнер карточек -->
     <section class="checkout-card__container container">
-      <div class="checkout-card__item" v-for="order in orders" :key="order.id">
+      <div class="checkout-card__item" v-for="order in cart" :key="order.id">
         <div class="checkout-card__img-name__position">
           <div class="checkout-card__img">
-            <img :src="order.img" alt="" />
+            <img :src="order.photo" alt="" />
           </div>
           <div class="checkout-card__body">
-            <div class="checkout-card-item__name">{{ order.name }}</div>
-            <div class="checkout-card-item__price">{{ order.price }}</div>
+            <div class="checkout-card-item__name">{{ order.title }}</div>
+            <div class="checkout-card-item__price">{{ order.cost }}</div>
           </div>
         </div>
 
         <div class="checkout-card__quantity">
           <div class="checkout-card__minus">-</div>
-          <input class="checkout-card__input" type="number" />
+          <div>{{ order.quantity }}</div>
           <div class="checkout-card__plus">+</div>
         </div>
 
@@ -220,6 +220,8 @@
 
 <script>
 import RadioButton from "primevue/radiobutton";
+import { mapActions, mapGetters } from "vuex";
+import { prettifySum } from "@/use/prettify";
 export default {
   components: {
     RadioButton,
@@ -244,6 +246,7 @@ export default {
         price: "545 000 сум",
       },
     ],
+
     reception: null,
     payment: null,
     filials: [
@@ -257,6 +260,33 @@ export default {
       { name: "First Bank" },
     ],
   }),
+  computed: {
+    ...mapGetters("cart", ["cart"]),
+  },
+  methods: {
+    ...mapActions("cart", ["getCart", "addCart", "deleteCart"]),
+    decrementCartItem(index) {
+      if (this.cart[index].quantity > 1) {
+        this.cart[index].quantity--; // Decrease the quantity by 1
+        this.updateCartItem(index);
+      }
+    },
+
+    incrementCartItem(index) {
+      this.cart[index].quantity++; // Increase the quantity by 1
+      this.updateCartItem(index);
+    },
+    itemTotalPrice(item) {
+      return (item.cost * item.quantity).toFixed(2); // Assuming price is in float or decimal format
+    },
+    logMethod() {
+      console.log(this.cart);
+    },
+  },
+  async mounted() {
+    this.getCart();
+    this.logMethod();
+  },
 };
 </script>
 

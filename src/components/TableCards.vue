@@ -1,4 +1,3 @@
-
 <template>
   <div class="card-table">
     <section class="table-card__container container">
@@ -61,6 +60,7 @@
 
 <script>
 import Cookies from "js-cookie";
+import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 import { prettifySum } from "@/use/prettify";
 export default {
@@ -68,10 +68,12 @@ export default {
     productionIcon: require("@/assets/img/cards/card-product-icon.svg"),
     paginationArrow: require("@/assets/img/cards/pagination_arrow.svg"),
     prettifySum,
+     addedToCartIds: [],
   }),
   computed: {
     ...mapGetters("products", ["products", "infoProduct", "filteredProducts"]),
     ...mapGetters("collections", ["collections"]),
+    ...mapGetters("cart", ["cart"]),
     totalPages() {
       // Calculate the total number of pages based on the number of cards per page
       const cardsPerPage = 8; // Change this value according to your needs
@@ -82,6 +84,7 @@ export default {
   methods: {
     ...mapActions("products", ["getProducts", "getInfoProduct", "applyFilter"]),
     ...mapActions("collections", ["getCollections"]),
+    ...mapActions("cart", ["getCart", "addCart", "deleteCart"]),
     logMethod() {
       console.log(this.products);
     },
@@ -128,34 +131,23 @@ export default {
           : "";
       }
     },
-    addToCart(card) {
-      // Prepare the file information that you want to store in the cookie
-      const fileData = {
-        price: card.price,
-        photo: card.photo,
-        collection: card.get_collection,
-        quantity: 1,
-      };
+    async addToCart(card) {
+      axios.defaults.withCredentials = true;
+      try {
+        // Prepare the cart item data that you want to add
+        const cartItem = {
+          id: card.id,
+          quantity: 1,
+        };
 
-      // Get the existing cart data from the cookie
-      const existingCartData = Cookies.get("cart");
-      const cart = existingCartData ? JSON.parse(existingCartData) : [];
+        // Dispatch the addCart action with the cart item data
+        await this.addCart(cartItem);
 
-      // Check if the item already exists in the cart
-      const existingItem = cart.find((item) => item.photo === card.photo);
-      if (existingItem) {
-        // If the item already exists, increment the quantity
-        existingItem.quantity++;
-      } else {
-        // If the item doesn't exist, add it to the cart
-        cart.push(fileData);
+        // Optionally, you can show a success message or perform any other actions after adding to the cart.
+        console.log("Successfully added to cart!");
+      } catch (error) {
+        console.error("Error adding to cart:", error);
       }
-
-      // Save the updated cart back to the cookie
-      Cookies.set("cart", JSON.stringify(cart), { expires: 7 });
-    },
-    saveCartToCookie() {
-      Cookies.set("cart", JSON.stringify(this.cart), { expires: 7 });
     },
 
     stopPr(e) {

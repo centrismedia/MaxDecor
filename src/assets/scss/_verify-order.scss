@@ -140,6 +140,9 @@
 .checkout-card__quantity {
     display: flex;
     align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     height: 47px;
 
@@ -691,19 +694,22 @@
     .form__card {
         margin: 0 20px;
     }
+
     .checkout-card__item {
         max-width: 400px;
     }
-    
+
 }
 
 @media (max-width: 762px) {
     .aside__title {
         margin-top: 167px;
     }
+
     .form__card {
         padding: 30px 20px;
     }
+
     .form-card__body {
         padding-bottom: 150px;
     }

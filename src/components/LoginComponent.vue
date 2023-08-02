@@ -110,16 +110,28 @@
         method="post"
       >
         <div class="regist__email-cont">
-          <input type="text" placeholder=" " v-model="username" required />
+          <input
+            id="login_email"
+            type="text"
+            placeholder=" "
+            v-model="username"
+            required
+          />
           <label for="login_email"> Email</label>
         </div>
         <div class="regist__password_1-cont">
-          <input type="password" placeholder=" " v-model="password" required />
+          <input
+            id="login_password"
+            type="password"
+            placeholder=" "
+            v-model="password"
+            required
+          />
           <label for="login_password">Пароль</label>
         </div>
 
         <div class="regist__agreement-cont">
-          <input type="checkbox"  />
+          <input id="remember" type="checkbox" />
           <label for="remember">запомните меня</label>
         </div>
 

@@ -138,13 +138,15 @@
           <div class="card-product__options">
             <p class="card-product__options_key">Размер рулона</p>
             <div class="card-product__options_line"></div>
-            <p
-              class="card-product__options_value"
-              v-for="item in infoProductData.size"
-              :key="item.id"
-            >
-              {{ item.height }} х {{ item.height }}
-            </p>
+            <div class="card-product__options-wrapper">
+              <p
+                class="card-product__options_value"
+                v-for="item in infoProductData.size"
+                :key="item.id"
+              >
+                {{ item.width }} х {{ item.height }}
+              </p>
+            </div>
           </div>
 
           <div class="card-product__options">

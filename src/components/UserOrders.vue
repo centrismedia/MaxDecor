@@ -48,7 +48,22 @@
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters("orders", ["orders"]),
+  },
+  methods: {
+    ...mapActions("orders", ["getOrders"]),
+    logMethod() {
+      console.log(this.orders);
+    },
+  },
+  mounted() {
+    this.getOrders();
+    this.logMethod();
+  },
+};
 </script>
 
 <style>

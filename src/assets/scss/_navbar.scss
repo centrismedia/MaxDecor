@@ -158,21 +158,19 @@
     column-gap: 40px;
 
     a {
-       
-
         color: #1e1e1e;
         @include adaptiv-font(14, 10);
-        font-family: $regular;
+        font-family: $medium;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-
+        transition: all .4s;
         padding: 27px 0;
 
         &:hover {
             color: #192965;
             @include adaptiv-font(14, 10);
-            font-family: $bold;
+            transition: all .4s;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
@@ -341,6 +339,7 @@
     height: 48px;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     border-radius: 30px;
     background: #192965;
@@ -352,6 +351,21 @@
     &:hover {
         transition: all 0.2s linear 0s;
         background: #0e1636;
+    }
+
+    &-any {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: -4px;
+        right: -5px;
+        background: red;
+        border-radius: 50%;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
     }
 }
 
@@ -750,6 +764,7 @@
     .nav__container {
         z-index: 15;
     }
+
     .nav__third-line {
         display: flex;
     }
@@ -836,4 +851,3 @@
     }
 
 }
-

@@ -6,6 +6,7 @@ import addresses from "./modules/addresses.module";
 import collections from "./modules/collections.module";
 import products from "./modules/products.module";
 import news from "./modules/news.module";
+import orders from "./modules/orders.module";
 import inquiry from "./modules/inquiry.module";
 import filter from "./modules/filter.module";
 import cart from "./modules/cart.module";
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     addresses,
     collections,
     inquiry,
+    orders,
     products,
     cart,
     news,
